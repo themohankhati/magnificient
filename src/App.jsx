@@ -1,18 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
 import React from "react";
+import Header from "./shared_components/Header";
+import HeroSection from "./components/homepage/HeroSection";
+import WhyBookWithUs from "./components/homepage/WhyBookWithUs";
+import Destinations from "./components/homepage/Destinations";
 
 
 function App() {
-
   return (
     <>
-     <div>
-      <h1 className="text-3xl font-bold underline flex justify-center">
-         Hello world!
-    </h1>    
-   </div>
+      <Header />
+      <HeroSection />
+      <WhyBookWithUs />
+      <Destinations />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
