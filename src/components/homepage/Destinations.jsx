@@ -14,7 +14,7 @@ const Destinations = () => {
           Top Destinations
           <span className="block w-12 h-1 bg-green-600 mt-2 mx-auto"></span>
         </h2>
-        <div className="flex flex-wrap justify-center gap-18">
+        <div className="flex flex-wrap justify-center gap-22">
           {destinations.map((destination, index) => (
             <div
               key={index}
