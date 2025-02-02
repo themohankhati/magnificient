@@ -14,7 +14,7 @@ const tours = [
 
 const ToursSection = () => {
   return (
-    <section className="text-center py-8 bg-gray-100">
+    <section className="text-center py-8">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-10">
           <span className="text-blue-900 underline decoration-green-600">Tours</span> We Offer
