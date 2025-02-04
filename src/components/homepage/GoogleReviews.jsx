@@ -44,7 +44,11 @@ const GoogleReviews = () => {
     <section className="text-center py-12">
       <div className="max-w-6xl mx-auto px-5">
         <div className="flex items-center justify-center gap-5 mb-10">
-          <img src="Homepage-pictures/google-logo.png" alt="Google Logo" className="w-10 h-auto" />
+          <img
+            src="google-logo.png"
+            alt="Google Logo"
+            className="w-10 h-auto"
+          />
           <h2 className="text-3xl font-bold">Google Reviews</h2>
         </div>
         <div className="flex overflow-x-auto rounded-xl space-x-13 p-2 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-gray-900 h-64">
@@ -58,9 +62,13 @@ const GoogleReviews = () => {
                   {review.initial}
                 </div>
                 <div className="font-medium">{review.name}</div>
-                <div className="text-yellow-500">{"★".repeat(review.rating)}</div>
+                <div className="text-yellow-500">
+                  {"★".repeat(review.rating)}
+                </div>
               </div>
-              <div className="p-4 text-gray-700 text-sm h-24">{review.text}</div>
+              <div className="p-4 text-gray-700 text-sm h-24">
+                {review.text}
+              </div>
             </div>
           ))}
         </div>

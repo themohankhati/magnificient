@@ -30,7 +30,7 @@ const activities = [
     id: "mountain-flight",
     title: "Mountain Flight",
     places: 2,
-    image: "HMountainFlight.jpg",
+    image: "MountainFlight.jpg",
   },
 ];
 
