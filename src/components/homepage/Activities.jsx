@@ -1,12 +1,37 @@
 import React from "react";
 
 const activities = [
-  { id: "jungle-safari", title: "Jungle Safari", places: 5, image: "Homepage-pictures/JungleSafari.jpg" },
-  { id: "paragliding", title: "Paragliding", places: 4, image: "Homepage-pictures/paragliding.jpg" },
-  { id: "rafting", title: "Rafting", places: 7, image: "Homepage-pictures/rafting.jpg" },
-  { id: "bungee-jumping", title: "Bungee Jumping", places: 6, image: "Homepage-pictures/Bungee.jpg" },
-  { id: "climbing-expedition", title: "Climbing & Expedition", places: 10, image: "Homepage-pictures/climbingExpedition.jpg" },
-  { id: "mountain-flight", title: "Mountain Flight", places: 2, image: "Homepage-pictures/MountainFlight.jpg" },
+  {
+    id: "jungle-safari",
+    title: "Jungle Safari",
+    places: 5,
+    image: "JungleSafari.jpg",
+  },
+  {
+    id: "paragliding",
+    title: "Paragliding",
+    places: 4,
+    image: "paragliding.jpg",
+  },
+  { id: "rafting", title: "Rafting", places: 7, image: "rafting.jpg" },
+  {
+    id: "bungee-jumping",
+    title: "Bungee Jumping",
+    places: 6,
+    image: "Bungee.jpg",
+  },
+  {
+    id: "climbing-expedition",
+    title: "Climbing & Expedition",
+    places: 10,
+    image: "climbingExpedition.jpg",
+  },
+  {
+    id: "mountain-flight",
+    title: "Mountain Flight",
+    places: 2,
+    image: "HMountainFlight.jpg",
+  },
 ];
 
 const ActivitiesSection = () => {
@@ -17,14 +42,18 @@ const ActivitiesSection = () => {
           <span className="text-blue-900 underline">Activities</span> We Offer
         </h2>
         <div className="flex flex-wrap justify-between items-start gap-15 max-w-5xl mx-auto">
-          {activities.map((activity) => (
+          {activities.map(activity => (
             <a
               key={activity.id}
               href={`#${activity.id}`}
               className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 w-full max-w-xs"
             >
               <div className="w-32 h-20 overflow-hidden rounded-md">
-                <img src={activity.image} alt={activity.title} className="w-full h-full object-cover" />
+                <img
+                  src={activity.image}
+                  alt={activity.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="pl-4 text-left">
                 <h3 className="text-lg font-semibold mb-1">{activity.title}</h3>

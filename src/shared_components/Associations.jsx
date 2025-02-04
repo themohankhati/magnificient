@@ -1,34 +1,33 @@
-import React from "react"; 
+import React from "react";
 export default function Associations() {
-    const logos = [
-      { src: "Homepage-pictures/ntb-logo.png", alt: "NTB Logo" },
-      { src: "Homepage-pictures/nma-logo.png", alt: "NMA Logo" },
-      { src: "Homepage-pictures/keep-logo.png", alt: "KEEP Logo" },
-      { src: "Homepage-pictures/natta-logo.png", alt: "NATTA Logo" },
-      { src: "Homepage-pictures/pata-logo.png", alt: "PATA Logo" },
-      { src: "Homepage-pictures/taan-logo.png", alt: "TAAN Logo" },
-      { src: "Homepage-pictures/travellife-logo.png", alt: "Travellife Logo" },
-    ];
-  
-    return (
-      <section className="text-center py-15 bg-gray-50">
-        <div className="max-w-7xl mx-auto pb-8">
-          <h2 className="text-3xl font-bold relative inline-block mb-12">
-            We are associated with
-            <span className="block w-20 h-1 bg-green-600 mt-2 mx-auto"></span>
-          </h2>
-          <div className="flex flex-wrap justify-center gap-10">
-            {logos.map((logo, index) => (
-              <img
-                key={index}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-24 max-w-[160px] object-contain"
-              />
-            ))}
-          </div>
+  const logos = [
+    { src: "ntb-logo.png", alt: "NTB Logo" },
+    { src: "nma-logo.png", alt: "NMA Logo" },
+    { src: "keep-logo.png", alt: "KEEP Logo" },
+    { src: "natta-logo.png", alt: "NATTA Logo" },
+    { src: "pata-logo.png", alt: "PATA Logo" },
+    { src: "taan-logo.png", alt: "TAAN Logo" },
+    { src: "travellife-logo.png", alt: "Travellife Logo" },
+  ];
+
+  return (
+    <section className="text-center py-15 bg-gray-50">
+      <div className="max-w-7xl mx-auto pb-8">
+        <h2 className="text-3xl font-bold relative inline-block mb-12">
+          We are associated with
+          <span className="block w-20 h-1 bg-green-600 mt-2 mx-auto"></span>
+        </h2>
+        <div className="flex flex-wrap justify-center gap-10">
+          {logos.map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              className="h-24 max-w-[160px] object-contain"
+            />
+          ))}
         </div>
-      </section>
-    );
-  }
-  
+      </div>
+    </section>
+  );
+}
