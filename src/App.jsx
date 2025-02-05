@@ -1,11 +1,33 @@
-import { useState } from "react";
 import React from "react";
-import HomePage from "./pages/HomePage";
+import { lazy, Suspense, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AboutUs from "./pages/AboutUs";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Suspense>
+                <HomePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/aboutus"
+            element={
+              <Suspense>
+                <AboutUs />
+              </Suspense>
+            }
+          />
+        </Routes>
+      </Router>
     </>
   );
 }
