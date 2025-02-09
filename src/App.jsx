@@ -5,6 +5,7 @@ import AboutUs from "./pages/AboutUs";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
+
 function App() {
   return (
     <>

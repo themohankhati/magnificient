@@ -31,6 +31,7 @@ export default function HomePage() {
       <Associations />
       <Newsletter />
       <Footer />
+      
     </>
   );
 }
