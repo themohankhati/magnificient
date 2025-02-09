@@ -16,6 +16,7 @@ import Newsletter from "./shared_components/Newsletter";
 import Footer from "./shared_components/Footer";
 
 
+
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
       <Associations />
       <Newsletter />
       <Footer />
+      
     </>
   );
 }
