@@ -65,6 +65,7 @@ export default function BestSelection() {
           <motion.div
             ref={scrollRef}
             className="flex gap-7 overflow-x-scroll no-scrollbar scroll-smooth"
+            style={{ scrollbarWidth: "none" }}
           >
             {trekData.map((trek, index) => (
               <div

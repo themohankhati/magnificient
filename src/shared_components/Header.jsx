@@ -10,20 +10,20 @@ const Header = () => {
       <nav className="ml-auto">
         <ul className="flex gap-22 list-none pr-120">
           <li>
-            <a
-              href="#"
+            <Link
+              to="/destinations"
               className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
             >
               DESTINATIONS
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              to="/activities"
               className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
             >
               ACTIVITIES
-            </a>
+            </Link>
           </li>
           <li>
             {/* <a className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"> */}
@@ -37,12 +37,12 @@ const Header = () => {
             {/* </a> */}
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
             >
               CONTACT US
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
