@@ -13,6 +13,9 @@ import StayFlexible from "../shared_components/StayFlexible";
 import Associations from "../shared_components/Associations";
 import Newsletter from "../shared_components/Newsletter";
 import Footer from "../shared_components/Footer";
+import Card from "../shared_components/Card";
+
+
 
 export default function HomePage() {
   return (
@@ -31,7 +34,9 @@ export default function HomePage() {
       <Associations />
       <Newsletter />
       <Footer />
-      
+      <Card />
+  
+     
     </>
   );
 }
