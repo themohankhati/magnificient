@@ -51,7 +51,8 @@ const GoogleReviews = () => {
           />
           <h2 className="text-3xl font-bold">Google Reviews</h2>
         </div>
-        <div className="flex overflow-x-auto rounded-xl space-x-13 p-2 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-gray-900 h-64">
+        <div className="flex overflow-x-auto rounded-xl space-x-13 p-2 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-gray-900 h-64"
+                    style={{ scrollbarWidth: "none" }}>
           {reviews.map((review, index) => (
             <div
               key={index}

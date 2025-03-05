@@ -38,7 +38,8 @@ const ToursSection = () => {
           </span>{" "}
           We Offer
         </h2>
-        <div className="flex overflow-x-auto space-x-5 p-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+        <div className="flex overflow-x-auto space-x-5 p-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+                    style={{ scrollbarWidth: "none" }}>
           {tours.map((tour, index) => (
             <div
               key={index}
