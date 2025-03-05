@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import Card from "../../shared_components/Card";
 
 const trekData = [
@@ -11,7 +11,7 @@ const trekData = [
     duration: "10 Days",
     months: "March - May",
     difficulty: "Moderate",
-    description: "Explore the stunning Annapurna on a royal trekking.",
+    description: "Explore the stunning Annapurna on a royal trekking. Get an wonderful experience.",
     price: "USD 1300",
   },
   {
@@ -21,7 +21,7 @@ const trekData = [
     duration: "12 Days",
     months: "April - June",
     difficulty: "Challenging",
-    description: "Trek to the base of the world's highest peak, Everest.",
+    description: "Trek to the base of the world's highest peak, Everest. The trip you will never forget.",
     price: "USD 1500",
   },
   {
@@ -31,7 +31,7 @@ const trekData = [
     duration: "10 Days",
     months: "March - May",
     difficulty: "Moderate",
-    description: "A royal trekking experience with breathtaking views.",
+    description: "A royal trekking experience with breathtaking views. The trip you will never forget",
     price: "USD 1300",
   },
   {
@@ -41,7 +41,7 @@ const trekData = [
     duration: "10 Days",
     months: "March - May",
     difficulty: "Moderate",
-    description: "Experience the Himalayan beauty up close.",
+    description: "Experience the Himalayan beauty up close. Get a lifetime of Experience!",
     price: "USD 1300",
   },
   {
@@ -51,7 +51,7 @@ const trekData = [
     duration: "14 Days",
     months: "September - November",
     difficulty: "Hard",
-    description: "One of the most iconic trekking routes in the world.",
+    description: "One of the most iconic trekking routes in the world. Get ready for Unforgettable adventures",
     price: "USD 1800",
   },
   {
@@ -69,9 +69,21 @@ const trekData = [
 export default function BestSelection() {
   const scrollRef = useRef(null);
 
-  const handleScroll = () => {
+  const handleScrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      if (scrollRef.current.scrollLeft + scrollRef.current.clientWidth >= scrollRef.current.scrollWidth - 300) {
+        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleScrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      if (scrollRef.current.scrollLeft <= 300) {
+        scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: "smooth" });
+      }
     }
   };
 
@@ -87,13 +99,15 @@ export default function BestSelection() {
         </p>
 
         <div className="relative overflow-hidden">
+           
+          {/* Scrollable Container */}
           <motion.div
             ref={scrollRef}
             className="flex gap-7 overflow-x-hidden scroll-smooth"
-            style={{ width: 'calc(100% - 60px)' }} // Adjusting width
+            style={{ width: "calc(100% - 60px)" }}
           >
-            {trekData.map((trek, index) => (
-              <div key={index} className="min-w-[400px]"> {/* Adjusting card width */}
+            {[...trekData, ...trekData].map((trek, index) => (
+              <div key={index} className="min-w-[400px]">
                 <Card
                   image={trek.image}
                   country={trek.country}
@@ -107,10 +121,18 @@ export default function BestSelection() {
             ))}
           </motion.div>
 
-          {/* Scroll Button */}
+          {/* Scroll Left Button */}
+          {/* <button
+            onClick={handleScrollLeft}
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md"
+          >
+            <ArrowLeft size={24} />
+          </button> */}
+
+          {/* Scroll Right Button */}
           <button
-            onClick={handleScroll}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md"
+            onClick={handleScrollRight}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md"
           >
             <ArrowRight size={24} />
           </button>

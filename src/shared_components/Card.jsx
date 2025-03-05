@@ -5,14 +5,16 @@ import { FiClock, FiCalendar, FiBarChart2 } from "react-icons/fi";
 const Card = ({ image, country, title, duration, months, difficulty, description }) => {
   return (
     <div className="max-w-sm bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200">
+      
       {/* Image Section with Title Overlay */}
       <div className="relative">
         <img src={image} alt={title} className="w-full h-55 object-cover" />
+        
         {/* Country and Icon Section */}
         <div className="absolute bottom-12 left-4 text-white text-sm flex items-center gap-1">
           <FaGlobeAsia /> <span>{country}</span>
         </div>
-        {/* Title Overlay - Positioned below the country and icon */}
+        
         <div className="absolute bottom-4 left-4 text-white text-xl font-bold">
           {title}
         </div>
