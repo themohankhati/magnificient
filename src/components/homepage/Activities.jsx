@@ -1,4 +1,8 @@
 import React from "react";
+import Header from "../../shared_components/Header";
+import Newsletter from "../../shared_components/Newsletter";
+import Associations from "../../shared_components/Associations";
+import Footer from "../../shared_components/Footer";
 
 const activities = [
   {
@@ -36,6 +40,8 @@ const activities = [
 
 const ActivitiesSection = () => {
   return (
+    <>
+    <Header/>
     <section className="text-center py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">
@@ -44,16 +50,16 @@ const ActivitiesSection = () => {
         <div className="flex flex-wrap justify-between items-start gap-15 max-w-5xl mx-auto">
           {activities.map(activity => (
             <a
-              key={activity.id}
-              href={`#${activity.id}`}
-              className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 w-full max-w-xs"
+            key={activity.id}
+            href={`#${activity.id}`}
+            className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 w-full max-w-xs"
             >
               <div className="w-32 h-20 overflow-hidden rounded-md">
                 <img
                   src={activity.image}
                   alt={activity.title}
                   className="w-full h-full object-cover"
-                />
+                  />
               </div>
               <div className="pl-4 text-left">
                 <h3 className="text-lg font-semibold mb-1">{activity.title}</h3>
@@ -72,6 +78,11 @@ const ActivitiesSection = () => {
         </div>
       </div>
     </section>
+   
+   <Associations/>
+    <Newsletter/>
+    <Footer/>
+            </>
   );
 };
 

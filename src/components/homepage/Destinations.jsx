@@ -1,4 +1,8 @@
 import React from "react";
+import Associations from "../../shared_components/Associations";
+import Newsletter from "../../shared_components/Newsletter";
+import Footer from "../../shared_components/Footer";
+import Header from "../../shared_components/Header";
 
 const Destinations = () => {
   const destinations = [
@@ -9,6 +13,8 @@ const Destinations = () => {
   ];
 
   return (
+<>
+<Header/>
     <section className="text-center py-16">
       <h2 className="text-3xl font-bold mb-10 relative inline-block">
         Top Destinations
@@ -17,14 +23,14 @@ const Destinations = () => {
       <div className="flex flex-wrap justify-center gap-22">
         {destinations.map((destination, index) => (
           <div
-            key={index}
-            className="text-center rounded-xl overflow-hidden shadow-lg max-w-[220px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+          key={index}
+          className="text-center rounded-xl overflow-hidden shadow-lg max-w-[220px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             <img
               src={destination.img}
               alt={destination.name}
               className="w-full h-[150px] object-cover"
-            />
+              />
             <h3 className="bg-white text-lg font-semibold py-2 text-gray-800">
               {destination.name}
             </h3>
@@ -32,6 +38,10 @@ const Destinations = () => {
         ))}
       </div>
     </section>
+     <Associations />
+                <Newsletter />
+                <Footer />
+        </>
   );
 };
 
