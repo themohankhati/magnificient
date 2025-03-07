@@ -8,7 +8,6 @@ import Activities from "../components/homepage/Activities";
 import FreeCancellationPolicy from "../shared_components/FreeCancellationPolicy";
 import ToursSection from "../components/homepage/ToursSection";
 import GoogleReviews from "../components/homepage/GoogleReviews";
-import FAQSection from "../components/homepage/FAQSection";
 import StayFlexible from "../shared_components/StayFlexible";
 import Associations from "../shared_components/Associations";
 import Newsletter from "../shared_components/Newsletter";
@@ -29,7 +28,6 @@ export default function HomePage() {
       <FreeCancellationPolicy />
       <ToursSection />
       <GoogleReviews />
-      <FAQSection />
       <StayFlexible />
       <Associations />
       <Newsletter />
