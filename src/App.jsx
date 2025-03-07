@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
+import TourTrek from "./components/homepage/Tour and Trek/TourTrek";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -42,6 +43,14 @@ function App() {
             element={
               <Suspense>
                 <AboutUs />
+              </Suspense>
+            }
+          />
+            <Route
+            path="/tourtrek"
+            element={
+              <Suspense>
+                <TourTrek />
               </Suspense>
             }
           />
