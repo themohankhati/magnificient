@@ -16,6 +16,7 @@ import Footer from "../shared_components/Footer";
 
 
 
+
 export default function HomePage() {
   return (
     <>
@@ -32,6 +33,7 @@ export default function HomePage() {
       <Associations />
       <Newsletter />
       <Footer />
+      
       
   
      

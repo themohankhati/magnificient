@@ -1,10 +1,8 @@
 import React from 'react';
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "../shared_components/Header";
 import Footer from "../shared_components/Footer";
 import Associations from "../shared_components/Associations";
-import NewsLetter from "../shared_components/Newsletter";
+import Newsletter from "../shared_components/Newsletter";
 
 const AboutUs = () => {
   return (
@@ -17,7 +15,7 @@ const AboutUs = () => {
         <p className="text-sm text-gray-600">MAGNIFICENT COMPANY AND PEOPLE PICTURES SLIDESHOW</p>
       </div>
       
-      
+       
         
         
         <div className="mb-8 mt-10">
@@ -42,7 +40,7 @@ const AboutUs = () => {
         </div>
 
 
-        <div className="mb-8">
+        <div className="mb-8">  
         <div className="container mx-auto px-4">
           <h2 className="text-xl font-semibold mb-2">Our Offerings</h2>
           <ul className="list-disc list-inside text-base">
@@ -119,7 +117,7 @@ const AboutUs = () => {
   </div>
       
         <Associations />
-      <NewsLetter />
+      <Newsletter />
       <Footer />
       </div>
       

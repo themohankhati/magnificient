@@ -90,6 +90,7 @@ const WhyChooseUs = () => {
     <div className="min-h-screen">
       <Header />
       
+      
       <section className="bg-blue-100 h-[400px] flex flex-col items-center justify-center text-center p-6">
         <h1 className="text-3xl font-bold">Why Book With Magnificent?</h1>
         <p className="text-gray-700 mt-2">[RANDOM COMPANY AND PEOPLE PICTURES]</p>
