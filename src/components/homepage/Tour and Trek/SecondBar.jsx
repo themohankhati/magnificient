@@ -1,6 +1,13 @@
-import { useState  } from "react";
+import { useState } from "react";
 import React from "react";
-import { FaList, FaCheckCircle, FaSuitcase, FaMapMarkerAlt, FaImages, FaBook } from "react-icons/fa";
+import {
+  FaList,
+  FaCheckCircle,
+  FaSuitcase,
+  FaMapMarkerAlt,
+  FaImages,
+  FaBook,
+} from "react-icons/fa";
 
 const tabs = [
   { name: "Overview", icon: FaBook, active: true },
@@ -9,7 +16,7 @@ const tabs = [
   { name: "Requirements", icon: FaSuitcase },
   { name: "Trip map", icon: FaMapMarkerAlt },
   { name: "Gallery", icon: FaImages },
-  { name: "FAQs", icon: FaBook }
+  { name: "FAQs", icon: FaBook },
 ];
 
 export default function SecondBar() {

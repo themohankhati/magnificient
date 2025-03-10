@@ -2,7 +2,7 @@ import React from "react";
 
 const BookingCard = () => {
   return (
-    <div className="bg-gray-50 rounded-md shadow-md p-6 text-center w-1/6">
+    <div className="bg-gray-50 rounded-md shadow-md p-6 text-center ">
       <div className="text-2xl font-bold mb-2">Price: Contact Us</div>
       <div className="text-sm text-gray-600 mb-4"></div>
 
