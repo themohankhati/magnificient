@@ -14,7 +14,7 @@ const Destinations = () => {
 
   return (
 <>
-<Header/>
+
     <section className="text-center py-16">
       <h2 className="text-3xl font-bold mb-10 relative inline-block">
         Top Destinations
@@ -38,9 +38,7 @@ const Destinations = () => {
         ))}
       </div>
     </section>
-     <Associations />
-                <Newsletter />
-                <Footer />
+    
         </>
   );
 };
