@@ -16,7 +16,7 @@ export default function SecondBar() {
   const [activeTab, setActiveTab] = useState("Overview");
 
   return (
-    <div className="flex bg-gray-100 p-5 border-b justify-evenly">
+    <div className="flex flex-wrap bg-gray-100 p-5 border-b justify-evenly">
       {tabs.map((tab) => (
         <button
           key={tab.name}

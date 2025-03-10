@@ -41,7 +41,7 @@ const activities = [
 const ActivitiesSection = () => {
   return (
     <>
-    <Header/>
+ 
     <section className="text-center py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">
@@ -78,10 +78,7 @@ const ActivitiesSection = () => {
         </div>
       </div>
     </section>
-   
-   <Associations/>
-    <Newsletter/>
-    <Footer/>
+ 
             </>
   );
 };
