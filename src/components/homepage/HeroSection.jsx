@@ -3,7 +3,7 @@ import React from "react";
 const HeroSection = () => {
   return (
     <section className="relative h-screen overflow-hidden">
-      <video
+      <video  
         autoPlay
         muted
         loop
