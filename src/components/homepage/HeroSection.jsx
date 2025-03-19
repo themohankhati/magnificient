@@ -7,9 +7,9 @@ const HeroSection = () => {
         autoPlay
         muted
         loop
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10 blur-[2px]"
+        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
       >
-        <source src="Background video.mp4" type="video/mp4" />
+        <source src="Background1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
