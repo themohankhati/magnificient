@@ -1,8 +1,4 @@
 import React from "react";
-import Header from "../../shared_components/Header";
-import Newsletter from "../../shared_components/Newsletter";
-import Associations from "../../shared_components/Associations";
-import Footer from "../../shared_components/Footer";
 
 const activities = [
   {
@@ -56,7 +52,7 @@ const ActivitiesSection = () => {
             >
               <div className="w-32 h-20 overflow-hidden rounded-md">
                 <img
-                  src={activity.image}
+                  src={`Images/${activity.image}`}
                   alt={activity.title}
                   className="w-full h-full object-cover"
                   />

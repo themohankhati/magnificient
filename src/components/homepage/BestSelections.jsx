@@ -109,7 +109,7 @@ export default function BestSelection() {
             {[...trekData, ...trekData].map((trek, index) => (
               <div key={index} className="min-w-[400px]">
                 <Card
-                  image={trek.image}
+                  image={`Images/${trek.image}`}
                   country={trek.country}
                   title={trek.title}
                   duration={trek.duration}

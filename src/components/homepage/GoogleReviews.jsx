@@ -45,7 +45,7 @@ const GoogleReviews = () => {
       <div className="max-w-6xl mx-auto px-5">
         <div className="flex items-center justify-center gap-5 mb-10">
           <img
-            src="google-logo.png"
+            src="Images/google-logo.png"
             alt="Google Logo"
             className="w-10 h-auto"
           />

@@ -5,6 +5,7 @@ import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
 import TourTrek from "./components/homepage/Tour and Trek/TourTrek";
+import ContactUs from "./pages/contactUs";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -54,14 +55,14 @@ function App() {
               </Suspense>
             }
           />
-          {/* <Route
+          <Route
             path="/contactus"
             element={
               <Suspense>
                 <ContactUs />
               </Suspense>
             }
-          /> */}
+          />
         </Routes>
       </Router>
     </>
