@@ -46,7 +46,7 @@ const ToursSection = () => {
               className="flex-none w-52 bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200"
             >
               <img
-                src={tour.img}
+                src={`Images/${tour.img}`}
                 alt={tour.title}
                 className="w-full h-58 object-cover"
               />

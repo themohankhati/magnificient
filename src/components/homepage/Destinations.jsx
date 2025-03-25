@@ -6,10 +6,10 @@ import Header from "../../shared_components/Header";
 
 const Destinations = () => {
   const destinations = [
-    { name: "NEPAL", img: "Top destination-Nepal.jpg" },
-    { name: "INDIA", img: "Top destination-India.jpg" },
-    { name: "TIBET", img: "Top destination-tibet.jpg" },
-    { name: "BHUTAN", img: "Top destination-Bhutan.jpg" },
+    { name: "NEPAL", img: "Images/Top destination-Nepal.jpg" },
+    { name: "INDIA", img: "Images/Top destination-India.jpg" },
+    { name: "TIBET", img: "Images/Top destination-tibet.jpg" },
+    { name: "BHUTAN", img: "Images/Top destination-Bhutan.jpg" },
   ];
 
   return (
