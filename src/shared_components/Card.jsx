@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGlobeAsia } from "react-icons/fa";
 import { FiClock, FiCalendar, FiBarChart2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Card = ({ image, country, title, duration, months, difficulty, description }) => {
   return (
@@ -41,8 +42,9 @@ const Card = ({ image, country, title, duration, months, difficulty, description
         
         {/* Button */}
         <div className="flex justify-center mt-4">
-          <button className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold">
-            View Details
+          <button className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold cursor-pointer">
+            <Link to="/annapurnabasecamp"> View Details</Link>
+          
           </button>
         </div>
       </div>

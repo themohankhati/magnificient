@@ -1,13 +1,13 @@
 import React from "react";
 export default function Associations() {
   const logos = [
-    { src: "ntb-logo.png", alt: "NTB Logo" },
-    { src: "nma-logo.png", alt: "NMA Logo" },
-    { src: "keep-logo.png", alt: "KEEP Logo" },
-    { src: "natta-logo.png", alt: "NATTA Logo" },
-    { src: "pata-logo.png", alt: "PATA Logo" },
-    { src: "taan-logo.png", alt: "TAAN Logo" },
-    { src: "travellife-logo.png", alt: "Travellife Logo" },
+    { src: "Images/ntb-logo.png", alt: "NTB Logo" },
+    { src: "Images/nma-logo.png", alt: "NMA Logo" },
+    { src: "Images/keep-logo.png", alt: "KEEP Logo" },
+    { src: "Images/natta-logo.png", alt: "NATTA Logo" },
+    { src: "Images/pata-logo.png", alt: "PATA Logo" },
+    { src: "Images/taan-logo.png", alt: "TAAN Logo" },
+    { src: "Images/travellife-logo.png", alt: "Travellife Logo" },
   ];
 
   return (
