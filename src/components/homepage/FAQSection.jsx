@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import cn from "../../utils/cn";
 
 const faqs = [
   {
@@ -45,7 +46,7 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
+export default function FAQSection({className}) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -54,7 +55,7 @@ export default function FAQSection() {
 
   return (
     <section className="text-center py-12">
-      <div className="max-w-5xl mx-auto mb-20">
+      <div className={cn("max-w-5xl mx-auto mb-20",className)}>
         <h2 className="text-3xl font-bold mb-13 relative inline-block">
           Frequently Asked Questions
           <span className="block w-20 h-1 bg-green-600 mt-2 mx-auto"></span>

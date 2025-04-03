@@ -16,7 +16,7 @@ const WhyBookWithUs = () => {
             className="text-center flex-1 min-w-[200px] max-w-[250px]"
           >
             <img
-              src={feature.image}
+              src={`Images/${feature.image}`}
               alt={feature.alt}
               className="w-20 mx-auto mb-4"
             />

@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { IoIosArrowDown ,IoIosArrowUp  } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const faqs = [
   {
     question: "Day 1: Arrival in Kathmandu(1300m)",
     answer:
-     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium vero omnis ad doloremque possimus earum similique exercitationem vitae quam, aliquam voluptatem reiciendis placeat, sint cum consequatur sit ipsa perspiciatis nobis."
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium vero omnis ad doloremque possimus earum similique exercitationem vitae quam, aliquam voluptatem reiciendis placeat, sint cum consequatur sit ipsa perspiciatis nobis.",
   },
   {
     question: "Day 2: Kathmandu SightSeeing",
@@ -19,7 +19,6 @@ const faqs = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium vero omnis ad doloremque possimus earum similique exercitationem vitae quam, aliquam voluptatem reiciendis placeat, sint cum consequatur sit ipsa perspiciatis nobis.",
   },
   {
-
     question: " Day 4: Pokhara to Gorepani",
     answer:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium vero omnis ad doloremque possimus earum similique exercitationem vitae quam, aliquam voluptatem reiciendis placeat, sint cum consequatur sit ipsa perspiciatis nobis.",
@@ -32,22 +31,22 @@ const faqs = [
   {
     question: "Day 6: Tadapani to Chhomrong(2210m), 5-6 hrs Walk",
     answer:
-     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, libero deleniti quaerat quibusdam sint quam rerum earum voluptatum! Dolores voluptas necessitatibus tempora harum et eos assumenda unde velit autem. Sequi?",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, libero deleniti quaerat quibusdam sint quam rerum earum voluptatum! Dolores voluptas necessitatibus tempora harum et eos assumenda unde velit autem. Sequi?",
   },
   {
     question: "Day 7: Chhomrong to Dovan(2600m), 5-6 hrs Walk",
     answer:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum inventore, similique ipsum perspiciatis corporis aliquid nesciunt dolore libero vitae deleniti, doloremque quam in totam incidunt dolorum nemo omnis accusantium.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni nostrum inventore, similique ipsum perspiciatis corporis aliquid nesciunt dolore libero vitae deleniti, doloremque quam in totam incidunt dolorum nemo omnis accusantium.",
   },
   {
     question: "Day 9 : Dovan to Machhapuchre Base Camp( MBC -3700m)",
     answer:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa unde repellendus ipsa consequatur, maxime dolorum velit a tempore! Iusto vel ratione, nisi aperiam animi neque provident quod ipsam? Ducimus, omnis.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa unde repellendus ipsa consequatur, maxime dolorum velit a tempore! Iusto vel ratione, nisi aperiam animi neque provident quod ipsam? Ducimus, omnis.",
   },
   {
     question: "Day 10 : Annapurna Base Camp",
     answer:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa unde repellendus ipsa consequatur, maxime dolorum velit a tempore! Iusto vel ratione, nisi aperiam animi neque provident quod ipsam? Ducimus, omnis.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa unde repellendus ipsa consequatur, maxime dolorum velit a tempore! Iusto vel ratione, nisi aperiam animi neque provident quod ipsam? Ducimus, omnis.",
   },
 ];
 
@@ -59,23 +58,30 @@ export default function DetailsItinerary() {
   };
 
   return (
-    <section className="text-center py-12">
-      <div className="max-w-5xl mx-auto mb-20">
-        <h2 className="text-3xl font-bold mb-13 relative inline-block">
-         Detailed Itinerary
-        </h2>
+    <section className="mt-10 py-12">
+      <div className="max-w-5xl ">
+        <h2 className="text-3xl font-bold ">Detailed Itinerary</h2>
         <div className="flex flex-col gap-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
+            <div
+              key={index}
+              className="bg-white shadow-md rounded-lg overflow-hidden"
+            >
               <button
                 className="w-full flex justify-between items-center bg-green-50 cursor-pointer p-8"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-left text-base font-bold">{faq.question}</span>
-                <span className="text-sm">{openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
+                <span className="text-left text-base font-bold">
+                  {faq.question}
+                </span>
+                <span className="text-sm">
+                  {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                </span>
               </button>
-              {openIndex === index  && (
-                <div className="p-4 text-gray-600 text-left text-sm">{faq.answer}</div>
+              {openIndex === index && (
+                <div className="p-4 text-gray-600 text-left text-sm">
+                  {faq.answer}
+                </div>
               )}
             </div>
           ))}
