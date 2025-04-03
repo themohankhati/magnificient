@@ -1,19 +1,6 @@
 import React from "react";
 import { TfiAngleDoubleRight } from "react-icons/tfi";
-function PackageIncludes() {
-  const includes = [
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-    "All (international and domestic) airport transfers on a tourist vehicle",
-  ];
-
+function PackageIncludes({includes}) {
   return (
     <div className="bg-white-400  p-4 shadow-2xl rounded-md">
       <h2 className="text-lg font-semibold mb-2">Package Includes</h2>
