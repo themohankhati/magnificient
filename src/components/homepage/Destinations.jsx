@@ -1,5 +1,7 @@
 import React from "react";
-import AnnapuranaLuxury from "./Trek/AnnapuranaLuxury";
+import Associations from "../../shared_components/Associations";
+import Newsletter from "../../shared_components/Newsletter";
+import Footer from "../../shared_components/Footer";
 
 
 const Destinations = () => {
@@ -36,7 +38,6 @@ const Destinations = () => {
         ))}
       </div>
     </section>
-<AnnapuranaLuxury/>
         </>
   );
 };
