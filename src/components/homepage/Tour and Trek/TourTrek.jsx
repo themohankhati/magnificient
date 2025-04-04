@@ -10,13 +10,15 @@ import BookingCard from "./BookingCard";
 import Associations from "../../../shared_components/Associations";
 import Newsletter from "../../../shared_components/Newsletter";
 import Footer from "../../../shared_components/Footer";
+import DetailsItinerary from "./DetailsItinerary";
 
 
 
 export default function TourTrek({ 
   title, 
   description, 
-  days, 
+  itinerary, 
+  faqs,
   includes, 
   excludes 
 }) {
@@ -37,9 +39,10 @@ export default function TourTrek({
           <DetailsCard />
 
      
+   
+          <ShortItinerary itinerary={itinerary} />
+          <DetailsItinerary faqs={faqs} />
 
-          <ShortItinerary days={days} />
-         
           <div className="flex w-full gap-10 mt-10">
             <PackageIncludes includes={includes} />
             <PackageExcludes excludes={excludes} />

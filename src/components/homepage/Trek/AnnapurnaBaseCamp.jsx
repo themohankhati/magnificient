@@ -1,38 +1,40 @@
-import React from 'react'
-import TourTrek from '../Tour and Trek/TourTrek';
-import {useState, useEffect} from "react";
-import { getPackages } from '../../../services/packageService';
+import React, { useState, useEffect } from "react";
+import TourTrek from "../Tour and Trek/TourTrek";
+import { getPackages } from "../../../services/packageService";
 
 function AnnapurnaBaseCamp() {
-  const[packages, setPackages] = useState();
+  const [packages, setPackages] = useState([]);
 
-  const getAnnapurnaPackages = async() => {
-    
-    const annapurnaData = await getPackages(packages);
-    console.log(annapurnaData, "Data");
-  }
+  const getAnnapurnaPackages = async () => {
+    try {
+      const annapurnaData = await getPackages();
+      setPackages(annapurnaData);
+    } catch (error) {
+      console.error("Error fetching package data:", error);
+    }
+  };
 
-
-  useEffect (() => {
+  useEffect(() => {
     getAnnapurnaPackages();
+  }, []);
 
-  },[]);
-  
   return (
     <>
-  {/* <TourTrek
-  title={packages.title}
-  description={packages.description}
-  
-  days={packages.days}
-  includes={packages.included}
-  excludes={packages.excluded} 
-  /> */}
-
-
-
+      {packages.length > 0 &&
+        packages.map((pkg, index) => (
+          <TourTrek
+            key={index}
+            title={pkg.title}
+            description={pkg.description}
+            faqs={pkg.itinerary}
+            includes={pkg.package_includes}
+            excludes={pkg.package_excludes}
+            itinerary={pkg.itinerary}
+            
+          />
+        ))}
     </>
-  )
+  );
 }
 
-export default AnnapurnaBaseCamp
+export default AnnapurnaBaseCamp;
