@@ -11,25 +11,29 @@ import Associations from "../../../shared_components/Associations";
 import Newsletter from "../../../shared_components/Newsletter";
 import Footer from "../../../shared_components/Footer";
 import DetailsItinerary from "./DetailsItinerary";
+import PhotoGallery from "./PhotoGallery";
 
 
-
-export default function TourTrek({ 
-  title, 
-  description, 
-  itinerary, 
+export default function TourTrek({
+  title,
+  description,
+  itinerary,
   faqs,
-  includes, 
-  excludes 
+  includes,
+  excludes,
+  images
 }) {
   return (
     <>
-  <Header/>
-      <section className="bg-blue-100 h-[400px] flex flex-col items-center justify-center text-center p-6 w-full">
-        <h1 className="text-4xl font-bold">Meet Our Team</h1>
-        <p className="text-gray-700 mt-2">[RANDOM COMPANY AND PEOPLE PICTURES]</p>
+      <Header />
+      <section className="bg-blue-100 h-[600px] w-full">
+        <img
+          src="Images/Annapurna.png"
+          alt=""
+          className="bg-blue-100 h-[600px] w-full"
+        />
       </section>
-      <SecondBar/>
+      <SecondBar />
 
       <div className="flex flex-col lg:flex-row gap-6 p-5">
         <div className="lg:w-2/3 p-13">
@@ -38,18 +42,18 @@ export default function TourTrek({
 
           <DetailsCard />
 
-     
-   
           <ShortItinerary itinerary={itinerary} />
           <DetailsItinerary faqs={faqs} />
 
-          <div className="flex w-full gap-10 mt-10">
+          <div className="'flex flex-col w-full mt-10 ">
             <PackageIncludes includes={includes} />
             <PackageExcludes excludes={excludes} />
           </div>
 
           <FAQSection className={"mx-[unset]"} />
+          <PhotoGallery  images={images} />
         </div>
+       
 
         <div className="lg:w-1/3 flex flex-col gap-6">
           <BookingCard />

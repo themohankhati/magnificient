@@ -10,7 +10,7 @@ const ShortItinerary = ({itinerary}) => {
           <tbody>
             {itinerary.map((item, index) => (
               <tr
-                key={index.id}
+                key={index._id}
                 className="text-center border border-gray-400 px-4 py-2"
               >
                 <td className=" px-4 py-2 font-bold">{`Day ${item.day_number} :`}</td>

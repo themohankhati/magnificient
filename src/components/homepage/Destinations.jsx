@@ -1,7 +1,6 @@
 import React from "react";
-import Associations from "../../shared_components/Associations";
-import Newsletter from "../../shared_components/Newsletter";
-import Footer from "../../shared_components/Footer";
+import PhotoGallery from "./Tour and Trek/PhotoGallery";
+
 
 
 const Destinations = () => {
@@ -37,6 +36,7 @@ const Destinations = () => {
           </div>
         ))}
       </div>
+
     </section>
         </>
   );
