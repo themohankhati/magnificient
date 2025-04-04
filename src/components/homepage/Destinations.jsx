@@ -1,5 +1,5 @@
 import React from "react";
-import AnnapuranaLuxury from "./Trek/AnnapuranaLuxury";
+import TourCards from "../../shared_components/TourCards";
 
 
 const Destinations = () => {
@@ -36,7 +36,7 @@ const Destinations = () => {
         ))}
       </div>
     </section>
-<AnnapuranaLuxury/>
+
         </>
   );
 };
