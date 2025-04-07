@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
-import TourTrek from "./components/homepage/Tour and Trek/TourTrek";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
 import ChitwanNationalPark1 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark1";
@@ -16,6 +15,8 @@ import BardiyaNationalPark1 from "./components/homepage/tour/jungle-safari/bardi
 import BardiyaNationalPark2 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark2";
 import BardiyaNationalPark3 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark3";
 import BardiyaNationalPark4 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark4";
+import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard";
+import VendorDetails from "./components/homepage/AdminDashboard/Components/VendorDetails";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -127,6 +128,22 @@ function App() {
             element={
               <Suspense>
                 <BardiyaNationalPark3 />
+              </Suspense>
+            }
+          />
+               <Route
+            path="/dashboard"
+            element={
+              <Suspense>
+  <Dashboard/>
+              </Suspense>
+            }
+          />
+                       <Route
+            path="/vendors"
+            element={
+              <Suspense>
+  <VendorDetails/>
               </Suspense>
             }
           />

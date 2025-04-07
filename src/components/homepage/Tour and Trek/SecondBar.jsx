@@ -19,7 +19,7 @@ const tabs = [
   { name: "FAQs", icon: FaBook },
 ];
 
-export default function SecondBar() {
+export default function SecondBar({id}) {
   const [activeTab, setActiveTab] = useState("Overview");
 
   return (

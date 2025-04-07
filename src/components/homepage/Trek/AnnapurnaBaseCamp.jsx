@@ -10,7 +10,7 @@ function AnnapurnaBaseCamp() {
   const getAnnapurnaPackages = async () => {
     try {
       const annapurnaData = await getPackages();
-
+      console.log(annapurnaData);
       setPackages(annapurnaData);
 
     } catch (error) {
@@ -39,6 +39,7 @@ function AnnapurnaBaseCamp() {
           includes={pkg.package_includes}
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
+          detailsItems={pkg.tripDetails}
             
           />
         ))}
