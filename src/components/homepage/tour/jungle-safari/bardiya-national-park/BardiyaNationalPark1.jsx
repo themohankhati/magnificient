@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import TourTrek from "../Tour and Trek/TourTrek";
-import { getPackages } from "../../../services/packageService";
+import TourTrek from "../../../Tour and Trek/TourTrek";
+import { getPackages } from "../../../../../services/packageService";
 
-function AnnapurnaBaseCamp() {
+function BardiyaNationalPark1() {
+
+  
   const [packages, setPackages] = useState([]);
 
-  const getAnnapurnaPackages = async () => {
+  const getBardiyaPackages = async () => {
     try {
-      const annapurnaData = await getPackages();  
-    
-      setPackages(annapurnaData);
+      const bardiyaData = await getPackages();
+
+      setPackages(bardiyaData);
+
     } catch (error) {
       console.error("Error fetching package data:", error);
     }
   };
 
   useEffect(() => {
-    getAnnapurnaPackages();
+    getBardiyaPackages();
   }, []);
 
   const filteredPackages = packages.filter(
-    (pkg) => pkg.package_name === "07 Nights 08 Days Ghorepani Trek"
+    (pkg) => pkg.package_name === "Bardia National Park 01 Night 02 Days Package"
   );
 
 
@@ -38,11 +41,9 @@ function AnnapurnaBaseCamp() {
           itinerary={pkg.itinerary}
             
           />
-     
         ))}
-
     </>
   );
 }
 
-export default AnnapurnaBaseCamp;
+export default BardiyaNationalPark1;

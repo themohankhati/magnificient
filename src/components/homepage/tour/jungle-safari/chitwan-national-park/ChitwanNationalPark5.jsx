@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import TourTrek from "../Tour and Trek/TourTrek";
-import { getPackages } from "../../../services/packageService";
+import TourTrek from "../../../Tour and Trek/TourTrek";
+import { getPackages } from "../../../../../services/packageService";
 
-function AnnapurnaBaseCamp() {
+function ChitwanNationalPark5() {
+
+  
   const [packages, setPackages] = useState([]);
 
-  const getAnnapurnaPackages = async () => {
+  const getChitwanPackages = async () => {
     try {
-      const annapurnaData = await getPackages();  
-    
-      setPackages(annapurnaData);
+      const chitwanData = await getPackages();
+
+      setPackages(chitwanData);
+
     } catch (error) {
       console.error("Error fetching package data:", error);
     }
   };
 
   useEffect(() => {
-    getAnnapurnaPackages();
+    getChitwanPackages();
   }, []);
 
   const filteredPackages = packages.filter(
-    (pkg) => pkg.package_name === "07 Nights 08 Days Ghorepani Trek"
+    (pkg) => pkg.package_name === "05 Nights 06 Days Jungle Safari and Cultural Tour Nepal"
   );
 
 
@@ -38,11 +41,9 @@ function AnnapurnaBaseCamp() {
           itinerary={pkg.itinerary}
             
           />
-     
         ))}
-
     </>
   );
 }
 
-export default AnnapurnaBaseCamp;
+export default ChitwanNationalPark5;
