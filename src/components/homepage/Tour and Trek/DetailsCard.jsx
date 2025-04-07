@@ -11,7 +11,7 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 import { WiEarthquake } from "react-icons/wi";
-const DetailsCard = () => {
+const DetailsCard = ({detailsItems}) => {
   return (
     <div className="bg-gray-200 rounded-md shadow-md p-6 w-full">
       <div className="grid grid-cols-3 gap-4">
@@ -19,14 +19,14 @@ const DetailsCard = () => {
         <div className="flex flex-col items-start">
           <FaGlobeAmericas className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Country</span>
-          <span className="text-lg font-medium">Nepal</span>
+          <span className="text-lg font-medium">{detailsItems?.country}</span>
         </div>
 
         {/* Duration */}
         <div className="flex flex-col items-start">
           <FaCalendarAlt className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Duration</span>
-          <span className="text-lg font-medium">19 Days</span>
+          <span className="text-lg font-medium">{detailsItems?.duration}</span>
         </div>
 
         {/* Difficulty */}
@@ -34,7 +34,7 @@ const DetailsCard = () => {
           <WiEarthquake className="mb-1" />
           <span className="text-sm text-gray-600">Difficulty</span>
           <span className="text-lg font-medium">
-            Strenuous{" "}
+            {detailsItems?.difficulty}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -46,21 +46,21 @@ const DetailsCard = () => {
         <div className="flex flex-col items-start">
           <FaRunning className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Activity</span>
-          <span className="text-lg font-medium">Trekking/Hiking</span>
+          <span className="text-lg font-medium">{detailsItems?.activity}</span>
         </div>
 
         {/* Max Altitude */}
         <div className="flex flex-col items-start">
           <FaMountain className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Max. altitude</span>
-          <span className="text-lg font-medium">5,555 m/18,225 ft</span>
+          <span className="text-lg font-medium">{detailsItems?.maxAltitude}</span>
         </div>
 
         {/* Best Season */}
         <div className="flex flex-col items-start">
           <FaSun className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Best season</span>
-          <span className="text-lg font-medium">Feb-Jun, Sep-Dec</span>
+          <span className="text-lg font-medium">{detailsItems?.bestSeason}</span>
         </div>
 
         {/* Accommodation */}
@@ -68,7 +68,7 @@ const DetailsCard = () => {
           <FaBed className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Accomodation</span>
           <span className="text-lg font-medium">
-            Tea House & Hotel{" "}
+            {detailsItems?.acommodation}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -81,7 +81,7 @@ const DetailsCard = () => {
           <FaUtensils className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Meals</span>
           <span className="text-lg font-medium">
-            Included{" "}
+            {detailsItems?.meals}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -93,7 +93,7 @@ const DetailsCard = () => {
         <div className="flex flex-col items-start">
           <FaMapMarkerAlt className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Start/End Point</span>
-          <span className="text-lg font-medium">Kathmandu</span>
+          <span className="text-lg font-medium">{detailsItems?.startEndPoint}</span>
         </div>
       </div>
     </div>

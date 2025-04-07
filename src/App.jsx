@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
-import TourTrek from "./components/homepage/Tour and Trek/TourTrek";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
 
@@ -56,6 +55,7 @@ function App() {
               </Suspense>
             }
           />
+   
           <Route
             path="/contactus"
             element={

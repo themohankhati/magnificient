@@ -21,7 +21,8 @@ export default function TourTrek({
   faqs,
   includes,
   excludes,
-  images
+  images,
+  detailsItems
 }) {
   return (
     <>
@@ -40,7 +41,7 @@ export default function TourTrek({
           <h1 className="text-4xl font-bold">{title}</h1>
           <p>{description}</p>
 
-          <DetailsCard />
+          <DetailsCard detailsItems={detailsItems}/>
 
           <ShortItinerary itinerary={itinerary} />
           <DetailsItinerary faqs={faqs} />
