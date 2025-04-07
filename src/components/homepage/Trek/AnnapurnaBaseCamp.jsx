@@ -3,16 +3,13 @@ import TourTrek from "../Tour and Trek/TourTrek";
 import { getPackages } from "../../../services/packageService";
 
 function AnnapurnaBaseCamp() {
-
-  
   const [packages, setPackages] = useState([]);
 
   const getAnnapurnaPackages = async () => {
     try {
-      const annapurnaData = await getPackages();
-      console.log(annapurnaData);
+      const annapurnaData = await getPackages();  
+    
       setPackages(annapurnaData);
-
     } catch (error) {
       console.error("Error fetching package data:", error);
     }
@@ -37,7 +34,9 @@ function AnnapurnaBaseCamp() {
           detailsItems={pkg.tripDetails}
             
           />
+     
         ))}
+
     </>
   );
 }
