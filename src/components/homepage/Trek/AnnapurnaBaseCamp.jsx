@@ -22,13 +22,9 @@ function AnnapurnaBaseCamp() {
     getAnnapurnaPackages();
   }, []);
 
-  const filteredPackages = packages.filter(
-    (pkg) => pkg.package_name === "07 Nights 08 Days Ghorepani Trek"
-  );
-
-
   return (
     <>
+<<<<<<< HEAD
       {filteredPackages.map((pkg, index) => (
         <TourTrek
           key={index}
@@ -40,6 +36,19 @@ function AnnapurnaBaseCamp() {
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
           detailsItems={pkg.tripDetails}
+=======
+      {packages.length > 0 &&
+        packages.map((pkg, index) => (
+          <TourTrek
+            key={index}
+            title={pkg.title}
+            description={pkg.description}
+            faqs={pkg.itinerary}
+            images={pkg.images}
+            includes={pkg.package_includes}
+            excludes={pkg.package_excludes}
+            itinerary={pkg.itinerary}
+>>>>>>> parent of 1abcaef (Chitwan and bardiya tours added)
             
           />
         ))}
