@@ -24,7 +24,7 @@ export default function DetailsItinerary({faqs}) {
                 onClick={() => toggleFAQ(index)}
               >
                 <span className="text-left text-base font-bold">
-                  {faq.question}
+                  {`Day:${faq.day_number} : ${faq.title}`}
                 </span>
                 <span className="text-sm">
                   {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -32,7 +32,7 @@ export default function DetailsItinerary({faqs}) {
               </button>
               {openIndex === index && (
                 <div className="p-4 text-gray-600 text-left text-sm">
-                  {faq.answer}
+                  {faq.description}
                 </div>
               )}
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../shared_components/Header";
 import HeroSection from "../components/homepage/HeroSection";
 import WhyBookWithUs from "../components/homepage/WhyBookWithUs";
@@ -14,12 +14,14 @@ import Newsletter from "../shared_components/Newsletter";
 import Footer from "../shared_components/Footer";
 
 
-
-
-
 export default function HomePage() {
+
+  // const [apiData, setApiData] = useState([])
+
+  
   return (
     <>
+      
       <Header />
       <HeroSection />
       <WhyBookWithUs />
