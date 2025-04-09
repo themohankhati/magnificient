@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-export default function DetailsItinerary({faqs}) {
+export default function DetailsItinerary({ faqs }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -10,28 +9,32 @@ export default function DetailsItinerary({faqs}) {
   };
 
   return (
-    <section className="mt-10 py-12">
+    <section className="mt-16 py-12 px-4 bg-[#f9fdfb] ">
       <div className="max-w-5xl ">
-        <h2 className="text-3xl font-bold ">Detailed Itinerary</h2>
-        <div className="flex flex-col gap-4">
+        <h2 className="text-4xl font-extrabold text-[#14205c] mb-10 tracking-wide">
+          Detailed Itinerary
+        </h2>
+
+        <div className="flex flex-col gap-6 cursor-pointer">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
+              className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200 "
             >
               <button
-                className="w-full flex justify-between items-center bg-green-50 cursor-pointer p-8"
+                className="w-full flex justify-between items-center bg-green-50 p-6 hover:bg-green-100 transition duration-300 cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-left text-base font-bold">
-                  {`Day:${faq.day_number} : ${faq.title}`}
+                <span className="text-lg font-semibold text-left text-gray-900">
+                  {`Day ${faq.day_number}: ${faq.title}`}
                 </span>
-                <span className="text-sm">
+                <span className="text-xl text-green-700">
                   {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </span>
               </button>
+
               {openIndex === index && (
-                <div className="p-4 text-gray-600 text-left text-sm">
+                <div className="px-6 py-4 text-gray-700 text-base leading-relaxed border-t border-gray-200 transition-all duration-300 ease-in-out">
                   {faq.description}
                 </div>
               )}
