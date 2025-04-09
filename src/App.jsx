@@ -6,6 +6,10 @@ import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
+import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard"
+import VendorDetails from "./components/homepage/AdminDashboard/Components/VendorDetails";
+import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
+import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -19,6 +23,7 @@ function App() {
             path="/"
             element={
               <Suspense>
+              
                 <HomePage />
               </Suspense>
             }
@@ -55,11 +60,43 @@ function App() {
               </Suspense>
             }
           />
+               <Route
+            path="/dashboard"
+            element={
+              <Suspense>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+                         <Route
+            path="/package"
+            element={
+              <Suspense>
+                <VendorDetails />
+              </Suspense>
+            }
+          />
           <Route
             path="/contactus"
             element={
               <Suspense>
                 <ContactUs />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/userdetails"
+            element={
+              <Suspense>
+                <UserDetails />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/customerdetails"
+            element={
+              <Suspense>
+                <CustomerDetails />
               </Suspense>
             }
           />

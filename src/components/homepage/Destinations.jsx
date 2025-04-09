@@ -1,5 +1,5 @@
 import React from "react";
-import PhotoGallery from "./Tour and Trek/PhotoGallery";
+
 
 
 
@@ -38,6 +38,7 @@ const Destinations = () => {
       </div>
 
     </section>
+    
         </>
   );
 };

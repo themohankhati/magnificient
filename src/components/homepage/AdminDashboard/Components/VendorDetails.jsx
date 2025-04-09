@@ -1,214 +1,242 @@
-import React from "react";
-import { useState } from "react";
-import {
-  FaBell,
-  FaTicketAlt,
-  FaListAlt,
-  FaUtensils,
-  FaEdit,
-  FaPlus,
-  FaHome,
-  FaFileInvoiceDollar,
-  FaTasks,
-  FaCog,
-  FaMoneyBillWave,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-const VendorDetails = () => {
-    const [activeMenu, setActiveMenu] = useState(null); // tracks which submenu is open
+import React, { useState } from 'react'
+import { FaBell, FaHome, FaTasks } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
+function VendorDetails() {
+  const [packages, setPackages] = useState([
+    {
+      package_name: "Rhododendron Blossom Trail – 8 Days",
+      start_date: "2025-03-10",
+      end_date: "2025-03-17",
+      price: "1150 USD",
+      title: "Spring Trek Through Rhododendron Valleys",
+      description: "An immersive journey through blooming rhododendron forests...",
+    },
+    {
+      package_name: "Himalayan Sunrise Escape – 8 Days",
+      start_date: "2025-11-02",
+      end_date: "2025-11-09",
+      price: "1250 USD",
+      title: "Poon Hill Sunrise Trek with Cultural Tour",
+      description: "Catch the golden sunrise over the Himalayas from Poon Hill...",
+    },
+    {
+      package_name: "Annapurna Forest & Culture Walk – 8 Days",
+      start_date: "2025-09-20",
+      end_date: "2025-09-27",
+      price: "1180 USD",
+      title: "Nature and Heritage Trek in Annapurna Region",
+      description: "A gentle trekking journey perfect for nature lovers...",
+    },
+    {
+      package_name: "Chitwan National Park ",
+      start_date: "2025-09-20",
+      end_date: "2025-09-27",
+      price: "1180 USD",
+      title: "Nature and Heritage Trek in Annapurna Region",
+      description: "A gentle trekking journey perfect for nature lovers...",
+    },
+    {
+      package_name: "Shey Phokshundo",
+      start_date: "2025-09-20",
+      end_date: "2025-09-27",
+      price: "1180 USD",
+      title: "Nature and Heritage Trek in Annapurna Region",
+      description: "A gentle trekking journey perfect for nature lovers...",
+    },
+    ,  {
+      package_name: "Palpa Shreenagar Trails",
+      start_date: "2025-09-20",
+      end_date: "2025-09-27",
+      price: "1180 USD",
+      title: "Nature and Heritage Trek in Annapurna Region",
+      description: "A gentle trekking journey perfect for nature lovers...",
+    }
+  ])
+
+  const [selectedPackage, setSelectedPackage] = useState(null)
+  const [isEditing, setIsEditing] = useState(false)
+  const [formData, setFormData] = useState({})
+
+  const handleSelect = (pkg) => {
+    if (selectedPackage && selectedPackage.package_name === pkg.package_name) {
+      // If the same package is clicked again, hide the details
+      setSelectedPackage(null)
+      setIsEditing(false)
+    } else {
+      setSelectedPackage(pkg)
+      setFormData(pkg)
+      setIsEditing(false)
+    }
+  }
   
-    const toggleMenu = (menuName) => {
-      setActiveMenu((prev) => (prev === menuName ? null : menuName));
-    };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleEdit = () => setIsEditing(true)
+
+  const handleCancel = () => {
+    setIsEditing(false)
+    setFormData(selectedPackage)
+  }
+
+  const handleSave = () => {
+    const updatedList = packages.map(pkg =>
+      pkg.package_name === selectedPackage.package_name ? formData : pkg
+    )
+    setPackages(updatedList)
+    setSelectedPackage(formData)
+    setIsEditing(false)
+  }
+
+  const handleDelete = () => {
+    const filtered = packages.filter(pkg => pkg.package_name !== selectedPackage.package_name)
+    setPackages(filtered)
+    setSelectedPackage(null)
+    setIsEditing(false)
+  }
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-110 text-black flex flex-col bg-white">
-         <div className="p-4">
-           <img
-             src="/Images/Magnificent logo.png"
-             alt="Logo"
-             className="h-40"
-           />
-         </div>
-         <nav className="flex-1 px-4 space-y-4">
-           <Link
-             to="/"
-             className="flex items-center px-4 py-2 bg-orange-500 rounded"
-           >
-             <FaHome className="mr-2" /> Home
-           </Link>
- 
-           {/* Billing Menu */}
-           <div>
-             <button
-               className="flex justify-between items-center w-full px-4 py-2 hover:bg-gray-700 hover:text-white"
-               onClick={() => toggleMenu("billing")}
-             >
-               <span className="flex items-center">
-                 <FaFileInvoiceDollar className="mr-2" /> Billing
-               </span>
-               <FaPlus />
-             </button>
-             {activeMenu === "billing" && (
-               <div className="pl-6 space-y-1 flex flex-col bg-white shadow-2xl">
-                 <Link to="#" className="hover:text-red-500">Sales</Link>
-                 <Link to="#" className="hover:text-red-500">Purchases</Link>
-                 <Link to="#" className="hover:text-red-500">Orders</Link>
-                 <Link to="#" className="hover:text-red-500">Revenue</Link>
-               </div>
-             )}
-           </div>
- 
-           {/* Static Links */}
-           <Link
-             to="/vendors"
-             className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-           >
-             <FaTasks className="mr-2" /> Vendors
-           </Link>
-           <Link
-             to="/userdetails"
-             className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-           >
-             <FaTasks className="mr-2" /> Users
-           </Link>
-           <Link
-             to="/customerdetails"
-             className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-           >
-             <FaTasks className="mr-2" /> Customers
-           </Link>
-           <Link
-             to="/productdetails"
-             className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-           >
-             <FaTasks className="mr-2" /> Products
-           </Link>
- 
-           {/* Settings Menu */}
-           <div>
-             <button
-               className="flex justify-between items-center w-full px-4 py-2 hover:bg-gray-700 hover:text-white"
-               onClick={() => toggleMenu("settings")}
-             >
-               <span className="flex items-center">
-                 <FaFileInvoiceDollar className="mr-2" /> Settings
-               </span>
-               <FaPlus />
-             </button>
-             {activeMenu === "settings" && (
-               <div className="pl-6 space-y-1 flex flex-col bg-white shadow-2xl">
-                 <Link to="#" className="hover:text-red-500">Category</Link>
-                 <Link to="#" className="hover:text-red-500">Sub Category</Link>
-                 <Link to="#" className="hover:text-red-500">Unit</Link>
-                 <Link to="#" className="hover:text-red-500">User Role</Link>
-               </div>
-             )}
-           </div>
- 
-           {/* Finance Menu */}
-           <div>
-             <button
-               className="flex justify-between items-center w-full px-4 py-2 hover:bg-gray-700 hover:text-white"
-               onClick={() => toggleMenu("finance")}
-             >
-               <span className="flex items-center">
-                 <FaFileInvoiceDollar className="mr-2" /> Finance
-               </span>
-               <FaPlus />
-             </button>
-             {activeMenu === "finance" && (
-               <div className="pl-6 space-y-1 flex flex-col bg-white shadow-2xl">
-                 <Link to="#" className="hover:text-red-500">Inventory</Link>
-                 <Link to="#" className="hover:text-red-500">Items</Link>
-               </div>
-             )}
-           </div>
-         </nav>
-       </aside>
+      {/* Sidebar */}
+        <aside className="w-110 text-black flex flex-col bg-white">
+          <div className="p-4">
+            <img
+              src="Images/Magnificent logo.png"
+              alt="Logo"
+              className="h-50"
+            />
+          </div>
+          <nav className="flex-1 px-4 space-y-4">
+            <Link
+              to="/dashboard"
+              className="flex items-center px-4 py-2 bg-orange-500 rounded"
+            >
+              <FaHome className="mr-2" /> Home
+            </Link>
+  
+            {/* Billing Menu */}
+        
+  
+            {/* Static Links */}
+            <Link
+              to="/package"
+              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
+            >
+              <FaTasks className="mr-2" /> Package
+            </Link>
+            <Link
+              to="/userdetails"
+              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
+            >
+              <FaTasks className="mr-2" /> Users
+            </Link>
+            <Link
+              to="/customerdetails"
+              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
+            >
+              <FaTasks className="mr-2" /> Customers
+            </Link>
+          
+  
+            {/* Settings Menu */}
+   
+  
+  
+          </nav>
+        </aside>
+  
 
-      {/* Main Section */}
+      {/* Main Content */}
       <main className="flex-1 bg-gray-100">
-        {/* Topbar */}
-        <div className="flex justify-end items-center p-4 bg-white shadow">
-          <FaBell className="mr-4" />
-          <img
-            src="Images/cultural-historical.jpg"
-            alt="Profile"
-            className="w-10 h-10 rounded-full"
-          />
-          <div className="ml-4">
-            <p className="text-red-500">Ella Jones</p>
-            <p className="text-sm">Admin</p>
+        {/* Header */}
+        <div className="flex justify-end p-4 bg-white shadow">
+          <div className="flex items-center space-x-4">
+            <FaBell />
+            <img src="Images/cultural-historical.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
+            <div>
+              <p className="text-red-500">Ella Jones</p>
+              <p className="text-sm">Admin</p>
+            </div>
           </div>
         </div>
+        <div className='flex justify-end m-5'>
+        <button
+    onClick={() => setShowAddModal(true)}
+    className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+  >
+    Add Package
+  </button>
+  </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-wrap gap-4 p-6">
-          <button className="flex items-center bg-white text-black px-6 py-3 rounded shadow">
-            <FaTicketAlt className="mr-2" /> New Booking
-          </button>
-          <button className="flex items-center bg-white text-black px-6 py-3 rounded shadow">
-            <FaListAlt className="mr-2" /> Room Food Order
-          </button>
-          <button className="flex items-center bg-white text-black px-6 py-3 rounded shadow">
-            <FaUtensils className="mr-2" /> Restaurant Order
-          </button>
+        {/* Action Cards */}
+        <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {packages.map((pkg, idx) => (
+            <div
+              key={idx}
+              onClick={() => handleSelect(pkg)}
+              className="bg-white p-4 rounded shadow hover:shadow-lg cursor-pointer"
+            >
+              <h2 className="text-lg font-semibold">{pkg.package_name}</h2>
+              <p className="text-sm text-gray-500">{pkg.start_date} to {pkg.end_date}</p>
+              <p className="text-orange-600 font-bold mt-2">{pkg.price}</p>
+            </div>
+          ))}
         </div>
+    
+        {/* Package Details Form */}
+        {selectedPackage && (
+          <div className="p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-gray-700">Package Details</h2>
+              {!isEditing ? (
+                <div className="space-x-2">
+                  <button onClick={handleEdit} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</button>
+                  <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Delete</button>
+                </div>
+              ) : (
+                <div className="space-x-2">
+                  <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Save</button>
+                  <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Cancel</button>
+                </div>
+              )}
+            </div>
 
-        {/* Table */}
-        <div className="overflow-x-auto p-6">
-          <table className="min-w-full bg-white shadow rounded text-sm">
-            <thead className="bg-black text-white">
-              <tr>
-                <th className="px-4 py-2 text-left">Code</th>
-                <th className="px-4 py-2 text-left">Company Name</th>
-                <th className="px-4 py-2 text-left">Company Email</th>
-                <th className="px-4 py-2 text-left">Company Contact</th>
-                <th className="px-4 py-2 text-left">Company Address</th>
-                <th className="px-4 py-2 text-left">Staff Name</th>
-                <th className="px-4 py-2 text-left">Staff Email</th>
-                <th className="px-4 py-2 text-left">Staff Contact</th>
-                <th className="px-4 py-2 text-left">Designation</th>
-                <th className="px-4 py-2 text-left">Gender</th>
-                <th className="px-4 py-2 text-left">Status</th>
-                <th className="px-4 py-2 text-left">Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-t">
-                <td className="px-4 py-2">001</td>
-                <td className="px-4 py-2">Tech Innovations Ltd.</td>
-                <td className="px-4 py-2">contact@techinnovations.com</td>
-                <td className="px-4 py-2">+1 234 567 890</td>
-                <td className="px-4 py-2">
-                  123 Silicon Valley, Suite 200, San Francisco, CA
-                </td>
-                <td className="px-4 py-2">John Doe</td>
-                <td className="px-4 py-2">johndoe@techinnovations.com</td>
-                <td className="px-4 py-2">+1 234 567 891</td>
-                <td className="px-4 py-2">Project Manager</td>
-                <td className="px-4 py-2">Male</td>
-                <td className="px-4 py-2">Active</td>
-                <td className="px-4 py-2 flex space-x-2">
-                  <a href="EditDetails.html">
-                    <FaEdit />
-                  </a>
-                  <a href="EditDetails.html">
-                    <FaEdit />
-                  </a>
-                  <a href="EditDetails.html">
-                    <FaEdit />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded shadow">
+              {['package_name', 'title', 'start_date', 'end_date', 'price'].map((field) => (
+                <div key={field}>
+                  <label className="font-medium capitalize">{field.replace('_', ' ')}</label>
+                  <input
+                    type="text"
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    readOnly={!isEditing}
+                    className="w-full border rounded px-3 py-2 mt-1"
+                  />
+                </div>
+              ))}
+              <div className="md:col-span-2">
+                <label className="font-medium">Description</label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  readOnly={!isEditing}
+                  className="w-full border rounded px-3 py-2 mt-1"
+                  rows={4}
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default VendorDetails;
+export default VendorDetails

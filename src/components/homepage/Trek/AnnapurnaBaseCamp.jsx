@@ -21,7 +21,7 @@ function AnnapurnaBaseCamp() {
 
   return (
     <>
-      {filteredPackages.map((pkg, index) => (
+      {packages.map((pkg, index) => (
         <TourTrek
           key={index}
           title={pkg.title}
