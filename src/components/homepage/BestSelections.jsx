@@ -92,7 +92,7 @@ export default function BestSelection() {
 
   return (
     <section className="text-center bg-[#f0fcf9] py-16">
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-8 ">
         <h2 className="text-3xl font-bold">
           Best Selection From{" "}
           <span className="text-[#14205c] underline">Travellers</span>
@@ -135,12 +135,12 @@ export default function BestSelection() {
         </div>
 
         {/* Pagination Buttons */}
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-8 flex justify-center gap-2 ">
           {Array.from({ length: pages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => handlePageChange(idx)}
-              className={`w-8 h-8 rounded-full text-sm font-medium ${
+              className={`w-8 h-8 rounded-full text-sm font-medium cursor-pointer ${
                 currentPage === idx
                   ? "bg-green-600 text-white"
                   : "bg-white border border-gray-300 text-black"

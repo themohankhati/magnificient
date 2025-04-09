@@ -124,7 +124,7 @@ function VendorDetails() {
         {/* Header */}
         <div className="flex justify-end p-4 bg-white shadow">
           <div className="flex items-center space-x-4">
-            <FaBell />
+   
             <img src="Images/cultural-historical.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
    <div
               className="relative"

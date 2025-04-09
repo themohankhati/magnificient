@@ -10,6 +10,7 @@ import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard
 import VendorDetails from "./components/homepage/AdminDashboard/Components/Package";
 import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
 import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
+import AuthPage from "./pages/AuthPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -65,6 +66,22 @@ function App() {
             element={
               <Suspense>
                 <Dashboard />
+              </Suspense>
+            }
+          />
+             <Route
+            path="/login"
+            element={
+              <Suspense>
+                <AuthPage />
+              </Suspense>
+            }
+          />
+               <Route
+            path="/register"
+            element={
+              <Suspense>
+                <AuthPage />
               </Suspense>
             }
           />
