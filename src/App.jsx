@@ -7,7 +7,7 @@ import ActivitiesSection from "./components/homepage/Activities";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
 import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard"
-import VendorDetails from "./components/homepage/AdminDashboard/Components/VendorDetails";
+import VendorDetails from "./components/homepage/AdminDashboard/Components/Package";
 import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
 import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
 

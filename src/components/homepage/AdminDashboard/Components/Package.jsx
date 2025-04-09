@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { FaBell, FaHome, FaTasks } from 'react-icons/fa'
+import { FaBell, FaHome, FaTasks, FaUser } from 'react-icons/fa'
+import { GoPackage } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 
 function VendorDetails() {
@@ -19,48 +20,26 @@ function VendorDetails() {
       price: "1250 USD",
       title: "Poon Hill Sunrise Trek with Cultural Tour",
       description: "Catch the golden sunrise over the Himalayas from Poon Hill...",
-    },
-    {
-      package_name: "Annapurna Forest & Culture Walk – 8 Days",
-      start_date: "2025-09-20",
-      end_date: "2025-09-27",
-      price: "1180 USD",
-      title: "Nature and Heritage Trek in Annapurna Region",
-      description: "A gentle trekking journey perfect for nature lovers...",
-    },
-    {
-      package_name: "Chitwan National Park ",
-      start_date: "2025-09-20",
-      end_date: "2025-09-27",
-      price: "1180 USD",
-      title: "Nature and Heritage Trek in Annapurna Region",
-      description: "A gentle trekking journey perfect for nature lovers...",
-    },
-    {
-      package_name: "Shey Phokshundo",
-      start_date: "2025-09-20",
-      end_date: "2025-09-27",
-      price: "1180 USD",
-      title: "Nature and Heritage Trek in Annapurna Region",
-      description: "A gentle trekking journey perfect for nature lovers...",
-    },
-    ,  {
-      package_name: "Palpa Shreenagar Trails",
-      start_date: "2025-09-20",
-      end_date: "2025-09-27",
-      price: "1180 USD",
-      title: "Nature and Heritage Trek in Annapurna Region",
-      description: "A gentle trekking journey perfect for nature lovers...",
     }
   ])
 
   const [selectedPackage, setSelectedPackage] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState({})
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
+  
+  const [newPackage, setNewPackage] = useState({
+    package_name: "",
+    title: "",
+    start_date: "",
+    end_date: "",
+    price: "",
+    description: ""
+  })
 
   const handleSelect = (pkg) => {
     if (selectedPackage && selectedPackage.package_name === pkg.package_name) {
-      // If the same package is clicked again, hide the details
       setSelectedPackage(null)
       setIsEditing(false)
     } else {
@@ -69,7 +48,6 @@ function VendorDetails() {
       setIsEditing(false)
     }
   }
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -77,7 +55,6 @@ function VendorDetails() {
   }
 
   const handleEdit = () => setIsEditing(true)
-
   const handleCancel = () => {
     setIsEditing(false)
     setFormData(selectedPackage)
@@ -99,57 +76,48 @@ function VendorDetails() {
     setIsEditing(false)
   }
 
+  const handleNewPackageChange = (e) => {
+    const { name, value } = e.target
+    setNewPackage(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleAddPackage = () => {
+    if (newPackage.package_name) {
+      setPackages([...packages, newPackage])
+      setNewPackage({
+        package_name: "",
+        title: "",
+        start_date: "",
+        end_date: "",
+        price: "",
+        description: ""
+      })
+      setShowAddModal(false)
+    }
+  }
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      {/* Sidebar */}
-        <aside className="w-110 text-black flex flex-col bg-white">
-          <div className="p-4">
-            <img
-              src="Images/Magnificent logo.png"
-              alt="Logo"
-              className="h-50"
-            />
-          </div>
-          <nav className="flex-1 px-4 space-y-4">
-            <Link
-              to="/dashboard"
-              className="flex items-center px-4 py-2 bg-orange-500 rounded"
-            >
-              <FaHome className="mr-2" /> Home
-            </Link>
-  
-            {/* Billing Menu */}
-        
-  
-            {/* Static Links */}
-            <Link
-              to="/package"
-              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-            >
-              <FaTasks className="mr-2" /> Package
-            </Link>
-            <Link
-              to="/userdetails"
-              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-            >
-              <FaTasks className="mr-2" /> Users
-            </Link>
-            <Link
-              to="/customerdetails"
-              className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
-            >
-              <FaTasks className="mr-2" /> Customers
-            </Link>
-          
-  
-            {/* Settings Menu */}
-   
-  
-  
-          </nav>
-        </aside>
-  
+      <aside className="w-50 text-black flex flex-col bg-white">
+        <div className="p-4">
+          <img src="Images/Magnificent logo.png" alt="Logo" />
+        </div>
+        <nav className="flex-1 px-4 space-y-4">
+          <Link to="/dashboard" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
+            <FaHome className="mr-2" /> Home
+          </Link>
+          <Link to="/package" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
+            <GoPackage className="mr-2" /> Package
+          </Link>
+          <Link to="/userdetails" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
+            <FaUser className="mr-2" /> Users
+          </Link>
+          <Link to="/customerdetails" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
+            <FaUser className="mr-2" /> Customers
+          </Link>
+        </nav>
+      </aside>
 
       {/* Main Content */}
       <main className="flex-1 bg-gray-100">
@@ -158,22 +126,47 @@ function VendorDetails() {
           <div className="flex items-center space-x-4">
             <FaBell />
             <img src="Images/cultural-historical.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
-            <div>
-              <p className="text-red-500">Ella Jones</p>
-              <p className="text-sm">Admin</p>
+   <div
+              className="relative"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <div className="cursor-pointer">
+                <p className="text-red-500">Ella Jones</p>
+                <p className="text-sm">Admin</p>
+              </div>
+
+              {showDropdown && (
+                <div className="absolute right-0  w-40 bg-white border rounded shadow z-50">
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  >
+                    My Profile
+                  </Link>
+                  <button
+                    onClick={() => alert("Logging out...")}
+                    className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <div className='flex justify-end m-5'>
-        <button
-    onClick={() => setShowAddModal(true)}
-    className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-  >
-    Add Package
-  </button>
-  </div>
 
-        {/* Action Cards */}
+        {/* Add Package Button */}
+        <div className='flex justify-end m-5'>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            Add Package
+          </button>
+        </div>
+
+        {/* Package Cards */}
         <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           {packages.map((pkg, idx) => (
             <div
@@ -187,7 +180,7 @@ function VendorDetails() {
             </div>
           ))}
         </div>
-    
+
         {/* Package Details Form */}
         {selectedPackage && (
           <div className="p-6">
@@ -230,6 +223,43 @@ function VendorDetails() {
                   className="w-full border rounded px-3 py-2 mt-1"
                   rows={4}
                 />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Add Package Modal */}
+        {showAddModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
+              <h2 className="text-xl font-bold mb-4">Add New Package</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {['package_name', 'title', 'start_date', 'end_date', 'price'].map((field) => (
+                  <div key={field}>
+                    <label className="font-medium capitalize">{field.replace('_', ' ')}</label>
+                    <input
+                      type="text"
+                      name={field}
+                      value={newPackage[field]}
+                      onChange={handleNewPackageChange}
+                      className="w-full border rounded px-3 py-2 mt-1"
+                    />
+                  </div>
+                ))}
+                <div className="md:col-span-2">
+                  <label className="font-medium">Description</label>
+                  <textarea
+                    name="description"
+                    value={newPackage.description}
+                    onChange={handleNewPackageChange}
+                    className="w-full border rounded px-3 py-2 mt-1"
+                    rows={4}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end mt-4 space-x-2">
+                <button onClick={() => setShowAddModal(false)} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Cancel</button>
+                <button onClick={handleAddPackage} className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add</button>
               </div>
             </div>
           </div>
