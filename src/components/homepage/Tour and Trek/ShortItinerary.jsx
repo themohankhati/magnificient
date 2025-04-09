@@ -6,7 +6,7 @@ const ShortItinerary = ({itinerary}) => {
     <>
       <div className="flex flex-col mt-8 w-full">
         <h1 className="text-3xl font-bold"> Short Itinerary</h1>
-        <table className="border-collapse border border-gray-400 w-2/3">
+        <table className="border-collapse border border-gray-400 w-2/3" id="shortItinerary">
           <tbody>
             {itinerary.map((item, index) => (
               <tr

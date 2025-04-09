@@ -11,7 +11,9 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 import { WiEarthquake } from "react-icons/wi";
-const DetailsCard = ({detailsItems}) => {
+const DetailsCard = (detailsItems) => {
+
+  const tourDetailsItem = detailsItems.detailsItems[0];
   return (
     <div className="bg-gray-200 rounded-md shadow-md p-6 w-full">
       <div className="grid grid-cols-3 gap-4">
@@ -19,14 +21,15 @@ const DetailsCard = ({detailsItems}) => {
         <div className="flex flex-col items-start">
           <FaGlobeAmericas className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Country</span>
-          <span className="text-lg font-medium">{detailsItems?.country}</span>
+          <span className="text-lg font-medium">
+            {tourDetailsItem ?.country}</span>
         </div>
 
         {/* Duration */}
         <div className="flex flex-col items-start">
           <FaCalendarAlt className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Duration</span>
-          <span className="text-lg font-medium">{detailsItems?.duration}</span>
+          <span className="text-lg font-medium">{tourDetailsItem?.duration}</span>
         </div>
 
         {/* Difficulty */}
@@ -34,7 +37,7 @@ const DetailsCard = ({detailsItems}) => {
           <WiEarthquake className="mb-1" />
           <span className="text-sm text-gray-600">Difficulty</span>
           <span className="text-lg font-medium">
-            {detailsItems?.difficulty}{" "}
+            {tourDetailsItem?.difficulty}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -46,21 +49,21 @@ const DetailsCard = ({detailsItems}) => {
         <div className="flex flex-col items-start">
           <FaRunning className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Activity</span>
-          <span className="text-lg font-medium">{detailsItems?.activity}</span>
+          <span className="text-lg font-medium">  {tourDetailsItem?.activity}</span>
         </div>
 
         {/* Max Altitude */}
         <div className="flex flex-col items-start">
           <FaMountain className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Max. altitude</span>
-          <span className="text-lg font-medium">{detailsItems?.maxAltitude}</span>
+          <span className="text-lg font-medium">  {tourDetailsItem?.maxAltitude}</span>
         </div>
 
         {/* Best Season */}
         <div className="flex flex-col items-start">
           <FaSun className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Best season</span>
-          <span className="text-lg font-medium">{detailsItems?.bestSeason}</span>
+          <span className="text-lg font-medium">  {tourDetailsItem?.bestSeason}</span>
         </div>
 
         {/* Accommodation */}
@@ -68,7 +71,7 @@ const DetailsCard = ({detailsItems}) => {
           <FaBed className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Accomodation</span>
           <span className="text-lg font-medium">
-            {detailsItems?.acommodation}{" "}
+          {tourDetailsItem?.accommodation}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -81,7 +84,7 @@ const DetailsCard = ({detailsItems}) => {
           <FaUtensils className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Meals</span>
           <span className="text-lg font-medium">
-            {detailsItems?.meals}{" "}
+          {tourDetailsItem?.meals}{" "}
             <FaQuestionCircle
               className="inline-block ml-1 text-gray-500"
               size={14}
@@ -93,7 +96,7 @@ const DetailsCard = ({detailsItems}) => {
         <div className="flex flex-col items-start">
           <FaMapMarkerAlt className="mb-1 text-gray-700" size={20} />
           <span className="text-sm text-gray-600">Start/End Point</span>
-          <span className="text-lg font-medium">{detailsItems?.startEndPoint}</span>
+          <span className="text-lg font-medium">  {tourDetailsItem?.startEndPoint}</span>
         </div>
       </div>
     </div>

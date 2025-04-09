@@ -6,15 +6,10 @@ import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
-import ChitwanNationalPark1 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark1";
-import ChitwanNationalPark2 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark2";
-import ChitwanNationalPark3 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark3";
-import ChitwanNationalPark4 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark4";
-import ChitwanNationalPark5 from "./components/homepage/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark5";
-import BardiyaNationalPark1 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark1";
-import BardiyaNationalPark2 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark2";
-import BardiyaNationalPark3 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark3";
-import BardiyaNationalPark4 from "./components/homepage/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark4";
+import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard"
+import VendorDetails from "./components/homepage/AdminDashboard/Components/VendorDetails";
+import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
+import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -28,6 +23,7 @@ function App() {
             path="/"
             element={
               <Suspense>
+              
                 <HomePage />
               </Suspense>
             }
@@ -56,7 +52,6 @@ function App() {
               </Suspense>
             }
           />
-            
             <Route
             path="/annapurnabasecamp"
             element={
@@ -65,75 +60,19 @@ function App() {
               </Suspense>
             }
           />
-            <Route
-            path="/chitwan-national-park1"
+               <Route
+            path="/dashboard"
             element={
               <Suspense>
-                <ChitwanNationalPark1 />
+                <Dashboard />
               </Suspense>
             }
           />
-            <Route
-            path="/chitwan-national-park2"
+                         <Route
+            path="/package"
             element={
               <Suspense>
-                <ChitwanNationalPark2 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/chitwan-national-park3"
-            element={
-              <Suspense>
-                <ChitwanNationalPark3 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/chitwan-national-park4"
-            element={
-              <Suspense>
-                <ChitwanNationalPark4 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/chitwan-national-park5"
-            element={
-              <Suspense>
-                <ChitwanNationalPark5 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/bardiya-national-park1"
-            element={
-              <Suspense>
-                <BardiyaNationalPark1 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/bardiya-national-park2"
-            element={
-              <Suspense>
-                <BardiyaNationalPark2 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/bardiya-national-park3"
-            element={
-              <Suspense>
-                <BardiyaNationalPark3 />
-              </Suspense>
-            }
-          />
-            <Route
-            path="/bardiya-national-park4"
-            element={
-              <Suspense>
-                <BardiyaNationalPark4 />
+                <VendorDetails />
               </Suspense>
             }
           />
@@ -142,6 +81,22 @@ function App() {
             element={
               <Suspense>
                 <ContactUs />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/userdetails"
+            element={
+              <Suspense>
+                <UserDetails />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/customerdetails"
+            element={
+              <Suspense>
+                <CustomerDetails />
               </Suspense>
             }
           />

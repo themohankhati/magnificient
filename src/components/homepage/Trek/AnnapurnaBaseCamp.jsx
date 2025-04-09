@@ -19,14 +19,9 @@ function AnnapurnaBaseCamp() {
     getAnnapurnaPackages();
   }, []);
 
-  const filteredPackages = packages.filter(
-    (pkg) => pkg.package_name === "07 Nights 08 Days Ghorepani Trek"
-  );
-
-
   return (
     <>
-      {filteredPackages.map((pkg, index) => (
+      {packages.map((pkg, index) => (
         <TourTrek
           key={index}
           title={pkg.title}
@@ -36,6 +31,7 @@ function AnnapurnaBaseCamp() {
           includes={pkg.package_includes}
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
+          detailsItems={pkg.tripDetails}
             
           />
      
