@@ -7,3 +7,9 @@ export const getPackages = async() => {
     return response.data;
 
 };
+
+export const createPackage = async (newPackage) => {
+    const response = await axios.post(base_url + "package", newPackage);
+    return response.data;
+  };
+  
