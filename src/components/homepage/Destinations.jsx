@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import TourCards from "../../shared_components/TourCards";
 
 
 const Destinations = () => {
@@ -38,7 +37,6 @@ const Destinations = () => {
       </div>
 
     </section>
-    
         </>
   );
 };
