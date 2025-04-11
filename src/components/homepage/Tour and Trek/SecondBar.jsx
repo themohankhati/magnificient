@@ -23,11 +23,11 @@ export default function SecondBar({id}) {
   const [activeTab, setActiveTab] = useState("Overview");
 
   return (
-    <div className="flex flex-wrap bg-gray-100 p-5 border-b justify-evenly">
+    <div className="flex flex-wrap bg-gray-100 p-2 shadow-md justify-evenly">
       {tabs.map((tab) => (
         <button
           key={tab.name}
-          className={`flex items-center px-4 py-2 text-2xl font-medium rounded-md transition-colors duration-200 ${
+          className={`flex items-center px-4 py-2 text-xl font-medium rounded-md transition-colors duration-200 ${
             activeTab === tab.name
               ? "bg-green-600 text-white"
               : "text-gray-700 hover:bg-gray-200"
