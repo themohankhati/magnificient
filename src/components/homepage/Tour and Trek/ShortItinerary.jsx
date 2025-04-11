@@ -4,9 +4,9 @@ const ShortItinerary = ({itinerary}) => {
 
   return (
     <>
-      <div className="flex flex-col mt-8 w-full">
-        <h1 className="text-3xl font-bold"> Short Itinerary</h1>
-        <table className="border-collapse border border-gray-400 w-2/3" id="shortItinerary">
+      <div className="flex flex-col mt-20 w-full">
+        <h1 className="text-3xl font-bold mb-7"> Short Itinerary</h1>
+        <table className="border-collapse border border-gray-400 w-3/3" id="shortItinerary">
           <tbody>
             {itinerary.map((item, index) => (
               <tr

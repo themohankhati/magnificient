@@ -12,8 +12,8 @@ export default function DetailsItinerary({faqs}) {
   return (
     <section className="mt-10 py-12">
       <div className="max-w-5xl ">
-        <h2 className="text-3xl font-bold ">Detailed Itinerary</h2>
-        <div className="flex flex-col gap-4">
+        <h2 className="text-3xl font-bold mb-7 ">Detailed Itinerary</h2>
+        <div className="flex flex-col gap-5">
           {faqs.map((faq, index) => (
             <div
               key={index}
