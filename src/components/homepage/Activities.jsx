@@ -36,26 +36,26 @@ const activities = [
 
 const ActivitiesSection = () => {
   return (
-    <>
- 
     <section className="text-center py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">
           <span className="text-blue-900 underline">Activities</span> We Offer
         </h2>
-        <div className="flex flex-wrap justify-between items-start gap-15 max-w-5xl mx-auto">
-          {activities.map(activity => (
+
+        {/* Grid Container for 2 rows */}
+        <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+          {activities.map((activity) => (
             <a
-            key={activity.id}
-            href={`#${activity.id}`}
-            className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 w-full max-w-xs"
+              key={activity.id}
+              href={`#${activity.id}`}
+              className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 basis-[30%] max-w-[300px]"
             >
               <div className="w-32 h-20 overflow-hidden rounded-md">
                 <img
                   src={`Images/${activity.image}`}
                   alt={activity.title}
                   className="w-full h-full object-cover"
-                  />
+                />
               </div>
               <div className="pl-4 text-left">
                 <h3 className="text-lg font-semibold mb-1">{activity.title}</h3>
@@ -64,6 +64,8 @@ const ActivitiesSection = () => {
             </a>
           ))}
         </div>
+
+        {/* Explore More Button */}
         <div className="mt-14">
           <a
             href="#explore-more"
@@ -74,8 +76,6 @@ const ActivitiesSection = () => {
         </div>
       </div>
     </section>
- 
-            </>
   );
 };
 

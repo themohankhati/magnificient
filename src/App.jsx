@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
-import TourTrek from "./components/homepage/Tour and Trek/TourTrek";
 import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
 import ChitwanNationalPark1 from "./components/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark1";
@@ -16,6 +15,11 @@ import BardiyaNationalPark1 from "./components/tour/jungle-safari/bardiya-nation
 import BardiyaNationalPark2 from "./components/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark2";
 import BardiyaNationalPark3 from "./components/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark3";
 import BardiyaNationalPark4 from "./components/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark4";
+import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard"
+import VendorDetails from "./components/homepage/AdminDashboard/Components/Package";
+import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
+import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
+import AuthPage from "./pages/AuthPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -75,9 +79,24 @@ function App() {
               </Suspense>
             }
           />
-            
-            <Route
-            path="/chitwan-national-park2"
+             <Route
+            path="/login"
+            element={
+              <Suspense>
+                <AuthPage />
+              </Suspense>
+            }
+          />
+               <Route
+            path="/register"
+            element={
+              <Suspense>
+                <AuthPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/package"
             element={
               <Suspense>
                 <ChitwanNationalPark2 />
@@ -152,6 +171,54 @@ function App() {
             element={
               <Suspense>
                 <ContactUs />
+              </Suspense>
+            }
+          />
+           <Route
+            path="/dashboard"
+            element={
+              <Suspense>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+             <Route
+            path="/login"
+            element={
+              <Suspense>
+                <AuthPage />
+              </Suspense>
+            }
+          />
+               <Route
+            path="/register"
+            element={
+              <Suspense>
+                <AuthPage />
+              </Suspense>
+            }
+          />
+        <Route
+            path="/package"
+            element={
+              <Suspense>
+                <VendorDetails />
+              </Suspense>
+            }
+          />
+           <Route
+            path="/userdetails"
+            element={
+              <Suspense>
+                <UserDetails />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/customerdetails"
+            element={
+              <Suspense>
+                <CustomerDetails />
               </Suspense>
             }
           />
