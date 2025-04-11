@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { FaBell, FaHome, FaTasks, FaUser } from 'react-icons/fa'
 import { GoPackage } from 'react-icons/go'
 import { Link } from 'react-router-dom'
-import { createPackage } from '../../../../services/packageService'
+import { createPackage, getPackages } from '../../../../services/packageService'
 
 function VendorDetails() {
   const [packages, setPackages] = useState([]);
+  const getPackagesName =async ()=>{
+    try{
+      const packageData=await getPackages();
+      setPackages(packageData);
+    }
+    catch (error) {
+      console.error("Error fetching package data:", error);
+    }
+  }
+    useEffect(() => {
+      getPackagesName();
+    }, []);
+  
 
   const [selectedPackage, setSelectedPackage] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
