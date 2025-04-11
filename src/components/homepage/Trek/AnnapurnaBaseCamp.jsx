@@ -7,8 +7,8 @@ function AnnapurnaBaseCamp() {
 
   const getAnnapurnaPackages = async () => {
     try {
-      const annapurnaData = await getPackages();  
-    
+      const annapurnaData = await getPackages();
+
       setPackages(annapurnaData);
     } catch (error) {
       console.error("Error fetching package data:", error);
@@ -18,10 +18,12 @@ function AnnapurnaBaseCamp() {
   useEffect(() => {
     getAnnapurnaPackages();
   }, []);
-
+  const filteredPackages = packages.filter(
+    (pkg) => pkg.package_name === "07 Nights 08 Days Ghorepani Trek"
+  );
   return (
     <>
-      {packages.map((pkg, index) => (
+      {filteredPackages.map((pkg, index) => (
         <TourTrek
           key={index}
           title={pkg.title}
@@ -32,11 +34,8 @@ function AnnapurnaBaseCamp() {
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
           detailsItems={pkg.tripDetails}
-            
-          />
-     
-        ))}
-
+        />
+      ))}
     </>
   );
 }
