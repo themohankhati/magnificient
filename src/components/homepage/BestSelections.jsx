@@ -5,14 +5,14 @@ import Card from "../../shared_components/Card";
 
 const trekData = [
   {
-    image: "ANNAPURNATREK.jpeg",
+    image: "jungle.jpg",
     country: "Nepal",
-    title: "Annapurna Royal Treks - 10 Days",
-    duration: "10 Days",
+    title: "Chitwan Jungle Safari - 5 Days",
+    duration: "5 Days",
     months: "March - May",
-    difficulty: "Moderate",
-    description: "Explore the stunning Annapurna on a royal trekking. Get an wonderful experience.",
-    price: "USD 1300",
+    difficulty: "Easy",
+    description: "Enjoy the exploration of incredible flora, spectacular wildlife and natural beauty.",
+    price: "USD 600",
   },
   {
     image: "LANGTANG.jpeg",
