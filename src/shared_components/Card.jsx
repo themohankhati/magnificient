@@ -36,7 +36,7 @@ const Card = ({ image, country, title, duration, months, difficulty, description
         </div>
         
         {/* Description */}
-        <div className="bg-gray-100 text-gray-700 text-sm p-3 rounded-md pb-5 mb-5">
+        <div className="bg-gray-100 text-gray-800 text-left text-sm p-3 rounded-md shadow-md pb-5 mb-5">
           {description}
         </div>
         

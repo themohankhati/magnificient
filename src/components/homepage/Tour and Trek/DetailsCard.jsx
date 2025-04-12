@@ -15,7 +15,7 @@ const DetailsCard = (detailsItems) => {
 
   const tourDetailsItem = detailsItems.detailsItems[0];
   return (
-    <div className="bg-gray-200 rounded-md shadow-md p-6 w-full">
+    <div className="bg-gray-200 rounded-md shadow-md p-6 w-full mt-10">
       <div className="grid grid-cols-3 gap-4">
         {/* Country */}
         <div className="flex flex-col items-start">

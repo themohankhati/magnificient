@@ -1,27 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { FaBell, FaHome, FaTasks, FaUser } from 'react-icons/fa'
 import { GoPackage } from 'react-icons/go'
 import { Link } from 'react-router-dom'
+import { createPackage, getPackages } from '../../../../services/packageService'
 
 function VendorDetails() {
-  const [packages, setPackages] = useState([
-    {
-      package_name: "Rhododendron Blossom Trail – 8 Days",
-      start_date: "2025-03-10",
-      end_date: "2025-03-17",
-      price: "1150 USD",
-      title: "Spring Trek Through Rhododendron Valleys",
-      description: "An immersive journey through blooming rhododendron forests...",
-    },
-    {
-      package_name: "Himalayan Sunrise Escape – 8 Days",
-      start_date: "2025-11-02",
-      end_date: "2025-11-09",
-      price: "1250 USD",
-      title: "Poon Hill Sunrise Trek with Cultural Tour",
-      description: "Catch the golden sunrise over the Himalayas from Poon Hill...",
+  const [packages, setPackages] = useState([]);
+  const getPackagesName =async ()=>{
+    try{
+      const packageData=await getPackages();
+      setPackages(packageData);
     }
-  ])
+    catch (error) {
+      console.error("Error fetching package data:", error);
+    }
+  }
+    useEffect(() => {
+      getPackagesName();
+    }, []);
+  
 
   const [selectedPackage, setSelectedPackage] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
@@ -35,8 +32,24 @@ function VendorDetails() {
     start_date: "",
     end_date: "",
     price: "",
-    description: ""
-  })
+    description: "",
+    tripDetails: [{
+      country: "",
+      duration: "",
+      difficulty: "",
+      activity: "",
+      maxAltitude: "",
+      bestSeason: "",
+      accommodation: "",
+      meals: "",
+      startEndpoint: "",
+    }],
+    itinerary: [],
+    package_includes: [],
+    package_excludes: [],
+    images: [],
+  });
+  
 
   const handleSelect = (pkg) => {
     if (selectedPackage && selectedPackage.package_name === pkg.package_name) {
@@ -77,25 +90,26 @@ function VendorDetails() {
   }
 
   const handleNewPackageChange = (e) => {
-    const { name, value } = e.target
-    setNewPackage(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setNewPackage(prev => ({ ...prev, [name]: value }));
+  };
+  
 
-  const handleAddPackage = () => {
-    if (newPackage.package_name) {
-      setPackages([...packages, newPackage])
-      setNewPackage({
-        package_name: "",
-        title: "",
-        start_date: "",
-        end_date: "",
-        price: "",
-        description: ""
-      })
-      setShowAddModal(false)
-    }
-  }
-
+  const handleAddPackage = async () => {
+    
+      try {
+        console.log("Sending package:", newPackage); // DEBUG
+        const created = await createPackage(newPackage);
+        setPackages([...packages, created]);
+        setShowAddModal(false);
+      } catch (error) {
+        console.error("Failed to add package:", error.response?.data || error.message);
+        alert("Failed to add package. Please try again.");
+      }
+    
+  };
+  
+  
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -124,7 +138,7 @@ function VendorDetails() {
         {/* Header */}
         <div className="flex justify-end p-4 bg-white shadow">
           <div className="flex items-center space-x-4">
-            <FaBell />
+   
             <img src="Images/cultural-historical.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
    <div
               className="relative"
@@ -230,40 +244,150 @@ function VendorDetails() {
 
         {/* Add Package Modal */}
         {showAddModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
-              <h2 className="text-xl font-bold mb-4">Add New Package</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {['package_name', 'title', 'start_date', 'end_date', 'price'].map((field) => (
-                  <div key={field}>
-                    <label className="font-medium capitalize">{field.replace('_', ' ')}</label>
-                    <input
-                      type="text"
-                      name={field}
-                      value={newPackage[field]}
-                      onChange={handleNewPackageChange}
-                      className="w-full border rounded px-3 py-2 mt-1"
-                    />
-                  </div>
-                ))}
-                <div className="md:col-span-2">
-                  <label className="font-medium">Description</label>
-                  <textarea
-                    name="description"
-                    value={newPackage.description}
-                    onChange={handleNewPackageChange}
-                    className="w-full border rounded px-3 py-2 mt-1"
-                    rows={4}
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end mt-4 space-x-2">
-                <button onClick={() => setShowAddModal(false)} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Cancel</button>
-                <button onClick={handleAddPackage} className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Add</button>
-              </div>
-            </div>
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-auto">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+
+      <h2 className="text-xl font-bold mb-4">Add New Package</h2>
+
+      {/* Basic Package Info */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+  {['package_name', 'title', 'start_date', 'end_date', 'price'].map((field) => (
+    <div key={field}>
+      <label className="font-medium capitalize">{field.replace('_', ' ')}</label>
+      <input
+        type={field.includes("date") ? "date" : "text"}
+        name={field}
+        value={newPackage[field]}
+        onChange={handleNewPackageChange}
+        className="w-full border rounded px-3 py-2 mt-1"
+      />
+    </div>
+  ))}
+</div>
+
+
+      {/* Trip Details */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {['country', 'duration', 'difficulty', 'activity', 'maxAltitude', 'bestSeason', 'accommodation', 'meals', 'startEndpoint'].map((field) => (
+          <div key={field}>
+            <label className="font-medium capitalize">{field}</label>
+            <input
+              type="text"
+              name={field}
+              value={newPackage.tripDetails?.[0]?.[field] || ""}
+              onChange={(e) => {
+                const { name, value } = e.target;
+                setNewPackage(prev => ({
+                  ...prev,
+                  tripDetails: [{
+                    ...prev.tripDetails?.[0],
+                    [name]: value
+                  }]
+                }));
+              }}
+              className="w-full border rounded px-3 py-2 mt-1"
+            />
           </div>
-        )}
+        ))}
+      </div>
+
+      {/* Itinerary */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
+      {newPackage.itinerary?.map((day, index) => (
+        <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+          <input
+            type="number"
+            placeholder="Day number"
+            value={day.day_number}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].day_number = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            placeholder="Title"
+            value={day.title}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].title = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            value={day.description}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].description = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+        </div>
+      ))}
+      <button
+        className="text-blue-500 mt-2"
+        onClick={() =>
+          setNewPackage(prev => ({
+            ...prev,
+            itinerary: [...(prev.itinerary || []), { day_number: '', title: '', description: '' }]
+          }))
+        }
+      >
+        + Add Day
+      </button>
+
+      {/* Includes & Excludes */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Includes</h3>
+      <textarea
+        rows={3}
+        className="w-full border rounded px-3 py-2"
+        placeholder="Enter each include item separated by a newline"
+        onChange={(e) =>
+          setNewPackage({ ...newPackage, package_includes: e.target.value.split('\n') })
+        }
+      />
+
+      <h3 className="text-lg font-semibold mt-4 mb-2">Excludes</h3>
+      <textarea
+        rows={3}
+        className="w-full border rounded px-3 py-2"
+        placeholder="Enter each exclude item separated by a newline"
+        onChange={(e) =>
+          setNewPackage({ ...newPackage, package_excludes: e.target.value.split('\n') })
+        }
+      />
+
+      {/* Image URLs */}
+      <h3 className="text-lg font-semibold mt-4 mb-2">Image URLs</h3>
+      <textarea
+        rows={2}
+        className="w-full border rounded px-3 py-2"
+        placeholder="Enter image URLs separated by newline"
+        onChange={(e) =>
+          setNewPackage({ ...newPackage, images: e.target.value.split('\n') })
+        }
+      />
+
+      {/* Footer Buttons */}
+      <div className="flex justify-end mt-6 space-x-2">
+        <button onClick={() => setShowAddModal(false)} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
+          Cancel
+        </button>
+        <button onClick={handleAddPackage} className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+          Add Package
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       </main>
     </div>
   )

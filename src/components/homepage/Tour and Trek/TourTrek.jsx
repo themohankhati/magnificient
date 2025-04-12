@@ -38,7 +38,7 @@ export default function TourTrek({
 
       <div className="flex flex-col lg:flex-row gap-6 p-5">
         <div className="lg:w-2/3 p-13">
-          <h1 className="text-4xl font-bold">{title}</h1>
+          <h1 className="text-4xl mb-8 font-bold">{title}</h1>
           <p>{description}</p>
 
           <DetailsCard detailsItems={detailsItems}/>
