@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import cn from "../../utils/cn";
 
 const faqs = [
@@ -19,7 +19,6 @@ const faqs = [
       "The main trekking options in Nepal include the Everest Base Camp Trek, Annapurna Circuit Trek, Langtang Valley Trek, and Manaslu Circuit Trek. Each trek offers unique landscapes and cultural experiences.",
   },
   {
-
     question: "Is food in the mountains safe for international travelers?",
     answer:
       "Yes, food in the mountains is generally safe for international travelers. We recommend eating at reputable lodges and tea houses, and drinking bottled or purified water to avoid any health issues.",
@@ -46,7 +45,7 @@ const faqs = [
   },
 ];
 
-export default function FAQSection({className}) {
+export default function FAQSection({ className }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -54,24 +53,34 @@ export default function FAQSection({className}) {
   };
 
   return (
-    <section className="text-center py-12">
-      <div className={cn("max-w-5xl mx-auto mb-20",className)}>
-        <h2 className="text-3xl font-bold mb-13 relative inline-block">
+    <section className="text-center py-16 bg-[#f8fdfc]">
+      <div className={cn("max-w-5xl mx-auto", className)}>
+        <h2 className="text-4xl font-extrabold mb-12 text-[#14205c] relative inline-block">
           Frequently Asked Questions
-          <span className="block w-20 h-1 bg-green-600 mt-2 mx-auto"></span>
+          <span className="block w-24 h-1 bg-green-600 mt-2 mx-auto rounded-full"></span>
         </h2>
-        <div className="flex flex-col gap-4">
+
+        <div className="flex flex-col gap-5">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
+            <div
+              key={index}
+              className="bg-white border border-gray-200 shadow-sm rounded-xl transition duration-300"
+            >
               <button
-                className="w-full flex justify-between items-center p-2 bg-gray-100 cursor-pointer"
+                className="w-full flex justify-between items-center p-5 text-left bg-gray-50 hover:bg-green-50 transition-all duration-300 rounded-t-xl"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-left text-base">{faq.question}</span>
-                <span className="text-sm">{openIndex === index ? "▲" : "▼"}</span>
+                <span className="text-lg font-semibold text-gray-800">
+                  {faq.question}
+                </span>
+                <span className="text-xl text-green-600">
+                  {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                </span>
               </button>
               {openIndex === index && (
-                <div className="p-4 text-gray-600 text-left text-sm">{faq.answer}</div>
+                <div className="px-5 pb-5 pt-2 text-gray-700 text-base leading-relaxed transition-all duration-300">
+                  {faq.answer}
+                </div>
               )}
             </div>
           ))}

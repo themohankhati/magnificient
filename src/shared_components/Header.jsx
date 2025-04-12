@@ -1,54 +1,89 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const Header = () => {
   return (
-    <header className="flex items-center p-2 bg-white shadow-md relative z-10 l">
-      <div className="pr-0.000005">
-        <img src="Images/Magnificent logo.png" alt="Logo" className="h-16" />
+    <header className="bg-white shadow-md sticky top-0 z-50 w-full">
+      <div className="w-full px-8 py-3 flex items-center justify-between max-w-[1600px] mx-auto">
+        {/* Logo */}
+        <Link to="/">
+          <img src="Images/Magnificent logo.png" alt="Logo" className="h-14" />
+        </Link>
+
+        {/* Navigation and Auth Buttons */}
+        <div className="flex items-center space-x-8">
+          <nav>
+            <ul className="flex space-x-8 text-lg font-semibold">
+              <li>
+                <Link
+                  to="/destinations"
+                  className="relative text-gray-800 hover:text-blue-600 transition duration-300"
+                >
+                  <span className="hover-underline">DESTINATIONS</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/activities"
+                  className="relative text-gray-800 hover:text-blue-600 transition duration-300"
+                >
+                  <span className="hover-underline">ACTIVITIES</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/aboutus"
+                  className="relative text-gray-800 hover:text-blue-600 transition duration-300"
+                >
+                  <span className="hover-underline">ABOUT US</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contactus"
+                  className="relative text-gray-800 hover:text-blue-600 transition duration-300"
+                >
+                  <span className="hover-underline">CONTACT US</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Login/Register Buttons */}
+          <div className="flex space-x-4">
+            <Link
+              to="/login"
+              className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition duration-300"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition duration-300"
+            >
+              Register
+            </Link>
+          </div>
+        </div>
       </div>
-      <nav className="ml-auto">
-        <ul className="flex gap-22 list-none pr-30">
-          <li>
-            <Link
-              to="/destinations"
-              className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
-            >
-              DESTINATIONS
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/activities"
-              className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
-            >
-              ACTIVITIES
-            </Link>
-          </li>
-          <li>
-            {/* <a className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"> */}
-            <Link
-              to="/aboutus"
-              className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
-            >
-              {" "}
-              ABOUT US
-            </Link>
-            {/* </a> */}
-          </li>
-          <li>
-            <Link
-              to="/contactus"
-              className="text-gray-900 font-bold transition-colors duration-300 hover:text-blue-500"
-            >
-              CONTACT US
-            </Link>
-          </li>
-        </ul>
-      </nav>
+
+      {/* Custom underline effect */}
+      <style>{`
+        .hover-underline::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          width: 0%;
+          height: 2px;
+          background-color: #2563eb;
+          transition: width 0.3s ease;
+        }
+        .hover-underline:hover::after {
+          width: 100%;
+        }
+      `}</style>
     </header>
-  
   );
 };
 

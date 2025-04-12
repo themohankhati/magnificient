@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+// import { ArrowRight, ArrowLeft } from "lucide-react";
 import Card from "../../shared_components/Card";
 
 const trekData = [
@@ -64,32 +64,35 @@ const trekData = [
     description: "Explore the ancient kingdom of Mustang in a remote trekking adventure.",
     price: "USD 1600",
   },
+  
 ];
 
+const CARDS_PER_PAGE = 3;
+const pages = Math.ceil(trekData.length / CARDS_PER_PAGE);
+
 export default function BestSelection() {
-  const scrollRef = useRef(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const handleScrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
-      if (scrollRef.current.scrollLeft + scrollRef.current.clientWidth >= scrollRef.current.scrollWidth - 300) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      }
-    }
+  const handlePageChange = (pageIndex) => {
+    setCurrentPage(pageIndex);
   };
 
-  const handleScrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
-      if (scrollRef.current.scrollLeft <= 300) {
-        scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: "smooth" });
-      }
-    }
+  const handleNext = () => {
+    setCurrentPage((prev) => (prev + 1) % pages);
   };
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => (prev - 1 + pages) % pages);
+  };
+
+  const paginatedData = trekData.slice(
+    currentPage * CARDS_PER_PAGE,
+    currentPage * CARDS_PER_PAGE + CARDS_PER_PAGE
+  );
 
   return (
     <section className="text-center bg-[#f0fcf9] py-16">
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-8 ">
         <h2 className="text-3xl font-bold">
           Best Selection From{" "}
           <span className="text-[#14205c] underline">Travellers</span>
@@ -98,16 +101,11 @@ export default function BestSelection() {
           Discover top adventures chosen by our guests.
         </p>
 
-        <div className="relative overflow-hidden">
-           
-          {/* Scrollable Container */}
-          <motion.div
-            ref={scrollRef}
-            className="flex gap-7 overflow-x-hidden scroll-smooth"
-            style={{ width: "calc(100% - 60px)" }}
-          >
-            {[...trekData, ...trekData].map((trek, index) => (
-              <div key={index} className="min-w-[400px]">
+        <div className="relative">
+          {/* Cards */}
+          <motion.div className="flex gap-7 justify-center transition-all duration-500">
+            {paginatedData.map((trek, index) => (
+              <div key={index} className="min-w-[300px] max-w-[350px]">
                 <Card
                   image={`Images/${trek.image}`}
                   country={trek.country}
@@ -121,21 +119,36 @@ export default function BestSelection() {
             ))}
           </motion.div>
 
-          {/* Scroll Left Button */}
+          {/* Navigation Arrows */}
           {/* <button
-            onClick={handleScrollLeft}
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md"
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md"
           >
-            <ArrowLeft size={24} />
-          </button> */}
-
-          {/* Scroll Right Button */}
-          <button
-            onClick={handleScrollRight}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md"
-          >
-            <ArrowRight size={24} />
+            <ArrowLeft size={20} />
           </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md"
+          >
+            <ArrowRight size={20} />
+          </button> */}
+        </div>
+
+        {/* Pagination Buttons */}
+        <div className="mt-8 flex justify-center gap-2 ">
+          {Array.from({ length: pages }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => handlePageChange(idx)}
+              className={`w-8 h-8 rounded-full text-sm font-medium cursor-pointer ${
+                currentPage === idx
+                  ? "bg-green-600 text-white"
+                  : "bg-white border border-gray-300 text-black"
+              }`}
+            >
+              {idx + 1}
+            </button>
+          ))}
         </div>
       </div>
     </section>

@@ -78,7 +78,7 @@ const UserDetails = () => {
       <main className="flex-1 bg-gray-100">
         {/* Topbar */}
         <div className="flex justify-end items-center p-4 bg-white shadow gap-4">
-          <FaBell className="mr-4" />
+      
           <img
             src="Images/cultural-historical.jpg"
             alt="Profile"
