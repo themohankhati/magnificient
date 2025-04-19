@@ -2,7 +2,7 @@ import React, { useState ,useEffect} from 'react'
 import { FaBell, FaHome, FaTasks, FaUser } from 'react-icons/fa'
 import { GoPackage } from 'react-icons/go'
 import { Link } from 'react-router-dom'
-import { createPackage, getPackages } from '../../../../services/packageService'
+import { createPackage, deletePackage, getPackages } from '../../../../services/packageService'
 
 function VendorDetails() {
   const [packages, setPackages] = useState([]);
@@ -82,13 +82,16 @@ function VendorDetails() {
     setIsEditing(false)
   }
 
-  const handleDelete = () => {
-    const filtered = packages.filter(pkg => pkg.package_name !== selectedPackage.package_name)
-    setPackages(filtered)
-    setSelectedPackage(null)
-    setIsEditing(false)
-  }
-
+  const handleDelete = async () => {
+    try {
+      const deleted = await deletePackage(); 
+      console.log("Package deleted successfully", deleted);
+      // Optionally refresh package list here or give UI feedback
+    } catch (error) {
+      console.error("Failed to delete package", error);
+    }
+  };
+  
   const handleNewPackageChange = (e) => {
     const { name, value } = e.target;
     setNewPackage(prev => ({ ...prev, [name]: value }));
