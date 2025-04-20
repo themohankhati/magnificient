@@ -14,6 +14,7 @@ import Newsletter from "../shared_components/Newsletter";
 import Footer from "../shared_components/Footer";
 
 
+
 export default function HomePage() {
 
   // const [apiData, setApiData] = useState([])
@@ -35,6 +36,7 @@ export default function HomePage() {
       <Associations />
       <Newsletter />
       <Footer />
+      
       
       
   
