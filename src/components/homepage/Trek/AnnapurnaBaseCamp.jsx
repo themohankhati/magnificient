@@ -10,6 +10,7 @@ function AnnapurnaBaseCamp() {
       const annapurnaData = await getPackages();  
     
       setPackages(annapurnaData);
+  
     } catch (error) {
       console.error("Error fetching package data:", error);
     }

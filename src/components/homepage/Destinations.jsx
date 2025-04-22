@@ -2,7 +2,6 @@ import React from "react";
 
 
 
-
 const Destinations = () => {
   const destinations = [
     { name: "NEPAL", img: "Images/Top destination-Nepal.jpg" },
@@ -36,7 +35,6 @@ const Destinations = () => {
           </div>
         ))}
       </div>
-
     </section>
     
         </>
