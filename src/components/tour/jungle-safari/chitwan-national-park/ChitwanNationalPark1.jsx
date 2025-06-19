@@ -26,7 +26,7 @@ function ChitwanNationalPark1() {
     (pkg) => pkg.package_name === "04 Nights 05 Days Jungle Safari Tour Kathmandu-Chitwan"
   );
 
-
+  
   return (
     <>
       {filteredPackages.map((pkg, index) => (
@@ -39,6 +39,7 @@ function ChitwanNationalPark1() {
           includes={pkg.package_includes}
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
+          detailsItems={pkg.tripDetails}
             
           />
         ))}

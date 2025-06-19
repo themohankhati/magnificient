@@ -1,14 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Destinations = () => {
+  const navigate = useNavigate();
   const destinations = [
-    { name: "NEPAL", img: "Images/Top destination-Nepal.jpg" },
-    { name: "INDIA", img: "Images/Top destination-India.jpg" },
-    { name: "TIBET", img: "Images/Top destination-tibet.jpg" },
-    { name: "BHUTAN", img: "Images/Top destination-Bhutan.jpg" },
+    { name: "NEPAL", img: "Images/Top destination-Nepal.jpg", id: "nepal" },
+    { name: "INDIA", img: "Images/Top destination-India.jpg", id: "india" },
+    { name: "TIBET", img: "Images/Top destination-tibet.jpg", id: "tibet" },
+    { name: "BHUTAN", img: "Images/Top destination-Bhutan.jpg", id: "bhutan" },
   ];
 
   return (
@@ -23,7 +25,12 @@ const Destinations = () => {
         {destinations.map((destination, index) => (
           <div
           key={index}
-          className="text-center rounded-xl overflow-hidden shadow-lg max-w-[220px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+          className="text-center rounded-xl overflow-hidden shadow-lg max-w-[220px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+          onClick={() => {
+            if (destination.id) {
+              navigate(`/tour/${destination.id}`);
+            }
+          }}
           >
             <img
               src={destination.img}

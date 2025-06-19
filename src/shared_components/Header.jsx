@@ -12,10 +12,10 @@ const Header = () => {
       </div>
 
       {/* Main Header Content */}
-      <div className="bg-white shadow-md w-full px-8 py-1 flex items-center justify-between max-w-[1600px] mx-auto">
+      <div className="bg-white shadow-md w-full px-8 py-1 flex items-center justify-between  mx-auto">
         {/* Logo */}
         <Link to="/">
-          <img src="Images/Magnificent logo.png" alt="Logo" className="h-18" />
+          <img src="/Images/Magnificent logo.png" alt="Logo" className="h-18" />
         </Link>
 
         {/* Navigation and Auth Buttons */}

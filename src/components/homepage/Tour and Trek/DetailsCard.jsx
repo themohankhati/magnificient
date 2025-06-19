@@ -9,7 +9,7 @@ import {
   FaSun,
   FaMapMarkerAlt,
   FaQuestionCircle,
-} from "react-icons/fa";
+}from "react-icons/fa";
 import { WiEarthquake } from "react-icons/wi";
 const DetailsCard = (detailsItems) => {
 
