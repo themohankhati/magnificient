@@ -20,6 +20,7 @@ import VendorDetails from "./components/homepage/AdminDashboard/Components/Packa
 import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
 import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
 import AuthPage from "./pages/AuthPage";
+import TourOverviewPage from "./pages/TourOverviewPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -219,6 +220,14 @@ function App() {
             element={
               <Suspense>
                 <CustomerDetails />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tour/:tourId"
+            element={
+              <Suspense>
+                <TourOverviewPage />
               </Suspense>
             }
           />

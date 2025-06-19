@@ -2,7 +2,7 @@ import React from "react";
 
 const BookingCard = () => {
   return (
-    <div className="bg-gray-50 rounded-md shadow-md p-6 text-center mt-25 ">
+    <div className="bg-gray-50 rounded-md shadow-md p-6 text-center mt-25 w-100 ">
       <div className="text-2xl font-bold mb-2">Price: Contact Us</div>
       <div className="text-sm text-gray-600 mb-4"></div>
 
@@ -23,7 +23,7 @@ const BookingCard = () => {
         Talk to an expert
       </button>
 
-      <div className="text-sm text-gray-600">Contact: +9779800000021</div>
+      <div className="text-sm text-gray-600">Contact: +977 1 4523218</div>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import StayFlexible from "../shared_components/StayFlexible";
 import Associations from "../shared_components/Associations";
 import Newsletter from "../shared_components/Newsletter";
 import Footer from "../shared_components/Footer";
+// import TourOverviewPage from "./TourOverviewPage";
 
 
 
@@ -36,6 +37,15 @@ export default function HomePage() {
       <Associations />
       <Newsletter />
       <Footer />
+      {/* <TourOverviewPage 
+        tourId="nepal"
+        customSliderConfig={{
+          autoSlide: true,
+          autoSlideInterval: 4000,
+          showDots: true,
+          showArrows: true
+        }} */}
+      />
       
       
       

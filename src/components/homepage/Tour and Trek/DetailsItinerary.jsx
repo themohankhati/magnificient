@@ -9,17 +9,20 @@ export default function DetailsItinerary({ faqs }) {
   };
 
   return (
-    <section className="mt-16 py-12 px-4 bg-[#f9fdfb] ">
-      <div className="max-w-5xl ">
-        <h2 className="text-4xl font-extrabold text-[#14205c] mb-10 tracking-wide">
+    <section id="Itinerary" className="mt-15 py-12 px-4 bg-[#f9fdfb]">
+      <div className="max-w-5xl">
+        <h2 className="relative text-4xl font-bold text-[#14205c] mb-10 tracking-wide group inline-block">
           Detailed Itinerary
+          <div className="flex justify-center w-full mt-2">
+            <span className="h-1 bg-green-500 transition-all duration-300 w-0 group-hover:w-2/4"></span>
+          </div>
         </h2>
 
         <div className="flex flex-col gap-6 cursor-pointer">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200 "
+              className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200"
             >
               <button
                 className="w-full flex justify-between items-center bg-green-50 p-6 hover:bg-green-100 transition duration-300 cursor-pointer"

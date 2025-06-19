@@ -38,8 +38,8 @@ export default function TourTrek({
 
       <div className="flex flex-col lg:flex-row gap-6 p-5">
         <div className="lg:w-2/3 p-13">
-          <h1 className="text-4xl mb-8 font-bold">{title}</h1>
-          <p>{description}</p>
+          <h1 className="text-4xl font-bold text-[#14205c] mb-10 tracking-wide">{title}</h1>
+          <p section id = "Overview">{description}</p>
 
           <DetailsCard detailsItems={detailsItems}/>
 
@@ -51,8 +51,9 @@ export default function TourTrek({
             <PackageExcludes excludes={excludes} />
           </div>
 
-          <FAQSection className={"mx-[unset]"} />
+          
           <PhotoGallery  images={images} />
+          <FAQSection className={"mx-[unset]"} />
         </div>
        
 

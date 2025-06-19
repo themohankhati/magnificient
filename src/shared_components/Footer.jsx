@@ -5,7 +5,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start px-4">
         <div className="flex flex-col items-start">
           <img
-            src="Images/Magnificent logo.png"
+            src="/Images/Magnificent logo.png"
             alt="Magnificent Travels & Tours Logo"
             className="h-20 mb-4"
           />
@@ -120,13 +120,13 @@ const Footer = () => {
             <span className="text-gray-900 mr-4">Follow Us :</span>
             <div className="flex gap-4">
               <a href="#">
-                <img src="Images/Facebook-logo.png" alt="Facebook" className="h-6" />
+                <img src="/Images/Facebook-logo.png" alt="Facebook" className="h-6" />
               </a>
               <a href="#">
-                <img src="Images/instagram-logo.png" alt="Instagram" className="h-6" />
+                <img src="/Images/instagram-logo.png" alt="Instagram" className="h-6" />
               </a>
               <a href="#">
-                <img src="Images/x-logo.png" alt="X" className="h-6" />
+                <img src="/Images/x-logo.png" alt="X" className="h-6" />
               </a>
             </div>
           </div>
