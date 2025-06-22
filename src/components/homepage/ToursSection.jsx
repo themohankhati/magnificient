@@ -1,34 +1,9 @@
 import React from "react";
-
-const tours = [
-  { img: "luxury-tour.jpeg", title: "Luxury Tour", count: "9 tours" },
-  { img: "helicopter-tour.jpg", title: "Helicopter Tours", count: "10 tours" },
-  {
-    img: "nature-wildlife.jpg",
-    title: "Nature and Wildlife Tours",
-    count: "10 tours",
-  },
-  {
-    img: "cultural-historical.jpg",
-    title: "Cultural & Historical Tours",
-    count: "5 tours",
-  },
-  {
-    img: "religious-spiritual.jpg",
-    title: "Religious and Spiritual Tours",
-    count: "7 tours",
-  },
-  { img: "motorbike-tour.jpg", title: "MotorBike Tour", count: "11 tours" },
-  { img: "cycling-tour.jpg", title: "Cycling Tour", count: "8 tours" },
-  { img: "sightseeing-tour.jpg", title: "Sightseeing Tour", count: "6 tours" },
-  {
-    img: "day-sightseeing-tour.jpg",
-    title: "Day Sightseeing Tour",
-    count: "4 tours",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import { magnificentToursData } from "../tour-overview-page/components/data/magnificentTourData";
 
 const ToursSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="text-center py-8">
       <div className="max-w-6xl mx-auto px-4">
@@ -40,10 +15,11 @@ const ToursSection = () => {
         </h2>
         <div className="flex overflow-x-auto space-x-5 p-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
                     style={{ scrollbarWidth: "none" }}>
-          {tours.map((tour, index) => (
+          {magnificentToursData.map((tour, index) => (
             <div
-              key={index}
-              className="flex-none w-52 bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200"
+              key={tour.id}
+              className="flex-none w-52 bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200 cursor-pointer"
+              onClick={() => navigate(`/tours/${tour.id}`)}
             >
               <img
                 src={`Images/${tour.img}`}
