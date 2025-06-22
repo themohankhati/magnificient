@@ -41,7 +41,7 @@ const ImageSlider = ({
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+      <div className="w-full h-70 bg-gray-200 flex items-center justify-center">
         <p className="text-gray-500">No images available</p>
       </div>
     );
@@ -50,7 +50,7 @@ const ImageSlider = ({
   return (
     <div className={`relative w-full overflow-hidden ${className}`}>
       {/* Main Image Container */}
-      <div className="relative w-full h-64 md:h-80 lg:h-96">
+      <div className="relative w-full h-70 md:h-90 lg:h-110">
         {console.log('ImageSlider src:', images[currentIndex])}
         <img
           src={images[currentIndex]}
