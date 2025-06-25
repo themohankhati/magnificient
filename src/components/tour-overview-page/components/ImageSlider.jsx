@@ -56,7 +56,7 @@ const ImageSlider = ({
           src={images[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
           className="w-full h-full object-cover transition-opacity duration-500"
-          style={{ border: '4px solid red' }}
+          style={{ border: '4px solid white' }}
           onError={(e) => {
             e.target.src = '/images/placeholder.jpg'; // Fallback image
           }}
