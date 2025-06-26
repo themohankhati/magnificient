@@ -31,7 +31,7 @@ const Dashboard = () => {
 
           {/* Static Links */}
           <Link
-            to="/package"
+            to="/dashboardpackage"
             className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white"
           >
             <GoPackage className="mr-2" /> Package

@@ -45,7 +45,7 @@ export default function HomePage() {
           showDots: true,
           showArrows: true
         }} */}
-      />
+      
       
       
       

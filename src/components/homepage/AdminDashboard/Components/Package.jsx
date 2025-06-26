@@ -4,7 +4,7 @@ import { GoPackage } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import { createPackage, getPackages } from '../../../../services/packageService'
 
-function VendorDetails() {
+function  PackageDetails() {
   const [packages, setPackages] = useState([]);
   const getPackagesName =async ()=>{
     try{
@@ -121,7 +121,7 @@ function VendorDetails() {
           <Link to="/dashboard" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
             <FaHome className="mr-2" /> Home
           </Link>
-          <Link to="/package" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
+          <Link to="/dashboardpackage" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
             <GoPackage className="mr-2" /> Package
           </Link>
           <Link to="/userdetails" className="flex items-center px-4 py-2 hover:bg-gray-700 hover:text-white">
@@ -393,4 +393,4 @@ function VendorDetails() {
   )
 }
 
-export default VendorDetails
+export default PackageDetails;
