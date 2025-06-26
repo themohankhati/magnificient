@@ -1,40 +1,9 @@
 import React from "react";
-
-const activities = [
-  {
-    id: "jungle-safari",
-    title: "Jungle Safari",
-    places: 5,
-    image: "JungleSafari.jpg",
-  },
-  {
-    id: "paragliding",
-    title: "Paragliding",
-    places: 4,
-    image: "paragliding.jpg",
-  },
-  { id: "rafting", title: "Rafting", places: 7, image: "rafting.jpg" },
-  {
-    id: "bungee-jumping",
-    title: "Bungee Jumping",
-    places: 6,
-    image: "Bungee.jpg",
-  },
-  {
-    id: "climbing-expedition",
-    title: "Climbing & Expedition",
-    places: 10,
-    image: "climbingExpedition.jpg",
-  },
-  {
-    id: "mountain-flight",
-    title: "Mountain Flight",
-    places: 2,
-    image: "MountainFlight.jpg",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import { activitiesData } from "../tour-overview-page/components/data/activityData";
 
 const ActivitiesSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="text-center py-12">
       <div className="container mx-auto px-4">
@@ -43,12 +12,12 @@ const ActivitiesSection = () => {
         </h2>
 
         {/* Grid Container for 2 rows */}
-        <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
-          {activities.map((activity) => (
-            <a
+        <div className="flex flex-wrap justify-center gap-15 max-w-5xl mx-auto">
+          {activitiesData.map((activity) => (
+            <div
               key={activity.id}
-              href={`#${activity.id}`}
-              className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 basis-[30%] max-w-[300px]"
+              className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 basis-[30%] max-w-[300px] cursor-pointer"
+              onClick={() => navigate(`/activities/${activity.id}`)}
             >
               <div className="w-32 h-20 overflow-hidden rounded-md">
                 <img
@@ -61,7 +30,7 @@ const ActivitiesSection = () => {
                 <h3 className="text-lg font-semibold mb-1">{activity.title}</h3>
                 <p className="text-sm">{activity.places} different places</p>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 

@@ -27,10 +27,25 @@ const Header = () => {
                   <span className="hover-underline">Home</span>
                 </Link>
               </li>
-              <li>
-                <Link to="/destinations" className="relative text-gray-800 hover:text-blue-600 transition duration-300">
-                  <span className="hover-underline">Destinations</span>
-                </Link>
+              <li className="relative group">
+                <span className="relative text-gray-800 hover:text-blue-600 transition duration-300 cursor-pointer hover-underline">
+                  Destinations
+                </span>
+                {/* Dropdown */}
+                <ul className="absolute left-0 min-w-full bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200 z-50">
+                  <li>
+                    <Link to="/tour/nepal" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-700 transition">Nepal</Link>
+                  </li>
+                  <li>
+                    <Link to="/tour/tibet" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-700 transition">Tibet</Link>
+                  </li>
+                  <li>
+                    <Link to="/tour/bhutan" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-700 transition">Bhutan</Link>
+                  </li>
+                  <li>
+                    <Link to="/tour/india" className="block px-4 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-700 transition">India</Link>
+                  </li>
+                </ul>
               </li>
 
               <li>

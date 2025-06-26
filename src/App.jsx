@@ -21,6 +21,9 @@ import CustomerDetails from "./components/homepage/AdminDashboard/Components/Cus
 import AuthPage from "./pages/AuthPage";
 import TourOverviewPage from "./pages/TourOverviewPage";
 import PackageDetails from "./components/homepage/AdminDashboard/Components/Package";
+import ActivityOverviewPage from "./pages/ActivityOverviewPage";
+import MagnificentTourOverviewPage from "./pages/MagnificentTourOverviewPage";
+import TrekkingOverviewPage from "./pages/TrekkingOverviewPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -228,6 +231,30 @@ function App() {
             element={
               <Suspense>
                 <TourOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/activities/:activityId"
+            element={
+              <Suspense>
+                <ActivityOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tours/:tourId"
+            element={
+              <Suspense>
+                <MagnificentTourOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/trekking/:trekkingId"
+            element={
+              <Suspense>
+                <TrekkingOverviewPage />
               </Suspense>
             }
           />
