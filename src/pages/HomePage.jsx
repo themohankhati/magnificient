@@ -4,6 +4,7 @@ import HeroSection from "../components/homepage/HeroSection";
 import WhyBookWithUs from "../components/homepage/WhyBookWithUs";
 import Destinations from "../components/homepage/Destinations";
 import BestSelections from "../components/homepage/BestSelections";
+import TrekkingSection from "../components/homepage/TrekkingSection";
 import Activities from "../components/homepage/Activities";
 import FreeCancellationPolicy from "../shared_components/FreeCancellationPolicy";
 import ToursSection from "../components/homepage/ToursSection";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <WhyBookWithUs />
       <Destinations />
       <BestSelections />
+      <TrekkingSection />
       <Activities />
       <FreeCancellationPolicy />
       <ToursSection />
@@ -45,7 +47,7 @@ export default function HomePage() {
           showDots: true,
           showArrows: true
         }} */}
-      />
+      
       
       
       

@@ -16,11 +16,14 @@ import BardiyaNationalPark2 from "./components/tour/jungle-safari/bardiya-nation
 import BardiyaNationalPark3 from "./components/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark3";
 import BardiyaNationalPark4 from "./components/tour/jungle-safari/bardiya-national-park/BardiyaNationalPark4";
 import Dashboard from "./components/homepage/AdminDashboard/Components/Dashboard"
-import VendorDetails from "./components/homepage/AdminDashboard/Components/Package";
 import UserDetails from "./components/homepage/AdminDashboard/Components/UserDetails";
 import CustomerDetails from "./components/homepage/AdminDashboard/Components/CustomerDetails";
 import AuthPage from "./pages/AuthPage";
 import TourOverviewPage from "./pages/TourOverviewPage";
+import PackageDetails from "./components/homepage/AdminDashboard/Components/Package";
+import ActivityOverviewPage from "./pages/ActivityOverviewPage";
+import MagnificentTourOverviewPage from "./pages/MagnificentTourOverviewPage";
+import TrekkingOverviewPage from "./pages/TrekkingOverviewPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
@@ -200,10 +203,10 @@ function App() {
             }
           />
         <Route
-            path="/package"
+            path="/dashboardpackage"
             element={
               <Suspense>
-                <VendorDetails />
+                <PackageDetails />
               </Suspense>
             }
           />
@@ -228,6 +231,30 @@ function App() {
             element={
               <Suspense>
                 <TourOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/activities/:activityId"
+            element={
+              <Suspense>
+                <ActivityOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tours/:tourId"
+            element={
+              <Suspense>
+                <MagnificentTourOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/trekking/:trekkingId"
+            element={
+              <Suspense>
+                <TrekkingOverviewPage />
               </Suspense>
             }
           />
