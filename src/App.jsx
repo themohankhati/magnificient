@@ -24,13 +24,19 @@ import PackageDetails from "./components/homepage/AdminDashboard/Components/Pack
 import ActivityOverviewPage from "./pages/ActivityOverviewPage";
 import MagnificentTourOverviewPage from "./pages/MagnificentTourOverviewPage";
 import TrekkingOverviewPage from "./pages/TrekkingOverviewPage";
+import {QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
+      
+      <QueryClientProvider client={queryClient}>
+
       <Router>
         <Routes>
           <Route
@@ -40,7 +46,7 @@ function App() {
                 <HomePage />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/destinations"
             element={
@@ -48,7 +54,7 @@ function App() {
                 <Destinations />
               </Suspense>
             }
-          />
+            />
             <Route
               path="/activities"
               element={
@@ -56,7 +62,7 @@ function App() {
                   <ActivitiesSection />
                 </Suspense>
               }
-            />
+              />
           <Route
             path="/aboutus"
             element={
@@ -64,7 +70,7 @@ function App() {
                 <AboutUs />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/annapurnabasecamp"
@@ -82,7 +88,7 @@ function App() {
                 <ChitwanNationalPark1 />
               </Suspense>
             }
-          />
+            />
              <Route
             path="/login"
             element={
@@ -90,7 +96,7 @@ function App() {
                 <AuthPage />
               </Suspense>
             }
-          />
+            />
                <Route
             path="/register"
             element={
@@ -98,7 +104,7 @@ function App() {
                 <AuthPage />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/package"
             element={
@@ -106,7 +112,7 @@ function App() {
                 <ChitwanNationalPark2 />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/chitwan-national-park3"
@@ -115,7 +121,7 @@ function App() {
                 <ChitwanNationalPark3 />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/chitwan-national-park4"
@@ -133,7 +139,7 @@ function App() {
                 <ChitwanNationalPark5 />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/bardiya-national-park1"
@@ -151,7 +157,7 @@ function App() {
                 <BardiyaNationalPark2 />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/bardiya-national-park3"
@@ -160,7 +166,7 @@ function App() {
                 <BardiyaNationalPark3 />
               </Suspense>
             }
-          />
+            />
             
             <Route
             path="/bardiya-national-park4"
@@ -169,7 +175,7 @@ function App() {
                 <BardiyaNationalPark4 />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/contactus"
             element={
@@ -185,7 +191,7 @@ function App() {
                 <Dashboard />
               </Suspense>
             }
-          />
+            />
              <Route
             path="/login"
             element={
@@ -193,7 +199,7 @@ function App() {
                 <AuthPage />
               </Suspense>
             }
-          />
+            />
                <Route
             path="/register"
             element={
@@ -201,7 +207,7 @@ function App() {
                 <AuthPage />
               </Suspense>
             }
-          />
+            />
         <Route
             path="/dashboardpackage"
             element={
@@ -209,7 +215,7 @@ function App() {
                 <PackageDetails />
               </Suspense>
             }
-          />
+            />
            <Route
             path="/userdetails"
             element={
@@ -217,7 +223,7 @@ function App() {
                 <UserDetails />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/customerdetails"
             element={
@@ -233,7 +239,7 @@ function App() {
                 <TourOverviewPage />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/activities/:activityId"
             element={
@@ -241,7 +247,7 @@ function App() {
                 <ActivityOverviewPage />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/tours/:tourId"
             element={
@@ -249,7 +255,7 @@ function App() {
                 <MagnificentTourOverviewPage />
               </Suspense>
             }
-          />
+            />
           <Route
             path="/trekking/:trekkingId"
             element={
@@ -257,9 +263,10 @@ function App() {
                 <TrekkingOverviewPage />
               </Suspense>
             }
-          />
+            />
         </Routes>
       </Router>
+    </QueryClientProvider>
     </>
   );
 }

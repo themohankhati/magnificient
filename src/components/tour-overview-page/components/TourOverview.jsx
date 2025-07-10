@@ -1,18 +1,15 @@
 // src/components/TourOverview.jsx
 
-import React from 'react';
-import ImageSlider from './ImageSlider';
+import React from "react";
+import ImageSlider from "./ImageSlider";
 
-const TourOverview = ({
-  tourData,
-  sliderConfig = {},
-  className = ''
-}) => {
+// eslint-disable-next-line react/prop-types
+const TourOverview = ({ tourData, sliderConfig = {}, className = "" }) => {
   const {
     autoSlide = true,
     autoSlideInterval = 5000,
     showDots = true,
-    showArrows = true
+    showArrows = true,
   } = sliderConfig;
 
   if (!tourData) {
@@ -52,18 +49,26 @@ const TourOverview = ({
           <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-200">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-blue-600">{tourData.trips}</div>
+                <div className="text-2xl font-bold text-blue-600">
+                  {tourData.trips}
+                </div>
                 <div className="text-sm text-gray-600">Available Trips</div>
               </div>
               {tourData.bestTime && (
                 <div>
-                  <div className="text-lg font-semibold text-green-600">{tourData.bestTime}</div>
-                  <div className="text-sm text-gray-600">Best Time to Visit</div>
+                  <div className="text-lg font-semibold text-green-600">
+                    {tourData.bestTime}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Best Time to Visit
+                  </div>
                 </div>
               )}
               {tourData.difficulty && (
                 <div>
-                  <div className="text-lg font-semibold text-orange-600">{tourData.difficulty}</div>
+                  <div className="text-lg font-semibold text-orange-600">
+                    {tourData.difficulty}
+                  </div>
                   <div className="text-sm text-gray-600">Difficulty Level</div>
                 </div>
               )}
@@ -73,8 +78,11 @@ const TourOverview = ({
 
         {/* Description */}
         <div className="prose prose-lg max-w-none">
-          {tourData.description.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="text-gray-700 leading-relaxed mb-4 text-justify">
+          {tourData.description.split("\n\n").map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-gray-700 leading-relaxed mb-4 text-justify"
+            >
               {paragraph}
             </p>
           ))}
@@ -83,7 +91,9 @@ const TourOverview = ({
         {/* Highlights Section for Trekking */}
         {tourData.highlights && (
           <div className="mt-8 p-6 bg-gray-50 rounded-lg">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Trekking Highlights</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Trekking Highlights
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {tourData.highlights.map((highlight, index) => (
                 <div key={index} className="flex items-center">
@@ -103,9 +113,9 @@ const TourOverview = ({
                 {tourData.country}
               </span>
             </div>
-            
+
             <div className="text-sm text-gray-500">
-              {tourData.trips ? 'Trekking' : 'Tour'} ID: {tourData.id}
+              {tourData.trips ? "Trekking" : "Tour"} ID: {tourData.id}
             </div>
           </div>
         </div>
