@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Destinations from "./components/homepage/Destinations";
 import ActivitiesSection from "./components/homepage/Activities";
-import ContactUs from "./pages/contactUs";
+// import ContactUs from "./pages/contactUs";
 import AnnapurnaBaseCamp from "./components/homepage/Trek/AnnapurnaBaseCamp";
 import ChitwanNationalPark1 from "./components/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark1";
 import ChitwanNationalPark2 from "./components/tour/jungle-safari/chitwan-national-park/ChitwanNationalPark2";
@@ -173,14 +173,14 @@ function App() {
                 </Suspense>
               }
             />
-            <Route
+            {/* <Route
               path="/contactus"
               element={
                 <Suspense>
                   <ContactUs />
                 </Suspense>
               }
-            />
+            /> */}
             <Route
               path="/dashboard"
               element={
