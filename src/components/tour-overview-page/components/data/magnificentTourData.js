@@ -57,14 +57,23 @@ export const magnificentToursData = [
     country: "Nepal"
   },
   {
-    id: "religious-spiritual-tour",
+    id: "India Tours",
     img: "religious-spiritual.jpg",
-    title: "Religious and Spiritual Tours",
-    count: "7 tours",
-    description: `Embark on a journey of spiritual discovery with our Religious and Spiritual Tours. Visit sacred sites, monasteries, and pilgrimage destinations, and participate in traditional rituals and festivals.`,
+    title: "India Tours",
+    count: "3 tours",
+    description: `India is a vibrant tapestry of color, culture, and contrast — a land where ancient traditions blend seamlessly with modern life. From the towering snow-clad peaks of the Himalayas in the north to the palm-fringed beaches and tranquil backwaters of the south, India stretches across a landscape as diverse as its people. Every region tells its own story, shaped by centuries of history, myth, art, and spirit.
+
+Travelers are invited to walk through time as they explore magnificent forts, royal palaces, and sacred temples that echo with the legacies of kings and sages. Whether you're standing before the marble wonder of the Taj Mahal, wandering through the pink-hued streets of Jaipur, or watching the Ganga Aarti light up the riverbanks in Varanasi, India captivates with its soul-stirring beauty. The country is also a spiritual sanctuary, offering seekers the chance to meditate in Himalayan monasteries, join yoga retreats in Rishikesh, or simply find stillness in a land deeply rooted in faith.
+
+Nature reveals itself in breathtaking ways — from desert dunes and dense jungles to emerald tea gardens and lush river valleys. Adventure awaits in every corner, whether you're trekking in Ladakh, cruising the backwaters of Kerala, or spotting Bengal tigers in the wild. Food, too, becomes a journey in India, where every region serves up a symphony of spices and flavors — from sizzling street snacks to elaborate feasts passed down through generations.
+
+What truly sets India apart is the warmth of its people.`,
     images: [
-      "/Images/tour/spiritual1.png",
-      "/Images/tour/cultural2.png",
+      '/Images/india/india1.jpg',
+        '/Images/india/india2.jpg',
+        '/Images/india/india3.jpg',
+        '/Images/india/india4.jpg',
+        '/Images/india/india5.jpg',
      
     ],
     country: "Nepal"
