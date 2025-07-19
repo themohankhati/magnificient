@@ -10,11 +10,11 @@ export default function TrekkingSection() {
         {/* Left: Text */}
         <div className="flex-1 text-left">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Journey to the <br /> Himalayan Lands
+          Explore the<br />heart of the Himalayas
           </h2>
           <div className="w-20 h-1 bg-green-600 mb-4" />
           <p className="text-lg text-gray-700">
-            Unveiling Hidden Wonders: Nepal, Bhutan, Tibet, and Beyond - Inspire Your Journey!
+          Where Wonders Await: Discover Nepal, Bhutan, Tibet, and Beyond
           </p>
         </div>
         {/* Right: Cards */}

@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const WhyBookWithUs = () => {
+  const navigate = useNavigate();
   return (
     <section className="text-center py-16 bg-gray-100">
       <h2 className="text-3xl font-bold mb-10">
@@ -28,13 +30,16 @@ const WhyBookWithUs = () => {
 
       {/* CTA Button */}
       <div className="mt-10">
-        <button className="bg-green-600 hover:bg-green-700 text-white py-4 px-3  text-sm font-bold transition duration-300">
+        <button
+          className="bg-green-600 hover:bg-green-700 rounded-lg  text-white py-4 px-3  text-sm font-bold transition duration-300"
+          onClick={() => navigate("/aboutus")}
+        >
           FIND OUT MORE
         </button>
       </div>
     </section>
   );
-};
+}; 
 
 const features = [
   {
