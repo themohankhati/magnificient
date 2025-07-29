@@ -1,3 +1,5 @@
+import React from "react";
+
 const ImageGallery = ({ images }) => {
     return (
       <div className="grid grid-cols-7 gap-4 px-4 mb-10">

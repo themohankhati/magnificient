@@ -27,6 +27,7 @@ import TrekkingOverviewPage from "./pages/TrekkingOverviewPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
+const TourTrekPage = lazy(() => import("./pages/TourTrekPage"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -258,6 +259,14 @@ function App() {
               element={
                 <Suspense>
                   <TrekkingOverviewPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/package/:id"
+              element={
+                <Suspense>
+                  <TourTrekPage />
                 </Suspense>
               }
             />

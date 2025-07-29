@@ -1,3 +1,5 @@
+import React from "react";
+
 const TourDescription = ({ title, description }) => (
     <div className="max-w-7xl mx-auto text-left mt-4 px-6">
       <h1 className="text-4xl font-bold text-gray-900 mb-2 mt-4">{title}</h1>

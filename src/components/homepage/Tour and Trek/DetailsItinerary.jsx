@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-export default function DetailsItinerary({ faqs }) {
+export default function DetailsItinerary({ itinerary }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -19,7 +19,7 @@ export default function DetailsItinerary({ faqs }) {
         </h2>
 
         <div className="flex flex-col gap-6 cursor-pointer">
-          {faqs.map((faq, index) => (
+          {itinerary.map((item, index) => (
             <div
               key={index}
               className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200"
@@ -29,7 +29,7 @@ export default function DetailsItinerary({ faqs }) {
                 onClick={() => toggleFAQ(index)}
               >
                 <span className="text-lg font-semibold text-left text-gray-900">
-                  {`Day ${faq.day_number}: ${faq.title}`}
+                  {`Day ${item.day_number}: ${item.title}`}
                 </span>
                 <span className="text-xl text-green-700">
                   {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -38,7 +38,7 @@ export default function DetailsItinerary({ faqs }) {
 
               {openIndex === index && (
                 <div className="px-6 py-4 text-gray-700 text-base leading-relaxed border-t border-gray-200 transition-all duration-300 ease-in-out">
-                  {faq.description}
+                  {item.description}
                 </div>
               )}
             </div>

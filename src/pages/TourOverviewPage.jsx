@@ -6,6 +6,7 @@ import TourOverview from '../components/tour-overview-page/components/TourOvervi
 import Header from '../shared_components/Header';
 import Footer from '../shared_components/Footer';
 import { getTourData } from '../components/tour-overview-page/components/data/tourData';
+import CountryTourCards from '../components/tour-overview-page/components/CountryTourCards';
 
 const TourOverviewPage = ({
   customSliderConfig
@@ -40,6 +41,7 @@ const TourOverviewPage = ({
           sliderConfig={customSliderConfig}
           className="mb-12"
         />
+        {tourData.country && <CountryTourCards country={tourData.country} />}
       </main>
 
       {/* Footer could go here */}

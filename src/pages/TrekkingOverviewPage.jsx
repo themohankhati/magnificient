@@ -4,6 +4,7 @@ import TourOverview from '../components/tour-overview-page/components/TourOvervi
 import Header from '../shared_components/Header';
 import Footer from '../shared_components/Footer';
 import { getTrekkingData } from '../components/tour-overview-page/components/data/trekkingData';
+import ActivityTourCards from '../components/tour-overview-page/components/ActivityTourCards';
 
 const TrekkingOverviewPage = ({ customSliderConfig }) => {
   const { trekkingId } = useParams();
@@ -31,6 +32,7 @@ const TrekkingOverviewPage = ({ customSliderConfig }) => {
           sliderConfig={customSliderConfig}
           className="mb-12"
         />
+        <ActivityTourCards categoryPlace={trekkingData.id} country={trekkingData.country} />
       </main>
       <Footer />
     </div>
