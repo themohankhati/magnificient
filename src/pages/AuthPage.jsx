@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
 const sliderImages = [
   "/Images/EVEREST.jpg",
   "/Images/rafting.jpg",
@@ -23,14 +23,42 @@ const AuthPage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const baseURL = "http://localhost:3000/api/users";
+
+  try {
     if (isLogin) {
-      console.log("Logging in with:", email, password);
+      const response = await axios.post(`${baseURL}/login`, {
+        email,
+        password,
+      });
+
+      const { token, user } = response.data;
+      localStorage.setItem("token", token); // Store token
+      console.log("Login successful:", user);
+      alert("Login successful!");
     } else {
-      console.log("Registering with:", name, email, password);
+      const [first_name, ...rest] = name.trim().split(" ");
+      const last_name = rest.join(" ") || "-";
+      const role = "user";
+
+      await axios.post(`${baseURL}/register`, {
+        first_name,
+        last_name,
+        email,
+        password,
+        role,
+      });
+
+      alert("Registration successful! Please log in.");
+      setIsLogin(true); // Switch to login after successful registration
     }
-  };
+  } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    alert(error.response?.data || "Something went wrong.");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
