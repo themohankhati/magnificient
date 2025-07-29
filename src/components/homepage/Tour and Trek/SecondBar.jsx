@@ -14,26 +14,33 @@ const tabs = [
   { name: "Overview", icon: FaBook },
   { name: "Itinerary", icon: FaList },
   { name: "Includes", icon: FaCheckCircle },
-  { name: "Requirements", icon: FaSuitcase },
+  { name: "Excludes", icon: FaSuitcase },
   { name: "TripMap", icon: FaMapMarkerAlt },
   { name: "Gallery", icon: FaImages },
   { name: "FAQs", icon: FaQuestionCircle },
 ];
 
+// Map tab names to section IDs
+const sectionIdMap = {
+  Overview: "Overview",
+  Itinerary: "Itinerary",
+  Includes: "Includes",
+  Excludes: "Excludes",
+  TripMap: "TripMap",
+  Gallery: "PhotoGallery",
+  FAQs: "FAQs",
+};
+
 export default function SecondBar({ id }) {
   const [activeTab, setActiveTab] = useState("Overview");
 
   // Function to handle scrolling to the section
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (tabName) => {
+    const sectionId = sectionIdMap[tabName] || tabName;
     const section = document.getElementById(sectionId);
     if (section) {
-      // Set the active tab
-      setActiveTab(sectionId);
-      
-      // Scroll to the section with smooth behavior
+      setActiveTab(tabName);
       section.scrollIntoView({ behavior: "smooth" });
-      
-      // Update URL with hash for better navigation
       window.history.pushState(null, null, `#${sectionId}`);
     }
   };
@@ -42,7 +49,6 @@ export default function SecondBar({ id }) {
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (hash) {
-      // If URL has a hash, activate that tab and scroll to it
       setActiveTab(hash);
       setTimeout(() => {
         const section = document.getElementById(hash);

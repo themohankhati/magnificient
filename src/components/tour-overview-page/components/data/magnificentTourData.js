@@ -76,7 +76,7 @@ What truly sets India apart is the warmth of its people.`,
         '/Images/india/india5.jpg',
      
     ],
-    country: "Nepal"
+    country: "India"
   },
   {
     id: "motorbike-tour",

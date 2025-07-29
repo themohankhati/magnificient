@@ -3,8 +3,6 @@ import TourTrek from "../../../homepage/Tour and Trek/TourTrek";
 import { getPackages } from "../../../../services/packageService";
 
 function ChitwanNationalPark1() {
-
-  
   const [packages, setPackages] = useState([]);
 
   const getChitwanPackages = async () => {
@@ -12,7 +10,6 @@ function ChitwanNationalPark1() {
       const chitwanData = await getPackages();
 
       setPackages(chitwanData);
-
     } catch (error) {
       console.error("Error fetching package data:", error);
     }
@@ -23,10 +20,9 @@ function ChitwanNationalPark1() {
   }, []);
 
   const filteredPackages = packages.filter(
-    (pkg) => pkg.package_name === "04 Nights 05 Days Jungle Safari Tour Kathmandu-Chitwan"
+    (pkg) => pkg.package_name === "04 Nights 05 Days Jungle Safari Tour Kathmandu-Chitwan",
   );
 
-  
   return (
     <>
       {filteredPackages.map((pkg, index) => (
@@ -40,9 +36,8 @@ function ChitwanNationalPark1() {
           excludes={pkg.package_excludes}
           itinerary={pkg.itinerary}
           detailsItems={pkg.tripDetails}
-            
-          />
-        ))}
+        />
+      ))}
     </>
   );
 }

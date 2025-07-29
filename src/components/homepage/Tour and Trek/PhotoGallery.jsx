@@ -12,7 +12,7 @@ function PhotoGallery({ images }) {
           </div>
         </h2>
       <ul className="grid grid-cols-2 gap-4">
-        {images?.map((item, index) => (
+        {images?.slice(0, 6).map((item, index) => (
           <li
             key={index}
             className="bg-white shadow-xl rounded overflow-hidden h-[240px]"

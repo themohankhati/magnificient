@@ -4,6 +4,7 @@ import TourOverview from '../components/tour-overview-page/components/TourOvervi
 import Header from '../shared_components/Header';
 import Footer from '../shared_components/Footer';
 import { getMagnificentTourData } from '../components/tour-overview-page/components/data/magnificentTourData';
+import ActivityTourCards from '../components/tour-overview-page/components/ActivityTourCards';
 
 const MagnificentTourOverviewPage = ({ customSliderConfig }) => {
   const { tourId } = useParams();
@@ -31,6 +32,7 @@ const MagnificentTourOverviewPage = ({ customSliderConfig }) => {
           sliderConfig={customSliderConfig}
           className="mb-12"
         />
+        <ActivityTourCards categoryType={tourData.id} country={tourData.country} />
       </main>
       <Footer />
     </div>
