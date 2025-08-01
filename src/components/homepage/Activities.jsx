@@ -4,22 +4,23 @@ import { activitiesData } from "../tour-overview-page/components/data/activityDa
 
 const ActivitiesSection = () => {
   const navigate = useNavigate();
+
   return (
-    <section className="text-center py-12">
+    <section className="text-center py-12 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">
           <span className="text-blue-900 underline">Activities</span> We Offer
         </h2>
 
-        {/* Grid Container for 2 rows */}
-        <div className="flex flex-wrap justify-center gap-15 max-w-5xl mx-auto">
+        {/* Responsive Grid Container */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center max-w-6xl mx-auto">
           {activitiesData.map((activity) => (
             <div
               key={activity.id}
-              className="flex items-center text-black no-underline rounded-lg transition-transform transform hover:scale-105 basis-[30%] max-w-[300px] cursor-pointer"
+              className="flex w-full max-w-xs items-center bg-white text-black no-underline rounded-lg transition-transform hover:scale-105 cursor-pointer shadow-sm"
               onClick={() => navigate(`/activities/${activity.id}`)}
             >
-              <div className="w-32 h-20 overflow-hidden rounded-md">
+              <div className="w-28 h-20 overflow-hidden rounded-l-md">
                 <img
                   src={`Images/${activity.image}`}
                   alt={activity.title}
@@ -28,7 +29,7 @@ const ActivitiesSection = () => {
               </div>
               <div className="pl-4 text-left">
                 <h3 className="text-lg font-semibold mb-1">{activity.title}</h3>
-                <p className="text-sm">{activity.places} different places</p>
+                <p className="text-sm text-gray-600">{activity.places} different places</p>
               </div>
             </div>
           ))}
@@ -38,7 +39,7 @@ const ActivitiesSection = () => {
         <div className="mt-14">
           <a
             href="#explore-more"
-            className="bg-green-700 text-white text-lg px-6 py-2 rounded-md transition-colors hover:bg-green-600"
+            className="bg-green-700 text-white text-lg px-6 py-2 rounded-md transition hover:bg-green-600"
           >
             Explore More
           </a>

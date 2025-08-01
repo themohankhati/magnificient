@@ -29,6 +29,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const TourTrekPage = lazy(() => import("./pages/TourTrekPage"));
+const PackagesForm = lazy(() => import("./dashboard/packagess/PackagesForm"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -268,6 +269,14 @@ function App() {
               element={
                 <Suspense>
                   <TourTrekPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/packages"
+              element={
+                <Suspense>
+                  <PackagesForm />
                 </Suspense>
               }
             />
