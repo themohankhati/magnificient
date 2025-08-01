@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-// import { ArrowRight, ArrowLeft } from "lucide-react";
 import Card from "../../shared_components/Card";
 
 const trekData = [
@@ -11,7 +10,8 @@ const trekData = [
     duration: "5 Days",
     months: "March - May",
     difficulty: "Easy",
-    description: "Enjoy the exploration of incredible flora, spectacular wildlife and natural beauty.",
+    description:
+      "Enjoy the exploration of incredible flora, spectacular wildlife and natural beauty.",
     price: "USD 600",
   },
   {
@@ -21,7 +21,8 @@ const trekData = [
     duration: "12 Days",
     months: "April - June",
     difficulty: "Challenging",
-    description: "Trek to the base of the world's highest peak, Everest. The trip you will never forget.",
+    description:
+      "Trek to the base of the world's highest peak, Everest. The trip you will never forget.",
     price: "USD 1500",
   },
   {
@@ -31,7 +32,8 @@ const trekData = [
     duration: "10 Days",
     months: "March - May",
     difficulty: "Moderate",
-    description: "A royal trekking experience with breathtaking views. The trip you will never forget",
+    description:
+      "A royal trekking experience with breathtaking views. The trip you will never forget",
     price: "USD 1300",
   },
   {
@@ -51,7 +53,8 @@ const trekData = [
     duration: "14 Days",
     months: "September - November",
     difficulty: "Hard",
-    description: "One of the most iconic trekking routes in the world. Get ready for Unforgettable adventures",
+    description:
+      "One of the most iconic trekking routes in the world. Get ready for Unforgettable adventures",
     price: "USD 1800",
   },
   {
@@ -61,10 +64,10 @@ const trekData = [
     duration: "12 Days",
     months: "May - August",
     difficulty: "Moderate",
-    description: "Explore the ancient kingdom of Mustang in a remote trekking adventure.",
+    description:
+      "Explore the ancient kingdom of Mustang in a remote trekking adventure.",
     price: "USD 1600",
   },
-  
 ];
 
 const CARDS_PER_PAGE = 3;
@@ -77,14 +80,6 @@ export default function BestSelection() {
     setCurrentPage(pageIndex);
   };
 
-  const handleNext = () => {
-    setCurrentPage((prev) => (prev + 1) % pages);
-  };
-
-  const handlePrev = () => {
-    setCurrentPage((prev) => (prev - 1 + pages) % pages);
-  };
-
   const paginatedData = trekData.slice(
     currentPage * CARDS_PER_PAGE,
     currentPage * CARDS_PER_PAGE + CARDS_PER_PAGE
@@ -92,58 +87,43 @@ export default function BestSelection() {
 
   return (
     <section className="text-center bg-[#f0fcf9] py-16">
-      <div className="max-w-6xl mx-auto px-8 ">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold">
           Best Selection From{" "}
           <span className="text-[#14205c] underline">Travellers</span>
         </h2>
-        <p className="text-sm mt-3 mb-10">
+        <p className="text-sm mt-3 mb-10 text-gray-600">
           Discover top adventures chosen by our guests.
         </p>
 
-        <div className="relative">
-          {/* Cards */}
-          <motion.div className="flex gap-7 justify-center transition-all duration-500">
-            {paginatedData.map((trek, index) => (
-              <div key={index} className="min-w-[300px] max-w-[350px]">
-                <Card
-                  image={`Images/${trek.image}`}
-                  country={trek.country}
-                  title={trek.title}
-                  duration={trek.duration}
-                  months={trek.months}
-                  difficulty={trek.difficulty}
-                  description={trek.description}
-                />
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Navigation Arrows */}
-          {/* <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md"
-          >
-            <ArrowRight size={20} />
-          </button> */}
-        </div>
+        {/* Card Grid - responsive */}
+        <motion.div
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center transition-all duration-500"
+        >
+          {paginatedData.map((trek, index) => (
+            <Card
+              key={index}
+              image={`Images/${trek.image}`}
+              country={trek.country}
+              title={trek.title}
+              duration={trek.duration}
+              months={trek.months}
+              difficulty={trek.difficulty}
+              description={trek.description}
+            />
+          ))}
+        </motion.div>
 
         {/* Pagination Buttons */}
-        <div className="mt-8 flex justify-center gap-2 ">
+        <div className="mt-10 flex justify-center gap-2">
           {Array.from({ length: pages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => handlePageChange(idx)}
-              className={`w-8 h-8 rounded-full text-sm font-medium cursor-pointer ${
+              className={`w-8 h-8 rounded-full text-sm font-medium cursor-pointer transition duration-300 ${
                 currentPage === idx
                   ? "bg-green-600 text-white"
-                  : "bg-white border border-gray-300 text-black"
+                  : "bg-white border border-gray-300 text-black hover:bg-gray-100"
               }`}
             >
               {idx + 1}

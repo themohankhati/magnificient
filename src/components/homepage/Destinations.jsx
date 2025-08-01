@@ -11,17 +11,19 @@ const Destinations = () => {
   ];
 
   return (
-    <>
-      <section className="text-center py-16">
+    <section className="text-center py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold mb-10 relative inline-block">
           Top Destinations
           <span className="block w-12 h-1 bg-green-600 mt-2 mx-auto"></span>
         </h2>
-        <div className="flex flex-wrap justify-center gap-22">
+
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
           {destinations.map((destination, index) => (
             <div
               key={index}
-              className="text-center rounded-xl overflow-hidden shadow-lg max-w-[220px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+              className="w-full max-w-[220px] text-center rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
               onClick={() => {
                 if (destination.id) {
                   navigate(`/tour/${destination.id}`);
@@ -39,8 +41,8 @@ const Destinations = () => {
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

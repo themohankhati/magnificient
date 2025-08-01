@@ -83,7 +83,7 @@ const PackageForm = () => {
       <input name="price" placeholder="Price" onChange={handleFormChange} />
 
       <label>Main Images</label>
-      <input type="file" multiple onChange={handleImageUpload} />
+      <input type="file" className="w-full border rounded px-3 py-2" placeholder="Choose Images" multiple onChange={handleImageUpload} />
 
       {form.tripDetails.map((detail, i) => (
         <div key={i}>
