@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:3000/";
 export const useGetDestinations = () => {
   return useQuery({
     queryKey: ["GET_DESTINATIONS"],
-    queryFn: () => {
+    queryFn() {
       return axios.get(`${baseUrl}api/destination`);
     },
     onSuccess(res) {
