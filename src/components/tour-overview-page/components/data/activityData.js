@@ -13,7 +13,7 @@ export const activitiesData = [
       "/Images/activities/jungle3.jpg"
 
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "paragliding",
@@ -27,7 +27,7 @@ export const activitiesData = [
       "/Images/activities/paragliding2.jpg",
       "/Images/activities/paragliding3.jpg"
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "rafting",
@@ -40,7 +40,7 @@ export const activitiesData = [
       "/Images/activities/rafting2.jpg",
       "/Images/activities/rafting1.jpg"
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "bungee-jumping",
@@ -53,7 +53,7 @@ export const activitiesData = [
       "/Images/activities/bungee1.jpg",
       "/Images/activities/bungee2.jpeg",
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "climbing-expedition",
@@ -68,7 +68,7 @@ export const activitiesData = [
       "/Images/activities/expedition3.jpg",
       "/Images/climbingExpedition.jpg"
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "mountain-flight",
@@ -83,7 +83,7 @@ export const activitiesData = [
       "/Images/activities/expedition3.jpg"
 
     ],
-    country: "Nepal"
+    countries: ["Nepal", "India", "Tibet", "Bhutan"]
   }
 ];
 
