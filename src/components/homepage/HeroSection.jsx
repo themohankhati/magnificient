@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
-// Slide variants for entry/exit
 const slideVariants = {
   enter: (direction) => ({
     x: direction > 0 ? "100%" : "-100%",
@@ -26,9 +25,8 @@ const slideVariants = {
   }),
 };
 
-// Text animation
 const textVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -59,7 +57,6 @@ const HeroSection = () => {
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-play effect
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
@@ -81,8 +78,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-      {/* Slides */}
+    <section className="relative w-full h-[60vh] sm:h-[50vh] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
@@ -93,7 +89,6 @@ const HeroSection = () => {
           exit="exit"
           className="absolute inset-0"
         >
-          {/* Background image with zoom-in effect */}
           <motion.img
             src={slides[currentSlide].image}
             alt={slides[currentSlide].title}
@@ -101,20 +96,17 @@ const HeroSection = () => {
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 5, ease: "easeOut" }}
+            draggable={false}
           />
-
-          {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-
-          {/* Slide Content */}
           <motion.div
-            className="absolute bottom-10 left-6 md:left-12 text-white max-w-lg"
+            className="absolute bottom-6 left-4 sm:left-6 md:left-12 text-white max-w-xs sm:max-w-md"
             initial="hidden"
             animate="visible"
             variants={textVariants}
           >
             <motion.h3
-              className="text-2xl md:text-4xl font-bold text-primary-green mb-3 drop-shadow-lg"
+              className="text-xl sm:text-2xl md:text-4xl font-bold text-primary-green mb-2 sm:mb-3 drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -122,7 +114,7 @@ const HeroSection = () => {
               {slides[currentSlide].title}
             </motion.h3>
             <motion.p
-              className="text-white/90 text-base md:text-lg leading-relaxed drop-shadow"
+              className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed drop-shadow"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -133,46 +125,44 @@ const HeroSection = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Left Arrow */}
+      {/* Navigation */}
       <motion.button
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 z-20 shadow-lg"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 z-20 shadow-lg"
         onClick={() => paginate(-1)}
         whileHover={{ scale: 1.15, x: -2 }}
         whileTap={{ scale: 0.9 }}
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 sm:w-6 h-5 sm:h-6" />
       </motion.button>
-
-      {/* Right Arrow */}
       <motion.button
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 z-20 shadow-lg"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 z-20 shadow-lg"
         onClick={() => paginate(1)}
         whileHover={{ scale: 1.15, x: 2 }}
         whileTap={{ scale: 0.9 }}
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6" />
       </motion.button>
 
       {/* Play/Pause */}
       <motion.button
-        className="absolute bottom-5 right-5 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 shadow-lg z-20"
+        className="absolute bottom-3 sm:bottom-5 right-3 sm:right-5 w-8 h-8 sm:w-10 sm:h-10 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/50 shadow-lg z-20"
         onClick={() => setIsAutoPlaying(!isAutoPlaying)}
         whileHover={{ rotate: 15, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
         {isAutoPlaying ? (
-          <Pause className="w-5 h-5" />
+          <Pause className="w-4 sm:w-5 h-4 sm:h-5" />
         ) : (
-          <Play className="w-5 h-5 ml-0.5" />
+          <Play className="w-4 sm:w-5 h-4 sm:h-5 ml-0.5" />
         )}
       </motion.button>
 
       {/* Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
         {slides.map((_, index) => (
           <motion.button
             key={index}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               index === currentSlide
                 ? "bg-white"
                 : "bg-white/40 hover:bg-white/70"
