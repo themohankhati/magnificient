@@ -48,7 +48,7 @@ export default function HomePage() {
       >
         <HeroSection />
       </motion.div>
- <motion.div
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
@@ -56,7 +56,6 @@ export default function HomePage() {
       >
         <KnowUs />
       </motion.div>
-      {/* Why Book With Us */}
       <motion.div
         initial="hidden"
         whileInView="visible"
