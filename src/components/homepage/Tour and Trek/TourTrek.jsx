@@ -37,37 +37,37 @@ export default function TourTrek({
   return (
     <>
       <Header />
-      <section className="bg-blue-100 h-[600px] w-full relative overflow-hidden">
+      <section className="bg-blue-100 h-[400px] sm:h-[500px] md:h-[600px] w-full relative overflow-hidden">
         <img
           src={heroImages[current]}
           alt="Hero"
-          className="bg-blue-100 h-[600px] w-full object-cover transition-all duration-700"
+          className="bg-blue-100 h-[400px] sm:h-[500px] md:h-[600px] w-full object-cover transition-all duration-700"
         />
         {heroImages.length > 1 && (
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {heroImages.map((_, idx) => (
               <span
                 key={idx}
-                className={`w-3 h-3 rounded-full ${current === idx ? "bg-green-600" : "bg-white border border-green-600"}`}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${current === idx ? "bg-green-600" : "bg-white border border-green-600"}`}
                 style={{ display: idx < heroImages.length ? "inline-block" : "none" }}
               ></span>
             ))}
           </div>
         )}
       </section>
-      <SecondBar  />
+      <SecondBar />
 
-      <div className="flex flex-col lg:flex-row gap-6 p-5">
-        <div className="lg:w-2/3 p-13">
-          <h1 className="text-4xl font-bold text-[#14205c] mb-10 tracking-wide">{title}</h1>
-          <p section id = "Overview">{description}</p>
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8">
+        <div className="lg:w-2/3 lg:pr-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#14205c] mb-6 sm:mb-8 md:mb-10 tracking-wide mt-6 sm:mt-8">{title}</h1>
+          <p section id="Overview" className="text-sm sm:text-base leading-relaxed mb-6">{description}</p>
 
-          <DetailsCard detailsItems={detailsItems}/>
+          <DetailsCard detailsItems={detailsItems} />
 
           <ShortItinerary itinerary={itinerary} />
           <DetailsItinerary itinerary={itinerary} />
 
-          <div className="'flex flex-col w-full mt-10 ">
+          <div className="flex flex-col w-full mt-8 sm:mt-10">
             <div id="Includes">
               <PackageIncludes includes={includes} />
             </div>
@@ -77,7 +77,7 @@ export default function TourTrek({
           </div>
 
           <div id="PhotoGallery">
-            <PhotoGallery  images={images} />
+            <PhotoGallery images={images} />
           </div>
           <div id="FAQs">
             <FAQSection className={"mx-[unset]"} />
@@ -85,7 +85,7 @@ export default function TourTrek({
         </div>
 
         <div className="lg:w-1/3 flex flex-col gap-6">
-          <div className="sticky top-24 mb-24 mt-10">
+          <div className="sticky top-20 sm:top-24 mb-8 sm:mb-12 lg:mb-24 mt-6 sm:mt-8 lg:mt-10">
             <BookingCard />
           </div>
         </div>

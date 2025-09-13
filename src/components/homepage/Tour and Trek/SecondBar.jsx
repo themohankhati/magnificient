@@ -60,19 +60,19 @@ export default function SecondBar({ id }) {
   }, []);
 
   return (
-    <div className="flex flex-wrap bg-gray-100 p-2 shadow-md justify-evenly sticky top-0 z-10">
+    <div className="flex flex-wrap bg-gray-100 p-2 sm:p-3 shadow-md justify-center sm:justify-evenly gap-1 sm:gap-2 sticky top-0 z-10">
       {tabs.map((tab) => (
         <button
           key={tab.name}
-          className={`flex items-center px-4 py-2 text-xl font-medium rounded-md transition-colors duration-200 ${
+          className={`flex items-center px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-md transition-colors duration-200 whitespace-nowrap ${
             activeTab === tab.name
               ? "bg-green-600 text-white"
               : "text-gray-700 hover:bg-gray-200"
           }`}
           onClick={() => scrollToSection(tab.name)}
         >
-          <tab.icon className="mr-2" />
-          {tab.name}
+          <tab.icon className="mr-1 sm:mr-2 text-xs sm:text-sm md:text-base" />
+          <span>{tab.name}</span>
         </button>
       ))}
     </div>
