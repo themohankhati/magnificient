@@ -86,7 +86,7 @@ export default function TourTrek({
 
         <div className="lg:w-1/3 flex flex-col gap-6">
           <div className="sticky top-20 sm:top-24 mb-8 sm:mb-12 lg:mb-24 mt-6 sm:mt-8 lg:mt-10">
-            <BookingCard />
+            <BookingCard tourTitle={title} />
           </div>
         </div>
       </div>
