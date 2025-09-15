@@ -35,23 +35,24 @@ const textVariants = {
 };
 
 const HeroSection = () => {
-  const slides = [
-    {
-      image: "../../Images/Annapurna.png",
-      title: "Authentic Nepalese Flavors",
-      subtitle: "Traditional recipes passed down through generations",
-    },
-    {
-      image: "../../Images/Annapurna.png",
-      title: "Premium Catering Services",
-      subtitle: "Professional service for every occasion",
-    },
-    {
-      image: "../../Images/Annapurna.png",
-      title: "Fresh & Quality Ingredients",
-      subtitle: "Sourced locally for the best taste",
-    },
-  ];
+const slides = [
+  {
+    image: "../../Images/Annapurna.png",
+    title: "Explore the Majestic Himalayas",
+    subtitle: "Unforgettable trekking adventures in Nepal’s highest peaks",
+  },
+  {
+    image: "../../Images/Annapurna.png",
+    title: "Customized Tours & Treks",
+    subtitle: "Tailored itineraries to match your interests and pace",
+  },
+  {
+    image: "../../Images/Annapurna.png",
+    title: "Discover Culture & Heritage",
+    subtitle: "Experience Nepal’s rich traditions and warm hospitality",
+  },
+];
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
