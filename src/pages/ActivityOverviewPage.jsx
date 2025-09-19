@@ -32,7 +32,7 @@ const ActivityOverviewPage = ({ customSliderConfig }) => {
           sliderConfig={customSliderConfig}
           className="mb-12"
         />
-        <ActivityTourCards categoryType={activityData.id} country={activityData.country} />
+        <ActivityTourCards categoryType={activityData.id} country={activityData.countries} />
       </main>
       <Footer />
     </div>

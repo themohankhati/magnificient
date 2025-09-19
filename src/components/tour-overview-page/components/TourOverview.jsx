@@ -110,7 +110,7 @@ const TourOverview = ({ tourData, sliderConfig = {}, className = "" }) => {
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
             <div className="mb-4 sm:mb-0">
               <span className="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-                {tourData.country}
+                {Array.isArray(tourData.country) ? tourData.country.join(", ") : tourData.country}
               </span>
             </div>
 

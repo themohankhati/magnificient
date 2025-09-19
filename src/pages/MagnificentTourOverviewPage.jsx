@@ -32,7 +32,7 @@ const MagnificentTourOverviewPage = ({ customSliderConfig }) => {
           sliderConfig={customSliderConfig}
           className="mb-12"
         />
-        <ActivityTourCards categoryType={tourData.id} country={tourData.country} />
+        <ActivityTourCards categoryType={tourData.id} country={Array.isArray(tourData.country) ? tourData.country : [tourData.country]} />
       </main>
       <Footer />
     </div>

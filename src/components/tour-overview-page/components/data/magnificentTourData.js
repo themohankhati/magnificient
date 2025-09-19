@@ -9,7 +9,7 @@ export const magnificentToursData = [
       "/Images/luxury-tour.jpeg",
       "/Images/Top destination-Nepal.jpg"
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "helicopter-tour",
@@ -24,7 +24,7 @@ export const magnificentToursData = [
       "/Images/tour/Helicopter4.jpg",
       
     ],
-    country: "Nepal"
+    country:["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "nature-wildlife-tour",
@@ -39,7 +39,7 @@ export const magnificentToursData = [
       "/Images/activities/jungle3.jpg",
       "/Images/activities/jungle1.jpg"
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "cultural-historical-tour",
@@ -54,7 +54,7 @@ export const magnificentToursData = [
       "/Images/tour/cultural4.png",
       
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "India Tours",
@@ -76,7 +76,7 @@ What truly sets India apart is the warmth of its people.`,
         '/Images/india/india5.jpg',
      
     ],
-    country: "India"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "motorbike-tour",
@@ -91,7 +91,7 @@ What truly sets India apart is the warmth of its people.`,
       "/Images/tour/Motorbike4.jpg",
      
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "cycling-tour",
@@ -106,7 +106,7 @@ What truly sets India apart is the warmth of its people.`,
       "/Images/tour/Bird4.jpg",
       
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "sightseeing-tour",
@@ -121,7 +121,7 @@ What truly sets India apart is the warmth of its people.`,
       "/Images/tour/Photography4.jpg",
       
     ],
-    country: "Nepal"
+    country:["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
     id: "day-sightseeing-tour",
@@ -135,7 +135,7 @@ What truly sets India apart is the warmth of its people.`,
       "/Images/tour/Sightseeing3.jpg",
       "/Images/tour/Sightseeing4.jpg",
     ],
-    country: "Nepal"
+    country: ["Nepal", "India", "Tibet", "Bhutan"]
   }
 ];
 
