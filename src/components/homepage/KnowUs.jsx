@@ -45,7 +45,9 @@ const KnowUs = () => {
                 <iframe
                   width="100%"
                   height="100%"
+
                   src="https://www.youtube.com/embed/bY_gRApfoJk"
+
                   title="YouTube Video"
                   frameBorder="0"
                   allow="autoplay; encrypted-media"

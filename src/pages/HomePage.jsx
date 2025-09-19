@@ -8,6 +8,7 @@ import BestSelections from "../components/homepage/BestSelections";
 import TrekkingSection from "../components/homepage/TrekkingSection";
 import Activities from "../components/homepage/Activities";
 import KnowUs from "../components/homepage/KnowUs";
+import SearchBar from "../components/homepage/SearchBar";
 import FreeCancellationPolicy from "../shared_components/FreeCancellationPolicy";
 import ToursSection from "../components/homepage/ToursSection";
 import GoogleReviews from "../components/homepage/GoogleReviews";
@@ -15,6 +16,7 @@ import StayFlexible from "../shared_components/StayFlexible";
 import Associations from "../shared_components/Associations";
 import Newsletter from "../shared_components/Newsletter";
 import Footer from "../shared_components/Footer";
+
 
 // Section variants
 const sectionVariants = {
@@ -48,7 +50,9 @@ export default function HomePage() {
       >
         <HeroSection />
       </motion.div>
+
       <motion.div
+
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
