@@ -205,7 +205,7 @@ const handleAddPackage = async () => {
               onClick={() => handleSelect(pkg)}
               className="bg-white p-4 rounded shadow hover:shadow-lg cursor-pointer"
             >
-              <h2 className="text-lg font-semibold">{pkg.package_name}</h2>
+              <h2 className="text-lg font-semibold text-red-600">{pkg.package_name}</h2>
               <p className="text-sm text-gray-500">
                 {pkg.start_date} to {pkg.end_date}
               </p>
@@ -215,216 +215,426 @@ const handleAddPackage = async () => {
         </div>
 
         {/* Package Details Form */}
-        {selectedPackage && (
-          <div className="p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-gray-700">Package Details</h2>
-              {!isEditing ? (
-                <div className="space-x-2">
-                  <button onClick={handleEdit} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                    Edit
-                  </button>
-                  <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                    Delete
-                  </button>
-                </div>
-              ) : (
-                <div className="space-x-2">
-                  <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-                    Save
-                  </button>
-                  <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
-                    Cancel
-                  </button>
-                </div>
-              )}
-            </div>
+{selectedPackage && (
+  <div className="p-6">
+    {/* Header Buttons */}
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-xl font-bold text-gray-700">Package Details</h2>
+      {!isEditing ? (
+        <div className="space-x-2">
+          <button onClick={handleEdit} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            Edit
+          </button>
+          <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+            Delete
+          </button>
+        </div>
+      ) : (
+        <div className="space-x-2">
+          <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+            Save
+          </button>
+          <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
+            Cancel
+          </button>
+        </div>
+      )}
+    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded shadow">
-              {["package_name", "title", "start_date", "end_date", "price"].map((field) => (
-                <div key={field}>
-                  <label className="font-medium capitalize">{field.replace("_", " ")}</label>
-                  <input
-                    type="text"
-                    name={field}
-                    value={formData[field]}
-                    onChange={handleChange}
-                    readOnly={!isEditing}
-                    className="w-full border rounded px-3 py-2 mt-1"
-                  />
-                </div>
-              ))}
-              <div className="md:col-span-2">
-                <label className="font-medium">Description</label>
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  readOnly={!isEditing}
-                  className="w-full border rounded px-3 py-2 mt-1"
-                  rows={4}
-                />
-              </div>
-            </div>
+    {/* Package Info */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded shadow">
+      {[
+        "package_name",
+        "title",
+        "category",
+        "category_type",
+        "category_place",
+        "start_date",
+        "end_date",
+        "price",
+      ].map((field) => (
+        <div key={field}>
+          <label className="font-medium capitalize">{field.replace("_", " ")}</label>
+          <input
+            type={field.includes("date") ? "date" : "text"}
+            name={field}
+            value={formData[field] || ""}
+            onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
+            readOnly={!isEditing}
+            className="w-full border rounded px-3 py-2 mt-1"
+          />
+        </div>
+      ))}
+
+      {/* Description */}
+      <div className="md:col-span-2">
+        <label className="font-medium">Description</label>
+        <textarea
+          name="description"
+          value={formData.description || ""}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          readOnly={!isEditing}
+          className="w-full border rounded px-3 py-2 mt-1"
+          rows={4}
+        />
+      </div>
+    </div>
+
+    {/* Trip Details */}
+    <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
+    {formData.tripDetails?.map((trip, idx) => (
+      <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-4 rounded shadow mb-4">
+        {[
+          "country",
+          "duration",
+          "difficulty",
+          "activity",
+          "maxAltitude",
+          "bestSeason",
+          "accommodation",
+          "meals",
+          "startEndpoint",
+        ].map((field) => (
+          <div key={field}>
+            <label className="font-medium capitalize">{field}</label>
+            <input
+              type="text"
+              name={field}
+              value={trip[field] || ""}
+              readOnly={!isEditing}
+              onChange={(e) => {
+                const updatedTrips = [...formData.tripDetails];
+                updatedTrips[idx][field] = e.target.value;
+                setFormData({ ...formData, tripDetails: updatedTrips });
+              }}
+              className="w-full border rounded px-3 py-2 mt-1"
+            />
           </div>
-        )}
+        ))}
+      </div>
+    ))}
+
+    {/* Itinerary */}
+    <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
+    {formData.itinerary?.map((day, idx) => (
+      <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+        <input
+          type="number"
+          placeholder="Day number"
+          value={day.day_number || ""}
+          readOnly={!isEditing}
+          onChange={(e) => {
+            const updated = [...formData.itinerary];
+            updated[idx].day_number = Number(e.target.value);
+            setFormData({ ...formData, itinerary: updated });
+          }}
+          className="border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={day.title || ""}
+          readOnly={!isEditing}
+          onChange={(e) => {
+            const updated = [...formData.itinerary];
+            updated[idx].title = e.target.value;
+            setFormData({ ...formData, itinerary: updated });
+          }}
+          className="border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={day.description || ""}
+          readOnly={!isEditing}
+          onChange={(e) => {
+            const updated = [...formData.itinerary];
+            updated[idx].description = e.target.value;
+            setFormData({ ...formData, itinerary: updated });
+          }}
+          className="border rounded px-3 py-2"
+        />
+      </div>
+    ))}
+
+    {/* Package Includes / Excludes */}
+    <div className="md:col-span-2 mt-4">
+      <label className="font-medium">Package Includes</label>
+      <textarea
+        value={formData.package_includes?.join("\n") || ""}
+        readOnly={!isEditing}
+        onChange={(e) => setFormData({ ...formData, package_includes: e.target.value.split("\n") })}
+        className="w-full border rounded px-3 py-2 mt-1"
+        rows={4}
+      />
+    </div>
+
+    <div className="md:col-span-2 mt-4">
+      <label className="font-medium">Package Excludes</label>
+      <textarea
+        value={formData.package_excludes?.join("\n") || ""}
+        readOnly={!isEditing}
+        onChange={(e) => setFormData({ ...formData, package_excludes: e.target.value.split("\n") })}
+        className="w-full border rounded px-3 py-2 mt-1"
+        rows={4}
+      />
+    </div>
+
+    {/* Images */}
+    {formData.images?.length > 0 && (
+      <div className="mt-4">
+        <label className="font-medium">Images</label>
+        <div className="flex flex-wrap gap-2 mt-1">
+          {formData.images.map((img, idx) => (
+            <img key={idx} src={img} alt={`package-${idx}`} className="w-24 h-24 object-cover rounded" />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+)}
+
+
 
         {/* Add Package Modal */}
-        {showAddModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-auto">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-              <h2 className="text-xl font-bold mb-4">Add New Package</h2>
+{showAddModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-auto">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+      <h2 className="text-xl font-bold mb-4">Add New Package</h2>
 
-              {/* Basic Package Info */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                {["package_name", "title", "start_date", "end_date", "price"].map((field) => (
-                  <div key={field}>
-                    <label className="font-medium capitalize">{field.replace("_", " ")}</label>
-                    <input
-                      type={field.includes("date") ? "date" : "text"}
-                      name={field}
-                      value={newPackage[field]}
-                      onChange={handleNewPackageChange}
-                      className="w-full border rounded px-3 py-2 mt-1"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Trip Details */}
-              <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  "country",
-                  "duration",
-                  "difficulty",
-                  "activity",
-                  "maxAltitude",
-                  "bestSeason",
-                  "accommodation",
-                  "meals",
-                  "startEndpoint",
-                ].map((field) => (
-                  <div key={field}>
-                    <label className="font-medium capitalize">{field}</label>
-                    <input
-                      type="text"
-                      name={field}
-                      value={newPackage.tripDetails?.[0]?.[field] || ""}
-                      onChange={(e) => {
-                        const { name, value } = e.target;
-                        setNewPackage((prev) => ({
-                          ...prev,
-                          tripDetails: [
-                            {
-                              ...prev.tripDetails?.[0],
-                              [name]: value,
-                            },
-                          ],
-                        }));
-                      }}
-                      className="w-full border rounded px-3 py-2 mt-1"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Itinerary */}
-              <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
-              { ["day_number", "title", "description"]?.map((day, index) => (
-                <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
-                  <input
-                    type="number"
-                    placeholder="Day number"
-                    value={day.day_number}
-                    onChange={(e) => {
-                      const updated = [...newPackage.itinerary];
-                      updated[index].day_number = e.target.value;
-                      setNewPackage({ ...newPackage, itinerary: updated });
-                    }}
-                    className="border rounded px-3 py-2"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Title"
-                    value={day.title}
-                    onChange={(e) => {
-                      const updated = [...newPackage.itinerary];
-                      updated[index].title = e.target.value;
-                      setNewPackage({ ...newPackage, itinerary: updated });
-                    }}
-                    className="border rounded px-3 py-2"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    value={day.description}
-                    onChange={(e) => {
-                      const updated = [...newPackage.itinerary];
-                      updated[index].description = e.target.value;
-                      setNewPackage({ ...newPackage, itinerary: updated });
-                    }}
-                    className="border rounded px-3 py-2"
-                  />
-                </div>
-              ))}
-              <button
-                className="text-blue-500 mt-2"
-                onClick={() =>
-                  setNewPackage((prev) => ({
-                    ...prev,
-                    itinerary: [...(prev.itinerary || []), { day_number: "", title: "", description: "" }],
-                  }))
-                }
-              >
-                + Add Day
-              </button>
-
-              {/* Includes & Excludes */}
-              <h3 className="text-lg font-semibold mt-6 mb-2">Includes</h3>
-              <textarea
-                rows={3}
-                className="w-full border rounded px-3 py-2"
-                placeholder="Enter each include item separated by a newline"
-                onChange={(e) => setNewPackage({ ...newPackage, package_includes: e.target.value.split("\n") })}
-              />
-
-              <h3 className="text-lg font-semibold mt-4 mb-2">Excludes</h3>
-              <textarea
-                rows={3}
-                className="w-full border rounded px-3 py-2"
-                placeholder="Enter each exclude item separated by a newline"
-                onChange={(e) => setNewPackage({ ...newPackage, package_excludes: e.target.value.split("\n") })}
-              />
-
-              {/* Image URLs */}
-              <h3 className="text-lg font-semibold mt-4 mb-2">Choose Images</h3>
-              <input
-                type="file"
-                className="w-full border rounded px-3 py-2"
-                placeholder="Choose Images"
-                multiple
-                onChange={handleImageUpload}
-              />
-
-              {/* Footer Buttons */}
-              <div className="flex justify-end mt-6 space-x-2">
-                <button
-                  onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleAddPackage}
-                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                >
-                  Add Package
-                </button>
-              </div>
-            </div>
+      {/* Basic Package Info */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        {[
+          "package_name",
+          "category",
+          "category_type",
+          "category_place",
+          "title",
+          "price",
+        ].map((field) => (
+          <div key={field}>
+            <label className="font-medium capitalize">
+              {field.replace("_", " ")}
+            </label>
+            <input
+              type="text"
+              name={field}
+              value={newPackage[field]}
+              onChange={handleNewPackageChange}
+              className="w-full border rounded px-3 py-2 mt-1"
+            />
           </div>
-        )}
+        ))}
+
+        {/* Start & End Dates */}
+        <div>
+          <label className="font-medium">Start Date</label>
+          <input
+            type="date"
+            name="start_date"
+            value={newPackage.start_date}
+            onChange={handleNewPackageChange}
+            className="w-full border rounded px-3 py-2 mt-1"
+          />
+        </div>
+        <div>
+          <label className="font-medium">End Date</label>
+          <input
+            type="date"
+            name="end_date"
+            value={newPackage.end_date}
+            onChange={handleNewPackageChange}
+            className="w-full border rounded px-3 py-2 mt-1"
+          />
+        </div>
+      </div>
+
+      {/* Description */}
+      <div className="mb-4">
+        <label className="font-medium">Description</label>
+        <textarea
+          rows={5}
+          name="description"
+          value={newPackage.description}
+          onChange={handleNewPackageChange}
+          className="w-full border rounded px-3 py-2 mt-1"
+        />
+      </div>
+
+      {/* Trip Details */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          "country",
+          "duration",
+          "difficulty",
+          "activity",
+          "maxAltitude",
+          "bestSeason",
+          "accommodation",
+          "meals",
+          "startEndpoint",
+        ].map((field) => (
+          <div key={field}>
+            <label className="font-medium capitalize">{field}</label>
+            <input
+              type="text"
+              name={field}
+              value={newPackage.tripDetails?.[0]?.[field] || ""}
+              onChange={(e) => {
+                const { name, value } = e.target;
+                setNewPackage((prev) => ({
+                  ...prev,
+                  tripDetails: [
+                    {
+                      ...prev.tripDetails?.[0],
+                      [name]: value,
+                    },
+                  ],
+                }));
+              }}
+              className="w-full border rounded px-3 py-2 mt-1"
+            />
+          </div>
+        ))}
+
+        {/* Trip Map */}
+        <div className="md:col-span-2">
+          <label className="font-medium">Trip Map (upload multiple)</label>
+          <input
+            type="file"
+            multiple
+            onChange={(e) => {
+              const files = Array.from(e.target.files).map((f) => f.name);
+              setNewPackage((prev) => ({
+                ...prev,
+                tripDetails: [
+                  {
+                    ...prev.tripDetails?.[0],
+                    trip_map: files,
+                  },
+                ],
+              }));
+            }}
+            className="w-full border rounded px-3 py-2 mt-1"
+          />
+        </div>
+      </div>
+
+      {/* Itinerary */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
+      {newPackage.itinerary.map((day, index) => (
+        <div
+          key={index}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2"
+        >
+          <input
+            type="number"
+            placeholder="Day number"
+            value={day.day_number}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].day_number = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            placeholder="Title"
+            value={day.title}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].title = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            value={day.description}
+            onChange={(e) => {
+              const updated = [...newPackage.itinerary];
+              updated[index].description = e.target.value;
+              setNewPackage({ ...newPackage, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+        </div>
+      ))}
+      <button
+        className="text-blue-500 mt-2"
+        onClick={() =>
+          setNewPackage((prev) => ({
+            ...prev,
+            itinerary: [
+              ...(prev.itinerary || []),
+              { day_number: "", title: "", description: "" },
+            ],
+          }))
+        }
+      >
+        + Add Day
+      </button>
+
+      {/* Includes & Excludes */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Includes</h3>
+      <textarea
+        rows={3}
+        className="w-full border rounded px-3 py-2"
+        placeholder="Enter each include item separated by a newline"
+        value={newPackage.package_includes.join("\n")}
+        onChange={(e) =>
+          setNewPackage({
+            ...newPackage,
+            package_includes: e.target.value.split("\n"),
+          })
+        }
+      />
+
+      <h3 className="text-lg font-semibold mt-4 mb-2">Excludes</h3>
+      <textarea
+        rows={3}
+        className="w-full border rounded px-3 py-2"
+        placeholder="Enter each exclude item separated by a newline"
+        value={newPackage.package_excludes.join("\n")}
+        onChange={(e) =>
+          setNewPackage({
+            ...newPackage,
+            package_excludes: e.target.value.split("\n"),
+          })
+        }
+      />
+
+      {/* Images */}
+      <h3 className="text-lg font-semibold mt-4 mb-2">Choose Images</h3>
+      <input
+        type="file"
+        multiple
+        onChange={handleImageUpload}
+        className="w-full border rounded px-3 py-2"
+      />
+
+      {/* Footer Buttons */}
+      <div className="flex justify-end mt-6 space-x-2">
+        <button
+          onClick={() => setShowAddModal(false)}
+          className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleAddPackage}
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+        >
+          Add Package
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       </main>
     </div>
   );
