@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { activitiesData } from "../tour-overview-page/components/data/activityData";
+import Header from "../../shared_components/Header";
+import Footer from "../../shared_components/Footer";
+import Associations from "../../shared_components/Associations";
 
 // Variants
 const containerVariants = {
@@ -21,11 +24,12 @@ const cardVariants = {
   },
 };
 
-const ActivitiesSection = () => {
+const NavActivities = () => {
   const navigate = useNavigate();
 
   return (
     <>
+        <Header/>
     <section className="text-center py-16 bg-white overflow-hidden">
   
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,9 +107,11 @@ const ActivitiesSection = () => {
         </motion.div>
       </div>
     </section>
+    <Associations/>
+    <Footer/>
     </>
   );
 };
 
 
-export default ActivitiesSection;
+export default NavActivities;
