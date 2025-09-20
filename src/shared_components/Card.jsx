@@ -37,7 +37,7 @@ const Card = ({ image, country, title, duration, months, difficulty, description
         
         {/* Description */}
         <div className="bg-gray-100 text-gray-800 text-left text-xs p-3 rounded-md shadow-md pb-5 mb-5">
-          <span className="line-clamp-2 block overflow-hidden text-ellipsis">{description}</span>
+          <span className="line-clamp-3 block overflow-hidden text-ellipsis">{description}</span>
         </div>
         
         {/* Button */}

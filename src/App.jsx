@@ -30,6 +30,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const TourTrekPage = lazy(() => import("./pages/TourTrekPage"));
 const PackagesForm = lazy(() => import("./dashboard/packagess/PackagesForm"));
+const SearchResults = lazy(() => import("./pages/SearchResults"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -277,6 +278,14 @@ function App() {
               element={
                 <Suspense>
                   <PackagesForm />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/search"
+              element={
+                <Suspense>
+                  <SearchResults />
                 </Suspense>
               }
             />
