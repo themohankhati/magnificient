@@ -198,45 +198,61 @@ const handleAddPackage = async () => {
         </div>
 
         {/* Package Cards */}
-        <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {packages.map((pkg, idx) => (
-            <div
-              key={idx}
-              onClick={() => handleSelect(pkg)}
-              className="bg-white p-4 rounded shadow hover:shadow-lg cursor-pointer"
-            >
-              <h2 className="text-lg font-semibold text-red-600">{pkg.package_name}</h2>
-              <p className="text-sm text-gray-500">
-                {pkg.start_date} to {pkg.end_date}
-              </p>
-              <p className="text-orange-600 font-bold mt-2">{pkg.price}</p>
-            </div>
-          ))}
-        </div>
+<div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+  {packages.map((pkg, idx) => (
+    <div
+      key={idx}
+      className="bg-white p-6 rounded shadow hover:shadow-lg w-full relative"
+    >
+      {/* Edit & Delete buttons */}
+      <div className="absolute top-4 right-4 flex space-x-2">
+        <button
+          onClick={() => {
+            setSelectedPackage(pkg);
+            setFormData(pkg); // populate form
+            setIsEditing(true); // open in edit mode
+          }}
+          className="px-2 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => handleDelete(pkg._id)}
+          className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Delete
+        </button>
+      </div>
 
-        {/* Package Details Form */}
+      {/* Package info */}
+      <h2 className="text-xl font-semibold text-red-600 mb-2">{pkg.package_name}</h2>
+      <p className="text-sm text-gray-500 mb-1">
+        {pkg.start_date} to {pkg.end_date}
+      </p>
+      <p className="text-orange-600 font-bold">{pkg.price}</p>
+    </div>
+  ))}
+</div>
+
+{/* Package Details Form */}
 {selectedPackage && (
-  <div className="p-6">
+  <div className="p-6 mt-6 bg-white rounded shadow">
     {/* Header Buttons */}
     <div className="flex justify-between items-center mb-4">
       <h2 className="text-xl font-bold text-gray-700">Package Details</h2>
       {!isEditing ? (
         <div className="space-x-2">
-          <button onClick={handleEdit} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          <button onClick={() => setIsEditing(true)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
             Edit
           </button>
-          <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          <button onClick={() => handleDelete(selectedPackage._id)} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
             Delete
           </button>
         </div>
       ) : (
         <div className="space-x-2">
-          <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Save
-          </button>
-          <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
-            Cancel
-          </button>
+          <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Save</button>
+          <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Cancel</button>
         </div>
       )}
     </div>
@@ -393,6 +409,7 @@ const handleAddPackage = async () => {
     )}
   </div>
 )}
+
 
 
 
