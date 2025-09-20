@@ -26,33 +26,48 @@ const slideVariants = {
 };
 
 const textVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut", delay: 0.3 },
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 },
   },
 };
 
 const HeroSection = () => {
 const slides = [
   {
-    image: "../../Images/Annapurna.png",
+    image: "/Images/homepage/hero1.jpg",
     title: "Explore the Majestic Himalayas",
-    subtitle: "Unforgettable trekking adventures in Nepal’s highest peaks",
+    subtitle: "Unforgettable trekking adventures in Nepal's highest peaks",
   },
   {
-    image: "../../Images/Annapurna.png",
+    image: "/Images/homepage/hero4.jpg",
     title: "Customized Tours & Treks",
     subtitle: "Tailored itineraries to match your interests and pace",
   },
   {
-    image: "../../Images/Annapurna.png",
+    image: "/Images/nepal/nepal1.jpg",
     title: "Discover Culture & Heritage",
-    subtitle: "Experience Nepal’s rich traditions and warm hospitality",
+    subtitle: "Experience Nepal's rich traditions and warm hospitality",
+  },
+  {
+    image: "/Images/tibet/tibet3.jpg",
+    title: "Mystical Tibet Awaits",
+    subtitle: "Journey to the land of monasteries, mountains, and timeless spirituality",
+  },
+  {
+    image: "/Images/bhutan/bhutan1.jpg",
+    title: "Bhutan – The Last Shangri-La",
+    subtitle: "Explore happiness, serenity, and untouched landscapes in the Kingdom of Bhutan",
+  },
+  {
+    image: "/Images/india/india1.jpg",
+    title: "Incredible India Adventures",
+    subtitle: "From the Taj Mahal to vibrant festivals, experience India like never before",
   },
 ];
-
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -79,7 +94,7 @@ const slides = [
   };
 
   return (
-    <section className="relative w-full h-[60vh] sm:h-[50vh] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+    <section className="relative w-full h-[60vh] sm:h-[50vh] md:h-[630px] rounded-2xl overflow-hidden shadow-2xl">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
@@ -99,29 +114,46 @@ const slides = [
             transition={{ duration: 5, ease: "easeOut" }}
             draggable={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60" />
+          
+          {/* Centered text content */}
           <motion.div
-            className="absolute bottom-6 left-4 sm:left-6 md:left-12 text-white max-w-xs sm:max-w-md"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12"
             initial="hidden"
             animate="visible"
             variants={textVariants}
           >
-            <motion.h3
-              className="text-xl sm:text-2xl md:text-4xl font-bold text-primary-green mb-2 sm:mb-3 drop-shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              className="max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              {slides[currentSlide].title}
-            </motion.h3>
-            <motion.p
-              className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed drop-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              {slides[currentSlide].subtitle}
-            </motion.p>
+              <motion.h3
+                className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl leading-tight"
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+              >
+                {slides[currentSlide].title}
+              </motion.h3>
+              <motion.p
+                className="text-white/95 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed drop-shadow-lg font-light max-w-3xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+              >
+                {slides[currentSlide].subtitle}
+              </motion.p>
+              
+              {/* Optional decorative line */}
+              <motion.div
+                className="w-24 h-1 bg-white/80 mx-auto mt-6 sm:mt-8 rounded-full"
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: 96, opacity: 0.8 }}
+                transition={{ delay: 1, duration: 0.8 }}
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       </AnimatePresence>
