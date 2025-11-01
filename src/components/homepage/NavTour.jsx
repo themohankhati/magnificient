@@ -83,8 +83,8 @@ const NavTour = () => {
           <div className="mt-14 mb-10">
             <button
               onClick={() => {
-                setShowAllTours(!showAllTours); // ✅ toggle show/hide
-                setCurrentPage(1); // reset to first page when going back
+                setShowAllTours(!showAllTours); 
+                setCurrentPage(1); 
               }}
               className="bg-green-600 text-white text-lg py-2 px-6 rounded-md transition hover:bg-green-800"
             >

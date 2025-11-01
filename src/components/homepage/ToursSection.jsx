@@ -75,12 +75,12 @@ const goToPage = (pageNumber) => {
 
 
         <div className="mt-14 mb-10">
-          <a
+          {/* <a
             href="#explore-all-tours"
             className="bg-green-600 text-white text-lg py-2 px-6 rounded-md transition hover:bg-green-800"
           >
             Explore All Tours
-          </a>
+          </a> */}
         </div>
       </div>
     </section>
