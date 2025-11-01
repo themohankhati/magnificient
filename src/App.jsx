@@ -31,6 +31,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const TourTrekPage = lazy(() => import("./pages/TourTrekPage"));
 const PackagesForm = lazy(() => import("./dashboard/packagess/PackagesForm"));
 const SearchResults = lazy(() => import("./pages/SearchResults"));
+const BlogDetailPage = lazy(() => import("./pages/BlogDetailPage"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -286,6 +287,14 @@ function App() {
               element={
                 <Suspense>
                   <SearchResults />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/blog/:id"
+              element={
+                <Suspense>
+                  <BlogDetailPage />
                 </Suspense>
               }
             />

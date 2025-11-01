@@ -81,7 +81,7 @@ const ActivitiesSection = () => {
         </motion.div>
 
         {/* Explore More Button */}
-        <motion.div
+        {/* <motion.div
           className="mt-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const ActivitiesSection = () => {
           >
             Explore More
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
     </>

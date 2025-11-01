@@ -11,7 +11,8 @@ import KnowUs from "../components/homepage/KnowUs";
 import SearchBar from "../components/homepage/SearchBar";
 import FreeCancellationPolicy from "../shared_components/FreeCancellationPolicy";
 import ToursSection from "../components/homepage/ToursSection";
-import GoogleReviews from "../components/homepage/GoogleReviews";
+// import GoogleReviews from "../components/homepage/GoogleReviews";
+import BlogSection from "../components/blogs/BlogSection";
 import StayFlexible from "../shared_components/StayFlexible";
 import Associations from "../shared_components/Associations";
 import Newsletter from "../shared_components/Newsletter";
@@ -138,7 +139,7 @@ export default function HomePage() {
         <ToursSection />
       </motion.div>
 
-      {/* Google Reviews */}
+      {/* Google Reviews
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -146,6 +147,16 @@ export default function HomePage() {
         variants={sectionVariants}
       >
         <GoogleReviews />
+      </motion.div> */}
+
+      {/* Blog Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        variants={sectionVariants}
+      >
+        <BlogSection />
       </motion.div>
 
       {/* Stay Flexible */}
