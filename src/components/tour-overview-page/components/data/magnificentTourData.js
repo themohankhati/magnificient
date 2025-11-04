@@ -27,17 +27,16 @@ export const magnificentToursData = [
     country:["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
-    id: "nature-wildlife-tour",
-    img: "nature-wildlife.jpg",
-    title: "Nature and Wildlife Tours",
+    id: "tibet-tours",
+    img: "/tibet/tibet1.jpg",
+    title: "Tibet Overland Adventures",
     count: "10 tours",
     description: `Discover Nepal's rich biodiversity with our Nature and Wildlife Tours. Explore national parks, spot rare animals like rhinos and tigers, and immerse yourself in the beauty of untouched forests and wetlands.`,
     images: [
-      "/Images/activities/jungle2.jpg",
-      "/Images/jungle.jpg",
-      "/Images/chitwan.jpg",
-      "/Images/activities/jungle3.jpg",
-      "/Images/activities/jungle1.jpg"
+      "/Images/tibet/tibet2.jpg",
+      "/Images/tibet/tibet1.jpg",
+     "/Images/tibet/tibet3.jpg",
+     "/Images/tibet/tibet4.jpg",
     ],
     country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
@@ -58,7 +57,7 @@ export const magnificentToursData = [
   },
   {
     id: "India Tours",
-    img: "religious-spiritual.jpg",
+    img: "/india/india1.jpg",
     title: "India Tours",
     count: "3 tours",
     description: `India is a vibrant tapestry of color, culture, and contrast — a land where ancient traditions blend seamlessly with modern life. From the towering snow-clad peaks of the Himalayas in the north to the palm-fringed beaches and tranquil backwaters of the south, India stretches across a landscape as diverse as its people. Every region tells its own story, shaped by centuries of history, myth, art, and spirit.
@@ -94,8 +93,8 @@ What truly sets India apart is the warmth of its people.`,
     country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
-    id: "cycling-tour",
-    img: "cycling-tour.jpg",
+    id: "bird-watching-tour",
+    img: "/nepal/koshitappu_bird1.jpg",
     title: "Bird Watching Tours",
     count: "8 tours",
     description: `Explore Nepal at your own pace with our Cycling Tours. Pedal through picturesque valleys, terraced fields, and charming towns while enjoying the fresh air and stunning views.`,
@@ -109,8 +108,8 @@ What truly sets India apart is the warmth of its people.`,
     country: ["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
-    id: "sightseeing-tour",
-    img: "sightseeing-tour.jpg",
+    id: "photography-tour",
+    img: "/nepal/Photography1.jpg",
     title: "Photography Tours",
     count: "6 tours",
     description: `Discover the highlights of Nepal with our Sightseeing Tours. Visit iconic landmarks, bustling cities, and scenic viewpoints, all guided by local experts who share fascinating stories and insights.`,
@@ -124,9 +123,9 @@ What truly sets India apart is the warmth of its people.`,
     country:["Nepal", "India", "Tibet", "Bhutan"]
   },
   {
-    id: "day-sightseeing-tour",
+    id: "educational-tour",
     img: "day-sightseeing-tour.jpg",
-    title: "Day Sightseeing Tours",
+    title: "Educational Tours",
     count: "4 tours",
     description: `Make the most of your time with our Day Sightseeing Tours. Perfect for travelers with a tight schedule, these tours cover the must-see attractions and hidden gems in a single day.`,
     images: [
