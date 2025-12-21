@@ -105,7 +105,8 @@ export default function BestSelection() {
               let imgSrc = pkg.images?.[0] || "";
               let countryFolder = (pkg.tripDetails && pkg.tripDetails[0] && pkg.tripDetails[0].country) || "nepal";
               countryFolder = (countryFolder || "nepal").toLowerCase();
-              if (imgSrc && !imgSrc.startsWith("/")) {
+              const isAbsolute = /^https?:\/\//i.test(imgSrc);
+              if (imgSrc && !isAbsolute && !imgSrc.startsWith("/")) {
                 imgSrc = `/Images/${countryFolder}/${imgSrc}`;
               }
               const id = pkg._id?.$oid || pkg._id;

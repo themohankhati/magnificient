@@ -17,7 +17,7 @@ Please contact me with more information and pricing details.
 Best regards`;
 
     // Build Gmail URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@magnificenttravels.com&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=magnific@mail.com.np&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     // Open Gmail in new tab
     window.open(gmailUrl, '_blank');
@@ -73,8 +73,8 @@ Best regards`;
             </a>
           </div>
           <div className="text-xs sm:text-sm text-gray-600">
-            <a href="mailto:info@magnificenttravels.com" className="hover:text-green-600 transition-colors">
-            info@magnificenttravels.com
+            <a href="mailto:magnific@mail.com.np" className="hover:text-green-600 transition-colors">
+            magnific@mail.com.np
             </a>
           </div>
         </div>

@@ -4,6 +4,9 @@ import { GoPackage } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { createPackage, getPackages } from "../../../../services/packageService";
 
+import { activitiesData } from "../../../tour-overview-page/components/data/activityData";
+import { magnificentToursData } from "../../../tour-overview-page/components/data/magnificentTourData";
+
 function PackageDetails() {
   const [images, setImages] = useState([]);
   const [packages, setPackages] = useState([]);
@@ -27,6 +30,9 @@ function PackageDetails() {
 
   const [newPackage, setNewPackage] = useState({
     package_name: "",
+    category: "",
+    category_type: "",
+    category_place: "",
     title: "",
     start_date: "",
     end_date: "",
@@ -52,6 +58,24 @@ function PackageDetails() {
     package_excludes: [],
     images: [],
   });
+
+  // Dropdown options
+  const categoryOptions = ["Tour", "Trek", "Trekking", "Activity"];
+  const countryOptions = ["Nepal", "Tibet", "Bhutan", "India"];
+  const categoryPlaceOptions = ["nepal", "india", "bhutan", "tibet"];
+  const extraCategoryType = [
+    "nepal-trekking",
+    "tibet-trekking",
+    "india-trekking",
+    "bhutan-trekking",
+  ];
+  const categoryTypeOptions = Array.from(
+    new Set([
+      ...activitiesData.map((a) => a.id),
+      ...magnificentToursData.map((t) => t.id),
+      ...extraCategoryType,
+    ])
+  );
 
   const handleSelect = (pkg) => {
     if (selectedPackage && selectedPackage.package_name === pkg.package_name) {
@@ -416,13 +440,51 @@ const handleAddPackage = async () => {
             <label className="font-medium capitalize">
               {field.replace("_", " ")}
             </label>
-            <input
-              type="text"
-              name={field}
-              value={newPackage[field]}
-              onChange={handleNewPackageChange}
-              className="w-full border rounded px-3 py-2 mt-1"
-            />
+            {field === "category" ? (
+              <select
+                name={field}
+                value={newPackage[field]}
+                onChange={handleNewPackageChange}
+                className="w-full border rounded px-3 py-2 mt-1"
+              >
+                <option value="">Select</option>
+                {categoryOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            ) : field === "category_type" ? (
+              <select
+                name={field}
+                value={newPackage[field]}
+                onChange={handleNewPackageChange}
+                className="w-full border rounded px-3 py-2 mt-1"
+              >
+                <option value="">Select</option>
+                {categoryTypeOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            ) : field === "category_place" ? (
+              <select
+                name={field}
+                value={newPackage[field]}
+                onChange={handleNewPackageChange}
+                className="w-full border rounded px-3 py-2 mt-1"
+              >
+                <option value="">Select</option>
+                {categoryPlaceOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type="text"
+                name={field}
+                value={newPackage[field]}
+                onChange={handleNewPackageChange}
+                className="w-full border rounded px-3 py-2 mt-1"
+              />
+            )}
           </div>
         ))}
 
@@ -477,24 +539,49 @@ const handleAddPackage = async () => {
         ].map((field) => (
           <div key={field}>
             <label className="font-medium capitalize">{field}</label>
-            <input
-              type="text"
-              name={field}
-              value={newPackage.tripDetails?.[0]?.[field] || ""}
-              onChange={(e) => {
-                const { name, value } = e.target;
-                setNewPackage((prev) => ({
-                  ...prev,
-                  tripDetails: [
-                    {
-                      ...prev.tripDetails?.[0],
-                      [name]: value,
-                    },
-                  ],
-                }));
-              }}
-              className="w-full border rounded px-3 py-2 mt-1"
-            />
+            {field === "country" ? (
+              <select
+                name={field}
+                value={newPackage.tripDetails?.[0]?.[field] || ""}
+                onChange={(e) => {
+                  const { name, value } = e.target;
+                  setNewPackage((prev) => ({
+                    ...prev,
+                    tripDetails: [
+                      {
+                        ...prev.tripDetails?.[0],
+                        [name]: value,
+                      },
+                    ],
+                  }));
+                }}
+                className="w-full border rounded px-3 py-2 mt-1"
+              >
+                <option value="">Select</option>
+                {countryOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            ) : (
+              <input
+                type="text"
+                name={field}
+                value={newPackage.tripDetails?.[0]?.[field] || ""}
+                onChange={(e) => {
+                  const { name, value } = e.target;
+                  setNewPackage((prev) => ({
+                    ...prev,
+                    tripDetails: [
+                      {
+                        ...prev.tripDetails?.[0],
+                        [name]: value,
+                      },
+                    ],
+                  }));
+                }}
+                className="w-full border rounded px-3 py-2 mt-1"
+              />
+            )}
           </div>
         ))}
 

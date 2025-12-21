@@ -42,7 +42,7 @@ Best regards,
 ${formData.name}`;
 
     // Build Gmail URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@magnificenttravels.com&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=magnific@mail.com.np&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     // Open Gmail in new tab
     window.open(gmailUrl, '_blank');
