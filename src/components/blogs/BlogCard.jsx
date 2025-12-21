@@ -108,3 +108,4 @@ const BlogCard = ({ blog, variants }) => {
 
 export default BlogCard;
 
+

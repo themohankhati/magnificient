@@ -35,9 +35,10 @@ const CountryTourCards = ({ country }) => {
       <div className="flex flex-wrap gap-8 justify-center">
         {packages.map(pkg => {
           let imgSrc = pkg.images?.[0] || "";
-          if (imgSrc && !imgSrc.startsWith("/")) {
-            imgSrc = `/Images/${country.toLowerCase()}/${imgSrc}`;
-          }
+const isAbsolute = /^https?:\/\//i.test(imgSrc);
+if (imgSrc && !isAbsolute && !imgSrc.startsWith("/")) {
+  imgSrc = `/Images/${country.toLowerCase()}/${imgSrc}`;
+}
           return (
             <Card
               key={pkg._id?.$oid || pkg._id}

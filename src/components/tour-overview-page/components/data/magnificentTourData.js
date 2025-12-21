@@ -1,6 +1,6 @@
 export const magnificentToursData = [
   {
-    id: "luxury-tour",
+    id: "magnificent-special-day-tour",
     img: "luxury-tour.jpeg",
     title: "Our Special Day Tour",
     count: "9 tours",

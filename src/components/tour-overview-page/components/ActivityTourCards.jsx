@@ -38,11 +38,14 @@ const ActivityTourCards = ({ categoryType, categoryPlace, country }) => {
       <div className="flex flex-wrap gap-6 justify-center">
         {packages.map(pkg => {
           let imgSrc = pkg.images?.[0] || "";
-          let countryFolder = (pkg.tripDetails && pkg.tripDetails[0] && pkg.tripDetails[0].country) || (Array.isArray(country) ? country[0] : country) || "nepal";
-          countryFolder = countryFolder.toLowerCase();
-          if (imgSrc && !imgSrc.startsWith("/")) {
-            imgSrc = `/Images/${countryFolder}/${imgSrc}`;
-          }
+let countryFolder = (pkg.tripDetails && pkg.tripDetails[0] && pkg.tripDetails[0].country)
+  || (Array.isArray(country) ? country[0] : country)
+  || "nepal";
+countryFolder = countryFolder.toLowerCase();
+const isAbsolute = /^https?:\/\//i.test(imgSrc);
+if (imgSrc && !isAbsolute && !imgSrc.startsWith("/")) {
+  imgSrc = `/Images/${countryFolder}/${imgSrc}`;
+}
           return (
             <Card
               key={pkg._id?.$oid || pkg._id}
