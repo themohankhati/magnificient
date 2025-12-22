@@ -78,3 +78,13 @@ export const getPackagesByCategoryPlace = async (categoryPlace) => {
   const res = await axios.get(base_url + "package");
   return res.data.filter((pkg) => pkg.category_place === categoryPlace).map(mapPackage);
 };
+
+export const updatePackage = async (id, formData) => {
+  const res = await axios.put(base_url + `package/${id}`, formData);
+  return mapPackage(res.data);
+};
+
+export const deletePackage = async (id) => {
+  const res = await axios.delete(base_url + `package/${id}`);
+  return res.data;
+};
