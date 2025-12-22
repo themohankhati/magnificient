@@ -49,7 +49,11 @@ const AuthPage = () => {
           autoClose: 3000,
         });
 
-        window.location.href = "/";
+        if (user.role === "admin") {
+          window.location.href = "/dashboard";
+        } else {
+          window.location.href = "/";
+        }
       } else {
         // REGISTER
         await axios.post(`${baseURL}/register`, {
