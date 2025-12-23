@@ -248,38 +248,54 @@ function PackageDetails() {
         </div>
 
         {/* Package Cards */}
-        <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {packages.map((pkg, idx) => (
-            <div key={idx} className="bg-white p-6 rounded shadow hover:shadow-lg w-full relative">
-              {/* Edit & Delete buttons */}
-              <div className="absolute top-4 right-4 flex space-x-2">
-                <button
-                  onClick={() => {
-                    setSelectedPackage(pkg);
-                    setFormData(pkg); // populate form
-                    setIsEditing(true); // open in edit mode
-                  }}
-                  className="px-2 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(pkg._id)}
-                  className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                  Delete
-                </button>
-              </div>
+     <div className="p-6 overflow-x-auto">
+  <table className="min-w-full border border-gray-200 bg-white rounded shadow">
+    <thead className="bg-gray-100">
+      <tr>
+        <th className="px-4 py-2 text-left">Package Name</th>
+        <th className="px-4 py-2 text-left">Category</th>
+        <th className="px-4 py-2 text-left">Price</th>
+        <th className="px-4 py-2 text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {packages.map((pkg) => (
+        <tr key={pkg._id} className="border-t hover:bg-gray-50">
+          <td className="px-4 py-2 font-medium">{pkg.package_name}</td>
+          <td className="px-4 py-2">{pkg.category}</td>
+         
+          <td className="px-4 py-2 text-orange-600 font-semibold">
+            {pkg.price}
+          </td>
+          <td className="px-4 py-2 text-center space-x-2">
+            <button
+              onClick={() => {
+                setSelectedPackage(pkg);
+                setFormData(pkg);
+                setIsEditing(true);
+                setShowEditModal(true);
+              }}
+              className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Edit
+            </button>
 
-              {/* Package info */}
-              <h2 className="text-xl font-semibold text-red-600 mb-2">{pkg.package_name}</h2>
-              <p className="text-sm text-gray-500 mb-1">
-                {pkg.start_date} to {pkg.end_date}
-              </p>
-              <p className="text-orange-600 font-bold">{pkg.price}</p>
-            </div>
-          ))}
-        </div>
+            <button
+              onClick={() => {
+                setSelectedPackage(pkg);
+                setShowDeleteModal(true);
+              }}
+              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
 
         {/* Package Details Form */}
         {selectedPackage && (
