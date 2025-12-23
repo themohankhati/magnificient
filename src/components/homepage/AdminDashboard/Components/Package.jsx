@@ -311,7 +311,7 @@ function PackageDetails() {
         }}
         className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl"
       >
-        ✕
+       
       </button>
 
       {/* Header */}
