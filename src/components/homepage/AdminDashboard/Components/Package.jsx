@@ -36,6 +36,8 @@ function PackageDetails() {
   const [formData, setFormData] = useState({});
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+
 
   const [newPackage, setNewPackage] = useState({
     package_name: "",
@@ -297,191 +299,149 @@ function PackageDetails() {
 </div>
 
 
-        {/* Package Details Form */}
-        {selectedPackage && (
-          <div className="p-6 mt-6 bg-white rounded shadow">
-            {/* Header Buttons */}
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-gray-700">Package Details</h2>
-              {!isEditing ? (
-                <div className="space-x-2">
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(selectedPackage._id)}
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                  >
-                    Delete
-                  </button>
-                </div>
-              ) : (
-                <div className="space-x-2">
-                  <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-                    Save
-                  </button>
-                  <button onClick={handleCancel} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
-                    Cancel
-                  </button>
-                </div>
-              )}
-            </div>
+ {showEditModal && selectedPackage && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg p-6 relative">
 
-            {/* Package Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded shadow">
-              {[
-                "package_name",
-                "title",
-                "category",
-                "category_type",
-                "category_place",
-                "start_date",
-                "end_date",
-                "price",
-              ].map((field) => (
-                <div key={field}>
-                  <label className="font-medium capitalize">{field.replace("_", " ")}</label>
-                  <input
-                    type={field.includes("date") ? "date" : "text"}
-                    name={field}
-                    value={formData[field] || ""}
-                    onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                    readOnly={!isEditing}
-                    className="w-full border rounded px-3 py-2 mt-1"
-                  />
-                </div>
-              ))}
+      {/* Close Button */}
+      <button
+        onClick={() => {
+          setShowEditModal(false);
+          setIsEditing(false);
+        }}
+        className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl"
+      >
+        ✕
+      </button>
 
-              {/* Description */}
-              <div className="md:col-span-2">
-                <label className="font-medium">Description</label>
-                <textarea
-                  name="description"
-                  value={formData.description || ""}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  readOnly={!isEditing}
-                  className="w-full border rounded px-3 py-2 mt-1"
-                  rows={4}
-                />
-              </div>
-            </div>
+      {/* Header */}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold text-gray-700">Edit Package</h2>
+        <div className="space-x-2">
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              setShowEditModal(false);
+              setIsEditing(false);
+            }}
+            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
 
-            {/* Trip Details */}
-            <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
-            {formData.tripDetails?.map((trip, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-4 rounded shadow mb-4">
-                {[
-                  "country",
-                  "duration",
-                  "difficulty",
-                  "activity",
-                  "maxAltitude",
-                  "bestSeason",
-                  "accommodation",
-                  "meals",
-                  "startEndpoint",
-                ].map((field) => (
-                  <div key={field}>
-                    <label className="font-medium capitalize">{field}</label>
-                    <input
-                      type="text"
-                      name={field}
-                      value={trip[field] || ""}
-                      readOnly={!isEditing}
-                      onChange={(e) => {
-                        const updatedTrips = [...formData.tripDetails];
-                        updatedTrips[idx][field] = e.target.value;
-                        setFormData({ ...formData, tripDetails: updatedTrips });
-                      }}
-                      className="w-full border rounded px-3 py-2 mt-1"
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
-
-            {/* Itinerary */}
-            <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
-            {formData.itinerary?.map((day, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
-                <input
-                  type="number"
-                  placeholder="Day number"
-                  value={day.day_number || ""}
-                  readOnly={!isEditing}
-                  onChange={(e) => {
-                    const updated = [...formData.itinerary];
-                    updated[idx].day_number = Number(e.target.value);
-                    setFormData({ ...formData, itinerary: updated });
-                  }}
-                  className="border rounded px-3 py-2"
-                />
-                <input
-                  type="text"
-                  placeholder="Title"
-                  value={day.title || ""}
-                  readOnly={!isEditing}
-                  onChange={(e) => {
-                    const updated = [...formData.itinerary];
-                    updated[idx].title = e.target.value;
-                    setFormData({ ...formData, itinerary: updated });
-                  }}
-                  className="border rounded px-3 py-2"
-                />
-                <input
-                  type="text"
-                  placeholder="Description"
-                  value={day.description || ""}
-                  readOnly={!isEditing}
-                  onChange={(e) => {
-                    const updated = [...formData.itinerary];
-                    updated[idx].description = e.target.value;
-                    setFormData({ ...formData, itinerary: updated });
-                  }}
-                  className="border rounded px-3 py-2"
-                />
-              </div>
-            ))}
-
-            {/* Package Includes / Excludes */}
-            <div className="md:col-span-2 mt-4">
-              <label className="font-medium">Package Includes</label>
-              <textarea
-                value={formData.package_includes?.join("\n") || ""}
-                readOnly={!isEditing}
-                onChange={(e) => setFormData({ ...formData, package_includes: e.target.value.split("\n") })}
-                className="w-full border rounded px-3 py-2 mt-1"
-                rows={4}
-              />
-            </div>
-
-            <div className="md:col-span-2 mt-4">
-              <label className="font-medium">Package Excludes</label>
-              <textarea
-                value={formData.package_excludes?.join("\n") || ""}
-                readOnly={!isEditing}
-                onChange={(e) => setFormData({ ...formData, package_excludes: e.target.value.split("\n") })}
-                className="w-full border rounded px-3 py-2 mt-1"
-                rows={4}
-              />
-            </div>
-
-            {/* Images */}
-            {formData.images?.length > 0 && (
-              <div className="mt-4">
-                <label className="font-medium">Images</label>
-                <div className="flex flex-wrap gap-2 mt-1">
-                  {formData.images.map((img, idx) => (
-                    <img key={idx} src={img} alt={`package-${idx}`} className="w-24 h-24 object-cover rounded" />
-                  ))}
-                </div>
-              </div>
-            )}
+      {/* Package Info */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          "package_name",
+          "title",
+          "category",
+          "category_type",
+          "category_place",
+          "start_date",
+          "end_date",
+          "price",
+        ].map((field) => (
+          <div key={field}>
+            <label className="font-medium capitalize">
+              {field.replace("_", " ")}
+            </label>
+            <input
+              type={field.includes("date") ? "date" : "text"}
+              value={formData[field] || ""}
+              onChange={(e) =>
+                setFormData({ ...formData, [field]: e.target.value })
+              }
+              className="w-full border rounded px-3 py-2 mt-1"
+            />
           </div>
-        )}
+        ))}
+      </div>
+
+      {/* Description */}
+      <div className="mt-4">
+        <label className="font-medium">Description</label>
+        <textarea
+          value={formData.description || ""}
+          onChange={(e) =>
+            setFormData({ ...formData, description: e.target.value })
+          }
+          className="w-full border rounded px-3 py-2 mt-1"
+          rows={4}
+        />
+      </div>
+
+      {/* Trip Details */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Trip Details</h3>
+      {formData.tripDetails?.map((trip, idx) => (
+        <div
+          key={idx}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 p-4 rounded mb-3"
+        >
+          {Object.keys(trip).map((field) => (
+            <div key={field}>
+              <label className="font-medium capitalize">{field}</label>
+              <input
+                type="text"
+                value={trip[field] || ""}
+                onChange={(e) => {
+                  const updated = [...formData.tripDetails];
+                  updated[idx][field] = e.target.value;
+                  setFormData({ ...formData, tripDetails: updated });
+                }}
+                className="w-full border rounded px-3 py-2 mt-1"
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+
+      {/* Itinerary */}
+      <h3 className="text-lg font-semibold mt-6 mb-2">Itinerary</h3>
+      {formData.itinerary?.map((day, idx) => (
+        <div key={idx} className="grid grid-cols-3 gap-2 mb-2">
+          <input
+            type="number"
+            value={day.day_number || ""}
+            onChange={(e) => {
+              const updated = [...formData.itinerary];
+              updated[idx].day_number = e.target.value;
+              setFormData({ ...formData, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            value={day.title || ""}
+            onChange={(e) => {
+              const updated = [...formData.itinerary];
+              updated[idx].title = e.target.value;
+              setFormData({ ...formData, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+          <input
+            type="text"
+            value={day.description || ""}
+            onChange={(e) => {
+              const updated = [...formData.itinerary];
+              updated[idx].description = e.target.value;
+              setFormData({ ...formData, itinerary: updated });
+            }}
+            className="border rounded px-3 py-2"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
 
         {/* Add Package Modal */}
         {showAddModal && (
