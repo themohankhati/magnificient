@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Hamburger and close icons
+import { magnificentToursData } from "../components/tour-overview-page/components/data/magnificentTourData";
+import { activitiesData } from "../components/tour-overview-page/components/data/activityData";
 
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [destOpen, setDestOpen] = useState(false);
+  const [toursOpen, setToursOpen] = useState(false);
+  const [activitiesOpen, setActivitiesOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -81,12 +85,49 @@ const Header = () => {
             </ul>
           </div>
 
-          <Link to="/tours" className="relative text-gray-800 hover:text-blue-600 hover-underline">
-            Tours
-          </Link>
-          <Link to="/activities" className="relative text-gray-800 hover:text-blue-600 hover-underline">
-            Activities
-          </Link>
+          <div className="relative group">
+            <span className="relative text-gray-800 hover:text-blue-600 hover-underline cursor-pointer">
+              Tours
+            </span>
+            <ul className="absolute left-1/2 -translate-x-1/2 transform bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200 z-50 p-2 grid grid-rows-5 grid-flow-col gap-x-6 gap-y-1 min-w-[28rem]">
+              {magnificentToursData.map((tour) => (
+                <li key={tour.id}>
+                  <Link to={`/tours/${tour.id}`} className="block px-3 py-1 hover:bg-blue-100 text-gray-800 rounded whitespace-nowrap">
+                    {tour.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative group">
+            <span className="relative text-gray-800 hover:text-blue-600 hover-underline cursor-pointer">
+              Activities
+            </span>
+            <ul className="absolute left-1/2 -translate-x-1/2 transform bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200 z-50 p-2 grid grid-rows-5 grid-flow-col gap-x-6 gap-y-1 min-w-[28rem]">
+              {activitiesData.map((activity) => (
+                <li key={activity.id}>
+                  <Link to={`/activities/${activity.id}`} className="block px-3 py-1 hover:bg-blue-100 text-gray-800 rounded whitespace-nowrap">
+                    {activity.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/trekking/nepal" className="block px-3 py-1 hover:bg-blue-100 text-gray-800 rounded whitespace-nowrap">
+                  Trekking in Nepal
+                </Link>
+              </li>
+              <li>
+                <Link to="/trekking/bhutan" className="block px-3 py-1 hover:bg-blue-100 text-gray-800 rounded whitespace-nowrap">
+                  Trekking in Bhutan
+                </Link>
+              </li>
+              <li>
+                <Link to="/trekking/tibet" className="block px-3 py-1 hover:bg-blue-100 text-gray-800 rounded whitespace-nowrap">
+                  Trekking in Tibet
+                </Link>
+              </li>
+            </ul>
+          </div>
           <Link to="/aboutus" className="relative text-gray-800 hover:text-blue-600 hover-underline">
             About Us
           </Link>
@@ -159,12 +200,54 @@ const Header = () => {
             )}
           </div>
 
-          <Link to="/Tours" onClick={toggleMenu} className="block text-gray-800">
-            Tours
-          </Link>
-          <Link to="/activities" onClick={toggleMenu} className="block text-gray-800">
-            Activities
-          </Link>
+          <div>
+            <button
+              onClick={() => setToursOpen(!toursOpen)}
+              className="w-full text-left text-gray-800 font-semibold focus:outline-none"
+            >
+              Tours {toursOpen ? "▲" : "▼"}
+            </button>
+            {toursOpen && (
+              <div className="pl-4 pt-2 space-y-1">
+                {magnificentToursData.map((tour) => (
+                  <Link key={tour.id} to={`/tours/${tour.id}`} onClick={toggleMenu} className="block text-gray-700">
+                    {tour.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          <div>
+            <button
+              onClick={() => setActivitiesOpen(!activitiesOpen)}
+              className="w-full text-left text-gray-800 font-semibold focus:outline-none"
+            >
+              Activities {activitiesOpen ? "▲" : "▼"}
+            </button>
+            {activitiesOpen && (
+              <div className="pl-4 pt-2 space-y-1">
+                {activitiesData.map((activity) => (
+                  <Link
+                    key={activity.id}
+                    to={`/activities/${activity.id}`}
+                    onClick={toggleMenu}
+                    className="block text-gray-700"
+                  >
+                    {activity.title}
+                  </Link>
+                ))}
+                <Link to="/trekking/nepal" onClick={toggleMenu} className="block text-gray-700">
+                  Trekking in Nepal
+                </Link>
+                <Link to="/trekking/bhutan" onClick={toggleMenu} className="block text-gray-700">
+                  Trekking in Bhutan
+                </Link>
+                <Link to="/trekking/tibet" onClick={toggleMenu} className="block text-gray-700">
+                  Trekking in Tibet
+                </Link>
+              </div>
+            )}
+          </div>
           <Link to="/aboutus" onClick={toggleMenu} className="block text-gray-800">
             About Us
           </Link>

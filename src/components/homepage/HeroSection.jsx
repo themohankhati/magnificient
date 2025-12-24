@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import SmartImage from "../../shared_components/SmartImage";
 
 const slideVariants = {
   enter: (direction) => ({
@@ -36,38 +37,38 @@ const textVariants = {
 };
 
 const HeroSection = () => {
-const slides = [
-  {
-    image: "/Images/homepage/hero1.jpg",
-    title: "Explore the Majestic Himalayas",
-    subtitle: "Unforgettable trekking adventures in Nepal's highest peaks",
-  },
-  {
-    image: "/Images/homepage/hero4.jpg",
-    title: "Customized Tours & Treks",
-    subtitle: "Tailored itineraries to match your interests and pace",
-  },
-  {
-    image: "/Images/nepal/nepal1.jpg",
-    title: "Discover Culture & Heritage",
-    subtitle: "Experience Nepal's rich traditions and warm hospitality",
-  },
-  {
-    image: "/Images/tibet/tibet3.jpg",
-    title: "Mystical Tibet Awaits",
-    subtitle: "Journey to the land of monasteries, mountains, and timeless spirituality",
-  },
-  {
-    image: "/Images/bhutan/bhutan1.jpg",
-    title: "Bhutan – The Last Shangri-La",
-    subtitle: "Explore happiness, serenity, and untouched landscapes in the Kingdom of Bhutan",
-  },
-  {
-    image: "/Images/india/india1.jpg",
-    title: "Incredible India Adventures",
-    subtitle: "From the Taj Mahal to vibrant festivals, experience India like never before",
-  },
-];
+  const slides = [
+    {
+      image: "/Images/homepage/hero1.jpg",
+      title: "Explore the Majestic Himalayas",
+      subtitle: "Unforgettable trekking adventures in Nepal's highest peaks",
+    },
+    {
+      image: "/Images/homepage/hero4.jpg",
+      title: "Customized Tours & Treks",
+      subtitle: "Tailored itineraries to match your interests and pace",
+    },
+    {
+      image: "/Images/nepal/nepal1.jpg",
+      title: "Discover Culture & Heritage",
+      subtitle: "Experience Nepal's rich traditions and warm hospitality",
+    },
+    {
+      image: "/Images/tibet/tibet3.jpg",
+      title: "Mystical Tibet Awaits",
+      subtitle: "Journey to the land of monasteries, mountains, and timeless spirituality",
+    },
+    {
+      image: "/Images/bhutan/bhutan1.jpg",
+      title: "Bhutan – The Last Shangri-La",
+      subtitle: "Explore happiness, serenity, and untouched landscapes in the Kingdom of Bhutan",
+    },
+    {
+      image: "/Images/india/india1.jpg",
+      title: "Incredible India Adventures",
+      subtitle: "From the Taj Mahal to vibrant festivals, experience India like never before",
+    },
+  ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -105,17 +106,23 @@ const slides = [
           exit="exit"
           className="absolute inset-0"
         >
-          <motion.img
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].title}
-            className="h-full w-full object-cover"
+          {/* This motion.div replaces the previous motion.img */}
+          <motion.div
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 5, ease: "easeOut" }}
-            draggable={false}
-          />
+            className="h-full w-full"
+          >
+            <SmartImage
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              className="h-full w-full object-cover"
+              priority={currentSlide === 0}
+            />
+          </motion.div>
+
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60" />
-          
+
           {/* Centered text content */}
           <motion.div
             className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12"
@@ -145,7 +152,7 @@ const slides = [
               >
                 {slides[currentSlide].subtitle}
               </motion.p>
-              
+
               {/* Optional decorative line */}
               <motion.div
                 className="w-24 h-1 bg-white/80 mx-auto mt-6 sm:mt-8 rounded-full"

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { activitiesData } from "../tour-overview-page/components/data/activityData";
+import SmartImage from "../../shared_components/SmartImage";
 
 // Variants
 const containerVariants = {
@@ -58,13 +59,13 @@ const ActivitiesSection = () => {
             >
               {/* Image */}
               <div className="w-40 h-full overflow-hidden rounded-l-xl">
-                <motion.img
-                  src={`Images/${activity.image}`}
-                  alt={activity.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.6 }}
-                />
+                <motion.div whileHover={{ scale: 1.15 }} transition={{ duration: 0.6 }} className="w-full h-full">
+                  <SmartImage
+                    src={`Images/${activity.image}`}
+                    alt={activity.title}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
               </div>
 
               {/* Text */}
