@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import SmartImage from "../../shared_components/SmartImage";
 
 // Animation Variants
 const containerVariants = {
@@ -62,14 +63,18 @@ const Destinations = () => {
               onClick={() => navigate(`/tour/${destination.id}`)}
             >
               {/* Image with hover zoom */}
-              <motion.img
-                src={destination.img}
-                alt={destination.name}
-                className="w-full h-full object-cover"
+              <motion.div
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-              />
+                className="w-full h-full"
+              >
+                <SmartImage
+                  src={destination.img}
+                  alt={destination.name}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
               {/* Overlay on hover */}
               <motion.div
